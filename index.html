@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EÜR-App Pro – GoBD-konforme Buchhaltung für Kleinunternehmer</title>
+  <meta name="description" content="EÜR-App Pro: Die GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler. Einmalig kaufen, lokal nutzen, keine Cloud." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark:    #1a1a2e;
+      --bg-card:    #252540;
+      --orange:     #e07b2a;
+      --orange-light: #f0a050;
+      --text-light: #e8e8f0;
+      --text-muted: #9999bb;
+      --white:      #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f5f5f7;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--bg-dark);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      color: var(--orange);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+    nav a.btn-nav {
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.5rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    nav a.btn-nav:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      border-bottom: 4px solid var(--orange);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+    }
+    .hero .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .badge {
+      background: var(--bg-card);
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      border-radius: 20px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .price-hint {
+      margin-top: 2.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* SCREENSHOT */
+    .screenshot-section {
+      background: var(--bg-dark);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .screenshot-section img {
+      max-width: 860px;
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid var(--bg-card);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    .screenshot-placeholder {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 2px dashed #444466;
+      border-radius: 10px;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* FEATURES */
+    section { padding: 4rem 2rem; }
+    section h2 {
+      text-align: center;
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--bg-dark);
+    }
+    .section-sub {
+      text-align: center;
+      color: #666;
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.6rem;
+      border: 1px solid #e0e0e8;
+    }
+    .feature-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .feature-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--bg-dark);
+    }
+    .feature-card p {
+      font-size: 0.92rem;
+      color: #555;
+    }
+
+    /* ZIELGRUPPE */
+    .zielgruppe {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+    .zielgruppe h2 { color: var(--orange); }
+    .zielgruppe .section-sub { color: var(--text-muted); }
+    .zg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .zg-card.center {
+      grid-column: 2;
+    }
+    @media (max-width: 700px) {
+      .zg-grid { grid-template-columns: 1fr; }
+      .zg-card.center { grid-column: 1; }
+    }
+    .zg-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      border-left: 4px solid var(--orange);
+    }
+    .zg-card p { color: var(--text-muted); font-size: 0.93rem; }
+    .zg-card strong { color: var(--text-light); }
+
+    /* SCREENSHOTS GALERIE */
+    .gallery {
+      background: #f0f0f5;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .gallery-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+    .gallery-item img { width: 100%; display: block; }
+    .gallery-item span {
+      display: block;
+      padding: 0.6rem 1rem;
+      font-size: 0.88rem;
+      color: #555;
+      font-weight: 600;
+      border-top: 1px solid #eee;
+    }
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 60px rgba(0,0,0,0.5);
+    }
+    #lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* PREIS */
+    .pricing {
+      text-align: center;
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+    .pricing h2 { color: var(--orange); }
+    .pricing .section-sub { color: var(--text-muted); }
+    .price-card {
+      display: inline-block;
+      background: var(--bg-card);
+      border: 2px solid var(--orange);
+      border-radius: 14px;
+      padding: 2.5rem 3rem;
+      max-width: 420px;
+      width: 100%;
+    }
+    .price-card .price {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+    .price-card .price-label {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .price-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .price-card ul li {
+      padding: 0.4rem 0;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .price-card ul li::before {
+      content: "✓ ";
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .price-card .btn-primary { width: 100%; text-align: center; }
+    .no-sub {
+      margin-top: 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    /* HINWEIS WINDOWS */
+    .hint-box {
+      background: #2a2010;
+      border: 1px solid #a06020;
+      border-radius: 8px;
+      padding: 1rem 1.4rem;
+      max-width: 580px;
+      margin: 2rem auto 0;
+      font-size: 0.9rem;
+      color: #f0c070;
+    }
+
+    /* IMPRESSUM / FOOTER */
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.88rem;
+      border-top: 4px solid var(--orange);
+    }
+    footer a { color: var(--orange); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .price-card { padding: 1.8rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">✈ EÜR-App Pro</a>
+  <a class="btn-nav" href="https://schlagin.gumroad.com/l/eur-app-pro" target="_blank">Jetzt kaufen – 39 €</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>EÜR-App Pro</h1>
+  <p>GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler. Einmalig kaufen, lokal nutzen – keine Cloud, keine Abos.</p>
+  <div class="badge-row">
+    <span class="badge">GoBD-konform</span>
+    <span class="badge">100% lokal</span>
+    <span class="badge">Einmalzahlung</span>
+    <span class="badge">Made in Germany</span>
+    <span class="badge">Windows</span>
+  </div>
+  <a class="btn-primary" href="https://schlagin.gumroad.com/l/eur-app-pro" target="_blank">Jetzt kaufen – 39 €</a>
+  <p class="price-hint" style="margin-top: 3.5rem;">Einmalig. Kein Abo. Sofort-Download.</p>
+</div>
+
+<!-- SCREENSHOT HERO -->
+<div class="screenshot-section">
+  <img src="img/screenshot-dashboard.png" alt="EÜR-App Pro Dashboard" />
+</div>
+
+<!-- FEATURES -->
+<section>
+  <h2>Was die EÜR-App Pro kann</h2>
+  <p class="section-sub">Alles was Kleinunternehmer und Freiberufler für die Steuererklärung brauchen.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="icon">📊</div>
+      <h3>EÜR-Jahresübersicht</h3>
+      <p>Automatische Berechnung von Einnahmen, Ausgaben und Gewinn. Export als PDF und Excel.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🧾</div>
+      <h3>Rechnungen erstellen</h3>
+      <p>Professionelle Rechnungen als PDF mit automatischer Nummerierung, Mahnungen und Stornobelegen.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">💰</div>
+      <h3>Kassenbuch</h3>
+      <p>Bareinnahmen und Privatentnahmen GoBD-konform erfassen und verwalten.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">🔒</div>
+      <h3>GoBD-konform</h3>
+      <p>Finalisierte Buchungen können nicht gelöscht werden. Revisionssicher nach §14b UStG.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">☁️</div>
+      <h3>Keine Cloud</h3>
+      <p>Alle Daten bleiben auf Ihrem PC. Keine Datenweitergabe, keine Server, keine Abhängigkeit.</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon">💾</div>
+      <h3>Automatisches Backup</h3>
+      <p>Die App sichert Ihre Daten regelmäßig automatisch – damit nichts verloren geht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ZIELGRUPPE -->
+<section class="zielgruppe">
+  <h2>Für wen ist die App geeignet?</h2>
+  <p class="section-sub">Die EÜR-App Pro richtet sich an alle, die keine doppelte Buchführung benötigen.</p>
+  <div class="zg-grid">
+    <div class="zg-card">
+      <strong>Kleinunternehmer nach §19 UStG</strong>
+      <p>Bis 25.000 € Umsatz – keine Umsatzsteuer, vereinfachte Buchführung.</p>
+    </div>
+    <div class="zg-card">
+      <strong>Freiberufler</strong>
+      <p>Ärzte, Anwälte, Ingenieure, Lehrer, Berater – EÜR-Pflicht statt Bilanz.</p>
+    </div>
+    <div class="zg-card">
+      <strong>Umsatzsteuerpflichtige Unternehmer</strong>
+      <p>Bis 80.000 € Gewinn / 800.000 € Umsatz – EÜR statt Bilanzierung möglich.</p>
+    </div>
+    <div class="zg-card center">
+      <strong>Nicht geeignet für</strong>
+      <p>GmbH, AG, Kapitalgesellschaften oder bilanzierungspflichtige Unternehmen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section class="gallery">
+  <h2>Einblicke in die App</h2>
+  <p class="section-sub">Übersichtlich, klar und professionell.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="img/rechnungen.png" alt="Rechnungen" />
+      <span>Rechnungen</span>
+    </div>
+    <div class="gallery-item">
+      <img src="img/screenshot-ausgaben.png" alt="Ausgaben" />
+      <span>Ausgaben</span>
+    </div>
+    <div class="gallery-item">
+      <img src="img/screenshot-kassenbuch.png" alt="Kassenbuch" />
+      <span>Kassenbuch</span>
+    </div>
+    <div class="gallery-item">
+      <img src="img/screenshot-kunden.png" alt="Kunden" />
+      <span>Kundenverwaltung</span>
+    </div>
+  </div>
+</section>
+
+<!-- PREIS -->
+<section class="pricing">
+  <h2>Preis & Kauf</h2>
+  <p class="section-sub">Einmal kaufen, dauerhaft nutzen.</p>
+  <div class="price-card">
+    <div class="price">39 €</div>
+    <div class="price-label">inkl. MwSt. · Einmalige Zahlung</div>
+    <ul>
+      <li>Sofort-Download nach Kauf</li>
+      <li>Lizenzschlüssel per E-Mail</li>
+      <li>Für Windows (10/11)</li>
+      <li>Alle zukünftigen Updates inklusive</li>
+      <li>Keine monatlichen Kosten</li>
+      <li>Keine Cloud-Pflicht</li>
+    </ul>
+    <a class="btn-primary" href="https://schlagin.gumroad.com/l/eur-app-pro" target="_blank">Jetzt kaufen auf Gumroad</a>
+    <p class="no-sub">Sicherer Kauf über Gumroad · Sofortiger Download</p>
+  </div>
+
+  <div class="hint-box">
+    ⚠️ <strong>Windows-Hinweis:</strong> Beim ersten Start erscheint eine SmartScreen-Warnung.
+    Klicken Sie auf <em>"Weitere Informationen"</em> → <em>"Trotzdem ausführen"</em>.
+    Dies ist normal bei neuer Software und kein Sicherheitsrisiko.
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <span id="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Andreas Schlagintweit &nbsp;·&nbsp;
+    <a href="mailto:a.schlagintweit@gmx.de">a.schlagintweit@gmx.de</a>
+    &nbsp;·&nbsp;
+    <a href="impressum.html">Impressum</a>
+    &nbsp;·&nbsp;
+    <a href="datenschutz.html">Datenschutz</a>
+  </p>
+  <p style="margin-top:0.5rem;">Entwickelt von Andreas Schlagintweit, Fluglehrer FI(A)</p>
+</footer>
+
+<script>
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      lbImg.src = item.querySelector('img').src;
+      lb.classList.add('active');
+    });
+  });
+  document.getElementById('lightbox-close').addEventListener('click', () => lb.classList.remove('active'));
+  lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('active'); });
+</script>
+</body>
+</html>
