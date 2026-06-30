@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Benutzerhandbuch – EÜR-App Pro</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #1a1a2e;
+      --bg-card:  #252540;
+      --orange:   #e07b2a;
+      --orange-l: #f0a050;
+      --text:     #e8e8f0;
+      --muted:    #9999bb;
+      --white:    #ffffff;
+      --green:    #22c55e;
+      --red:      #ef4444;
+      --blue:     #60a5fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    nav {
+      background: #13132a;
+      border-bottom: 3px solid var(--orange);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    nav .logo { color: var(--orange); font-size: 1.15rem; font-weight: 700; text-decoration: none; letter-spacing: 1px; }
+    nav a.back { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    nav a.back:hover { color: var(--orange); }
+
+    .wrapper { display: flex; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+    aside {
+      width: 260px; flex-shrink: 0; padding: 2rem 1rem 2rem 0;
+      position: sticky; top: 65px; height: calc(100vh - 65px); overflow-y: auto;
+    }
+    aside h3 { color: var(--orange); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+    aside ul { list-style: none; }
+    aside ul li { margin-bottom: 0.15rem; }
+    aside ul li a {
+      color: var(--muted); text-decoration: none; font-size: 0.88rem;
+      display: block; padding: 0.25rem 0.6rem; border-radius: 5px;
+      border-left: 2px solid transparent; transition: all 0.15s;
+    }
+    aside ul li a:hover, aside ul li a.active {
+      color: var(--orange); border-left-color: var(--orange); background: rgba(224,123,42,0.08);
+    }
+    aside ul li.sub a { padding-left: 1.4rem; font-size: 0.83rem; }
+
+    main { flex: 1; min-width: 0; padding: 2.5rem 0 4rem 2rem; }
+
+    .hero {
+      background: var(--bg-card); border: 1px solid #333355; border-radius: 14px;
+      padding: 2rem 2.5rem; margin-bottom: 3rem; border-top: 4px solid var(--orange);
+    }
+    .hero h1 { color: var(--orange); font-size: 2rem; margin-bottom: 0.5rem; }
+    .hero p { color: var(--muted); font-size: 1.05rem; }
+    .version-badge {
+      display: inline-block; background: rgba(224,123,42,0.15); color: var(--orange);
+      border: 1px solid var(--orange); border-radius: 20px; padding: 0.2rem 0.9rem;
+      font-size: 0.82rem; font-weight: 600; margin-top: 0.8rem;
+    }
+
+    section { margin-bottom: 3.5rem; scroll-margin-top: 80px; }
+    section h2 {
+      color: var(--orange); font-size: 1.45rem; font-weight: 700;
+      margin-bottom: 0.4rem; padding-bottom: 0.5rem;
+      border-bottom: 2px solid #333355; display: flex; align-items: center; gap: 0.6rem;
+    }
+    section h3 { color: var(--text); font-size: 1.05rem; font-weight: 700; margin: 1.6rem 0 0.6rem; }
+    section p { color: var(--muted); margin-bottom: 0.8rem; font-size: 0.95rem; }
+    section ul, section ol { color: var(--muted); margin: 0.5rem 0 1rem 1.4rem; font-size: 0.95rem; }
+    section ul li, section ol li { margin-bottom: 0.35rem; }
+    section ul li strong, section ol li strong { color: var(--text); }
+
+    .card { background: var(--bg-card); border: 1px solid #333355; border-radius: 10px; padding: 1.4rem 1.6rem; margin: 1rem 0; }
+    .card h4 { color: var(--orange); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; }
+
+    .steps { margin: 1rem 0; }
+    .step { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; }
+    .step-num {
+      background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.85rem;
+      border-radius: 50%; min-width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0;
+    }
+    .step-body { flex: 1; }
+    .step-body strong { color: var(--text); font-size: 0.95rem; }
+    .step-body p { margin: 0.2rem 0 0; font-size: 0.9rem; }
+
+    .hint { border-radius: 8px; padding: 0.9rem 1.2rem; margin: 1rem 0; font-size: 0.9rem; }
+    .hint-info   { background: rgba(96,165,250,0.1);  border-left: 4px solid var(--blue);  color: #93c5fd; }
+    .hint-warn   { background: rgba(251,191,36,0.1);  border-left: 4px solid #fbbf24;      color: #fcd34d; }
+    .hint-ok     { background: rgba(34,197,94,0.1);   border-left: 4px solid var(--green); color: #86efac; }
+    .hint-danger { background: rgba(239,68,68,0.1);   border-left: 4px solid var(--red);   color: #fca5a5; }
+
+    .badge { display: inline-block; padding: 0.15rem 0.7rem; border-radius: 12px; font-size: 0.78rem; font-weight: 700; margin: 0 0.1rem; }
+    .badge-orange { background: rgba(224,123,42,0.2); color: var(--orange); border: 1px solid var(--orange); }
+    .badge-green  { background: rgba(34,197,94,0.15);  color: #86efac; }
+    .badge-red    { background: rgba(239,68,68,0.15);  color: #fca5a5; }
+    .badge-blue   { background: rgba(96,165,250,0.15); color: #93c5fd; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 1rem 0; }
+    th { background: #2a2a4a; color: var(--orange); text-align: left; padding: 0.6rem 1rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    td { padding: 0.55rem 1rem; border-bottom: 1px solid #2a2a4a; color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+
+    hr { border: none; border-top: 1px solid #2a2a4a; margin: 2rem 0; }
+
+    kbd { background: #2a2a4a; border: 1px solid #444466; border-radius: 4px; padding: 0.1rem 0.5rem; font-size: 0.85rem; font-family: monospace; color: var(--text); }
+
+    footer { border-top: 3px solid var(--orange); background: #13132a; text-align: center; padding: 1.5rem; color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--orange); text-decoration: none; }
+
+    @media (max-width: 800px) { aside { display: none; } main { padding: 1.5rem 0 3rem; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">✈ EÜR-App Pro</a>
+  <a class="back" href="index.html">← Zurück zur Startseite</a>
+</nav>
+
+<div class="wrapper">
+
+  <aside>
+    <h3>Inhaltsverzeichnis</h3>
+    <ul>
+      <li><a href="#erste-schritte">1. Erste Schritte</a></li>
+      <li class="sub"><a href="#installation">Installation</a></li>
+      <li class="sub"><a href="#lizenz">Lizenzaktivierung</a></li>
+      <li class="sub"><a href="#einrichtung">Ersteinrichtung</a></li>
+      <li><a href="#dashboard">2. Dashboard</a></li>
+      <li><a href="#rechnungen">3. Rechnungen</a></li>
+      <li class="sub"><a href="#rechnung-neu">Neue Rechnung</a></li>
+      <li class="sub"><a href="#rechnung-finalisieren">Finalisieren</a></li>
+      <li class="sub"><a href="#rechnung-zahlung">Zahlungsstatus</a></li>
+      <li class="sub"><a href="#rechnung-pdf">PDF &amp; Druck</a></li>
+      <li class="sub"><a href="#rechnung-mahnung">Mahnungen</a></li>
+      <li class="sub"><a href="#rechnung-storno">Storno</a></li>
+      <li><a href="#kunden">4. Kunden</a></li>
+      <li><a href="#ausgaben">5. Ausgaben</a></li>
+      <li><a href="#kassenbuch">6. Kassenbuch</a></li>
+      <li><a href="#eur">7. EÜR-Auswertung</a></li>
+      <li><a href="#ust">8. Umsatzsteuer</a></li>
+      <li><a href="#statistik">9. Statistiken</a></li>
+      <li><a href="#einstellungen">10. Einstellungen</a></li>
+      <li class="sub"><a href="#briefkopf">Briefkopf &amp; Bankdaten</a></li>
+      <li class="sub"><a href="#steuer">Steuer / MwSt</a></li>
+      <li class="sub"><a href="#dropdowns">Leistungen &amp; Einheiten</a></li>
+      <li class="sub"><a href="#backup">Backup &amp; Datensicherung</a></li>
+      <li><a href="#gobd">11. GoBD-Hinweise</a></li>
+      <li><a href="#tipps">12. Tipps &amp; FAQ</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <div class="hero">
+      <h1>📖 Benutzerhandbuch</h1>
+      <p>Vollständige Anleitung zur EÜR-App Pro — GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler.</p>
+      <span class="version-badge">Version 0.2.0 · Stand Juni 2026</span>
+    </div>
+
+    <!-- 1. ERSTE SCHRITTE -->
+    <section id="erste-schritte">
+      <h2>🚀 1. Erste Schritte</h2>
+
+      <h3 id="installation">Installation</h3>
+      <p>Die EÜR-App Pro wird als einzelne <strong>.exe-Datei</strong> geliefert — keine Installation notwendig. Speichern Sie die Datei an einem festen Ort (z.B. <kbd>C:\Programme\EÜR-App\</kbd>) und starten Sie sie per Doppelklick.</p>
+      <div class="hint hint-warn">
+        <strong>Windows SmartScreen-Warnung:</strong> Beim ersten Start erscheint eine Sicherheitswarnung. Klicken Sie auf <strong>„Weitere Informationen"</strong> → <strong>„Trotzdem ausführen"</strong>. Die App enthält keinen Schadcode.
+      </div>
+
+      <h3 id="lizenz">Lizenzaktivierung</h3>
+      <p>Nach dem ersten Start erscheint automatisch das Aktivierungsfenster:</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Lizenzschlüssel eingeben</strong><p>Den Schlüssel haben Sie nach dem Kauf per E-Mail von Gumroad erhalten. Kopieren Sie ihn vollständig in das Eingabefeld.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Aktivieren klicken</strong><p>Die App verbindet sich einmalig mit dem Lizenzserver. Eine Internetverbindung ist nur bei diesem Schritt nötig.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Fertig</strong><p>Nach erfolgreicher Aktivierung startet die App. Ab sofort startet sie ohne Internetverbindung.</p></div></div>
+      </div>
+      <div class="hint hint-info">Bewahren Sie Ihren Lizenzschlüssel sicher auf. Sie benötigen ihn bei einer Neuinstallation.</div>
+
+      <h3 id="einrichtung">Ersteinrichtung</h3>
+      <p>Tragen Sie Ihre Daten unter <strong>Einstellungen → Briefkopf &amp; Bankdaten</strong> ein, bevor Sie die erste Rechnung erstellen.</p>
+      <table>
+        <tr><th>Feld</th><th>Beschreibung</th><th>Pflicht?</th></tr>
+        <tr><td>Name</td><td>Ihr vollständiger Name</td><td><span class="badge badge-red">Ja</span></td></tr>
+        <tr><td>Berufsbezeichnung</td><td>z.B. „Freiberuflicher Fluglehrer FI(A)"</td><td><span class="badge badge-green">Nein</span></td></tr>
+        <tr><td>Straße, PLZ/Ort</td><td>Ihre Geschäftsadresse</td><td><span class="badge badge-red">Ja</span></td></tr>
+        <tr><td>Telefon / E-Mail</td><td>Kontaktdaten auf der Rechnung</td><td><span class="badge badge-green">Empfohlen</span></td></tr>
+        <tr><td>Steuernummer</td><td>Erscheint in der Fußzeile jeder Rechnung</td><td><span class="badge badge-red">Ja</span></td></tr>
+        <tr><td>Bank / IBAN / BIC</td><td>Bankverbindung in der Rechnungsfußzeile</td><td><span class="badge badge-red">Ja</span></td></tr>
+        <tr><td>Rechnungspräfix</td><td>Standard „RE" → Rechnungen heißen RE-2026-001</td><td><span class="badge badge-green">Optional</span></td></tr>
+      </table>
+      <div class="hint hint-ok">Nach dem Ausfüllen unbedingt <strong>„Einstellungen speichern"</strong> klicken!</div>
+    </section>
+
+    <!-- 2. DASHBOARD -->
+    <section id="dashboard">
+      <h2>🏠 2. Dashboard</h2>
+      <p>Das Dashboard zeigt auf einen Blick alle wichtigen Zahlen des <strong>laufenden Jahres</strong>.</p>
+      <div class="card">
+        <h4>Die vier Kennzahl-Karten</h4>
+        <table>
+          <tr><th>Karte</th><th>Bedeutung</th></tr>
+          <tr><td><span class="badge badge-green">Einnahmen gesamt</span></td><td>Summe aller finalisierten Rechnungen im laufenden Jahr</td></tr>
+          <tr><td><span class="badge badge-red">Ausgaben gesamt</span></td><td>Summe aller erfassten Betriebsausgaben im laufenden Jahr</td></tr>
+          <tr><td><span class="badge badge-blue">Überschuss</span></td><td>Einnahmen minus Ausgaben — Ihr vorläufiger Gewinn</td></tr>
+          <tr><td style="color:#a78bfa">Rechnungen</td><td>Anzahl der Rechnungen im laufenden Jahr</td></tr>
+        </table>
+      </div>
+      <h3>Letzte Rechnungen</h3>
+      <p>Zeigt die letzten 15 Rechnungen mit Nummer, Datum, Kunde und Status.</p>
+      <h3>Offene Posten</h3>
+      <p>Alle finalisierten Rechnungen die noch nicht bezahlt wurden. Rechnungen älter als 30 Tage erscheinen in <span class="badge badge-red">Rot – Überfällig</span>.</p>
+      <div class="hint hint-info">Das Dashboard zeigt immer das aktuelle Kalenderjahr. Historische Daten finden Sie in der Rechnungsliste mit Jahres-Filter.</div>
+    </section>
+
+    <!-- 3. RECHNUNGEN -->
+    <section id="rechnungen">
+      <h2>📄 3. Rechnungen</h2>
+      <p>Zeigt alle Rechnungen des gewählten Jahres. Oben rechts können Sie das Jahr wechseln. Die Suchleiste filtert nach Rechnungsnummer, Kundenname oder Betrag.</p>
+
+      <h3 id="rechnung-neu">Neue Rechnung erstellen</h3>
+      <p>Klicken Sie auf <strong>„＋ Neue Rechnung"</strong> — in der Seitenleiste oder oben in der Rechnungsliste.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Rechnungsempfänger eingeben</strong><p>Bekannte Kunden werden per Autovervollständigung vorgeschlagen — die Adresse wird automatisch übernommen.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Adresse prüfen / ergänzen</strong><p>Straße und PLZ/Ort eingeben. Diese Felder erscheinen auf der Rechnung.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Rechnungsdatum wählen</strong><p>Standard ist das heutige Datum. Über den Kalender können Sie ein anderes Datum wählen.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Positionen eingeben</strong><p>Pro Zeile eine Leistung: Datum, Leistungsbeschreibung (Dropdown oder Freitext), Menge, Einheit und Einzelpreis. Der Gesamtbetrag wird automatisch berechnet.</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Weitere Positionen</strong><p>Mit „＋ Zeile hinzufügen" ergänzen, mit ✕ entfernen.</p></div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Notizen (optional)</strong><p>Interne Notizen erscheinen nicht auf der Rechnung.</p></div></div>
+      </div>
+      <div class="hint hint-info">Neue Kunden werden automatisch in die Kundenliste aufgenommen.</div>
+
+      <h3 id="rechnung-finalisieren">Rechnung finalisieren (GoBD)</h3>
+      <table>
+        <tr><th>Status</th><th>Bedeutung</th><th>Bearbeitbar?</th></tr>
+        <tr><td><span class="badge badge-orange">Entwurf</span></td><td>Vorläufig, noch nicht in die EÜR übernommen</td><td><span class="badge badge-green">Ja</span></td></tr>
+        <tr><td><span class="badge badge-green">Finalisiert</span></td><td>GoBD-gesichert, in die EÜR übertragen, unveränderlich</td><td><span class="badge badge-red">Nein</span></td></tr>
+      </table>
+      <p>Klicken Sie auf <strong>„✅ Finalisieren (GoBD-gesichert)"</strong> wenn die Rechnung korrekt ist. Nach der Bestätigung ist sie nicht mehr änderbar.</p>
+      <div class="hint hint-warn"><strong>Wichtig:</strong> Erst finalisieren wenn alle Angaben stimmen! Fehler können danach nur noch über Storno korrigiert werden.</div>
+
+      <h3 id="rechnung-zahlung">Zahlungsstatus verwalten</h3>
+      <ul>
+        <li><strong>„✓ Bezahlt"</strong> — Rechnung als bezahlt markieren.</li>
+        <li><strong>„↩ Offen"</strong> — Bezahlt-Markierung rückgängig machen.</li>
+      </ul>
+      <p>Rechnungen älter als 30 Tage ohne Zahlung werden automatisch <span class="badge badge-red">Überfällig</span> markiert.</p>
+      <p><strong>Barzahlung:</strong> Öffnen Sie die Rechnung und klicken Sie auf <strong>„💵 Bar kassiert"</strong>. Die App fragt nach dem Zahlungsdatum und trägt den Betrag automatisch ins Kassenbuch ein.</p>
+
+      <h3 id="rechnung-pdf">PDF exportieren &amp; Drucken</h3>
+      <ul>
+        <li><strong>„📄 Als PDF exportieren"</strong> — Speichert die Rechnung als PDF. Standard-Speicherort: <kbd>Dokumente\EÜR-Rechnungen\</kbd></li>
+        <li><strong>„🖨 Vorschau / Drucken"</strong> — Öffnet die Rechnung im Standard-PDF-Betrachter zum Drucken.</li>
+      </ul>
+
+      <h3 id="rechnung-mahnung">Mahnungen erstellen</h3>
+      <p>Bei unbezahlten finalisierten Rechnungen erscheint der Button <strong>„Mahnung"</strong>. Die App erkennt automatisch die Mahnstufe (Zahlungserinnerung → 1. Mahnung → 2. Mahnung).</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Mahnung klicken</strong><p>Die App zeigt an welche Mahnstufe erzeugt wird.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Bestätigen</strong><p>Die Mahnung wird als PDF erstellt und sofort geöffnet.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Versenden</strong><p>PDF per E-Mail senden oder ausdrucken.</p></div></div>
+      </div>
+
+      <h3 id="rechnung-storno">Rechnungen stornieren</h3>
+      <p>Klicken Sie auf den <span class="badge badge-red">Storno</span>-Button. Die App erstellt automatisch eine Stornorechnung mit negativen Beträgen. Beide Rechnungen bleiben sichtbar — GoBD-konform.</p>
+      <div class="hint hint-danger">Stornierungen können nicht rückgängig gemacht werden. Erstellen Sie danach eine neue, korrekte Rechnung.</div>
+    </section>
+
+    <!-- 4. KUNDEN -->
+    <section id="kunden">
+      <h2>👤 4. Kunden</h2>
+      <p>Alle Kunden die je auf einer Rechnung erschienen sind. Neue Kunden werden automatisch angelegt sobald Sie eine Rechnung für sie erstellen. Sie können Kundendaten manuell bearbeiten um Adressänderungen zu übernehmen.</p>
+      <h3>Kunden-Statistik</h3>
+      <p>Unter <strong>🏆 Kunden-Statistik</strong> sehen Sie Umsatz, Anzahl Rechnungen und Anteil am Jahresumsatz pro Kunde.</p>
+    </section>
+
+    <!-- 5. AUSGABEN -->
+    <section id="ausgaben">
+      <h2>💸 5. Ausgaben</h2>
+      <p>Hier erfassen Sie alle <strong>Betriebsausgaben</strong> (Büromaterial, Software, Fortbildungen, Fahrtkosten etc.).</p>
+      <h3>Neue Ausgabe erfassen</h3>
+      <table>
+        <tr><th>Feld</th><th>Beschreibung</th><th>Pflicht?</th></tr>
+        <tr><td>Datum</td><td>Datum der Ausgabe (Belegdatum)</td><td><span class="badge badge-red">Ja</span></td></tr>
+        <tr><td>Belegnummer</td><td>Quittungs- oder Rechnungsnummer des Lieferanten</td><td><span class="badge badge-green">Nein</span></td></tr>
+        <tr><td>Lieferant</td><td>Name des Anbieters / Geschäfts</td><td><span class="badge badge-green">Nein</span></td></tr>
+        <tr><td>Beschreibung</td><td>Was wurde gekauft / wofür</td><td><span class="badge badge-red">Ja</span></td></tr>
+        <tr><td>Kategorie</td><td>Ausgabenkategorie für die Auswertung</td><td><span class="badge badge-green">Nein</span></td></tr>
+        <tr><td>Betrag</td><td>Der bezahlte Betrag in Euro</td><td><span class="badge badge-red">Ja</span></td></tr>
+      </table>
+      <div class="hint hint-info"><strong>Kleinunternehmer:</strong> Den Bruttobetrag eingeben (was Sie tatsächlich bezahlt haben).</div>
+      <p>Ausgaben können jederzeit bearbeitet oder gelöscht werden. Oben rechts das Jahr wechseln um vergangene Jahre einzusehen.</p>
+    </section>
+
+    <!-- 6. KASSENBUCH -->
+    <section id="kassenbuch">
+      <h2>💰 6. Kassenbuch</h2>
+      <p>Für alle <strong>Bartransaktionen</strong>. GoBD-konform: Einträge können nicht gelöscht, nur durch Gegenbuchungen korrigiert werden.</p>
+      <div class="hint hint-info"><strong>Wann brauche ich das Kassenbuch?</strong> Immer wenn Kunden bar bezahlen oder wenn Sie privates Geld einlegen bzw. entnehmen.</div>
+
+      <h3>Buchungsarten</h3>
+      <table>
+        <tr><th>Art</th><th>Wann verwenden</th></tr>
+        <tr><td><span class="badge badge-green">Bareinnahme</span></td><td>Automatisch beim Klick auf „Bar kassiert" in einer Rechnung</td></tr>
+        <tr><td><span class="badge badge-blue">Privateinlage</span></td><td>Sie legen privates Geld in die Geschäftskasse</td></tr>
+        <tr><td style="color:#fcd34d">Privatentnahme</td><td>Sie nehmen Geld aus der Kasse für private Zwecke</td></tr>
+        <tr><td style="color:#fcd34d">Barausgabe</td><td>Betriebliche Ausgabe die bar bezahlt wurde</td></tr>
+        <tr><td style="color:#c4b5fd">→ Firmenkonto</td><td>Bargeld auf Geschäftskonto einzahlen</td></tr>
+        <tr><td><span class="badge badge-orange">Korrektur</span></td><td>GoBD-konforme Gegenbuchung bei Erfassungsfehlern</td></tr>
+      </table>
+
+      <h3>Privateinlage buchen</h3>
+      <p>„＋ Privateinlage" klicken → Datum, Betrag und Beschreibung eingeben → „Buchen".</p>
+
+      <h3>Entnahme / Barausgabe buchen</h3>
+      <p>„− Entnahme / Barausgabe" klicken → Art wählen → Betrag und Beschreibung eingeben.</p>
+      <div class="hint hint-warn">Eine Entnahme ist nur möglich wenn der Kassenstand positiv ist.</div>
+
+      <h3>Korrektur (Gegenbuchung)</h3>
+      <p>„⟳ Korrektur" in der jeweiligen Zeile klicken. Die App erstellt eine vorausgefüllte Gegenbuchung die den Originalbetrag ausgleicht. Beide Buchungen bleiben sichtbar.</p>
+    </section>
+
+    <!-- 7. EÜR -->
+    <section id="eur">
+      <h2>📊 7. EÜR-Auswertung</h2>
+      <p>Die Einnahmen-Überschuss-Rechnung wird automatisch aus Ihren Rechnungen und Ausgaben berechnet.</p>
+      <table>
+        <tr><th>Bereich</th><th>Bedeutung</th></tr>
+        <tr><td>Einnahmen</td><td>Summe aller finalisierten Rechnungen pro Monat</td></tr>
+        <tr><td>Ausgaben</td><td>Summe aller erfassten Betriebsausgaben pro Monat</td></tr>
+        <tr><td>Überschuss</td><td>Einnahmen minus Ausgaben — Ihr steuerpflichtiger Gewinn</td></tr>
+        <tr><td>Jahressummen</td><td>Gesamtbeträge für das Steuerjahr</td></tr>
+      </table>
+      <p>Oben rechts das Auswertungsjahr wählen. Die EÜR kann als <strong>PDF oder Excel</strong> exportiert werden.</p>
+      <div class="hint hint-ok"><strong>Tipp:</strong> Am Jahresende einen Export erstellen und mindestens 10 Jahre aufbewahren (GoBD-Pflicht).</div>
+    </section>
+
+    <!-- 8. UST -->
+    <section id="ust">
+      <h2>🧾 8. Umsatzsteuer</h2>
+      <div class="hint hint-info"><strong>Kleinunternehmer:</strong> Solange Sie unter 25.000 € Jahresumsatz bleiben, müssen Sie keine Umsatzsteuervoranmeldung abgeben. Dieser Bereich ist für Sie nicht relevant.</div>
+      <p>Bei Regelbesteuerung zeigt die App die vierteljährliche Übersicht der Umsatzsteuer und Vorsteuer für die Umsatzsteuervoranmeldung (UStVA).</p>
+    </section>
+
+    <!-- 9. STATISTIK -->
+    <section id="statistik">
+      <h2>📈 9. Statistiken</h2>
+      <p>Grafische Auswertungen Ihrer Geschäftsentwicklung: Monatsvergleich (Einnahmen/Ausgaben pro Monat), Kunden-Ranking nach Umsatz und Jahresvergleich mit Vorjahren.</p>
+    </section>
+
+    <!-- 10. EINSTELLUNGEN -->
+    <section id="einstellungen">
+      <h2>⚙️ 10. Einstellungen</h2>
+
+      <h3 id="briefkopf">Tab: Briefkopf &amp; Bankdaten</h3>
+      <p>Ihre Daten die auf jeder Rechnung erscheinen. Änderungen gelten sofort für neue Rechnungen.</p>
+      <div class="card">
+        <h4>Felder im Überblick</h4>
+        <ul>
+          <li><strong>Name</strong> — erscheint groß im Briefkopf</li>
+          <li><strong>Berufsbezeichnung</strong> — erscheint kleiner unter dem Namen</li>
+          <li><strong>Adresse</strong> — Straße und PLZ/Ort</li>
+          <li><strong>Telefon / E-Mail</strong> — Kontaktdaten im Briefkopf</li>
+          <li><strong>Steuernummer</strong> — Pflichtangabe in der Fußzeile</li>
+          <li><strong>Bank / IBAN / BIC</strong> — Zahlungsinfos in der Fußzeile</li>
+          <li><strong>Rechnungspräfix</strong> — Standard „RE", erzeugt Nummern wie RE-2026-001</li>
+          <li><strong>§19-Hinweis</strong> — Text unter jeder Rechnung (anpassbar)</li>
+        </ul>
+      </div>
+
+      <h3 id="steuer">Tab: Steuer / MwSt</h3>
+      <table>
+        <tr><th>Modus</th><th>Für wen</th><th>Wirkung auf Rechnungen</th></tr>
+        <tr><td><strong>Kleinunternehmer §19 UStG</strong></td><td>Bis 25.000 € Jahresumsatz</td><td>Kein MwSt-Ausweis, §19-Hinweis erscheint</td></tr>
+        <tr><td><strong>Regelbesteuerung</strong></td><td>Über 25.000 € oder freiwillig</td><td>Netto + MwSt (19%) + Brutto wird ausgewiesen</td></tr>
+      </table>
+      <div class="hint hint-warn">Ändern Sie den Steuer-Modus nur wenn Sie sicher sind! Die Umstellung gilt nur für neue Rechnungen.</div>
+
+      <h3 id="dropdowns">Tab: Leistungsbeschreibungen &amp; Einheiten</h3>
+      <p><strong>Leistungsbeschreibungen:</strong> Vordefinierte Texte für die Leistungsspalte auf Rechnungen. Mit ▲/▼ Reihenfolge anpassen, mit ＋ hinzufügen, mit ✕ entfernen.</p>
+      <p><strong>Einheiten:</strong> Vordefinierte Einheiten für die Mengenspalte (z.B. „Std.", „Min. BT", „Pauschal").</p>
+      <p><strong>Kassenbuch-Texte:</strong> Vordefinierte Beschreibungen für Einlagen und Entnahmen im Kassenbuch.</p>
+
+      <h3 id="backup">Tab: Datenspeicherung</h3>
+      <p>Alle Daten werden lokal in einer SQLite-Datei (<kbd>euer.db</kbd>) gespeichert. Kein Cloud-Zugriff, keine Datenweitergabe.</p>
+
+      <div class="card">
+        <h4>Automatisches Backup</h4>
+        <p>Die App erstellt beim Start automatisch ein Backup wenn das letzte älter als das eingestellte Intervall ist. Empfehlung: <strong>täglich oder wöchentlich</strong>. Ältere Backups werden automatisch bereinigt (einstellbar: 4–26 aufbewahren).</p>
+      </div>
+      <div class="card">
+        <h4>Manuelles Backup</h4>
+        <p>„💾 Backup jetzt erstellen" klicken und Zielordner wählen. Dateiname z.B. <kbd>euer_backup_2026-06-30_14-35.db</kbd>. Empfehlung: vor Jahresabschluss und vor App-Updates.</p>
+      </div>
+      <div class="card">
+        <h4>Backup wiederherstellen</h4>
+        <p>„↩ Backup wiederherstellen" klicken und die gewünschte <kbd>.db</kbd>-Datei wählen. Die App legt vorher automatisch eine Sicherheitskopie der aktuellen Datenbank an.</p>
+      </div>
+      <div class="hint hint-danger">Nach einer Wiederherstellung die App neu starten!</div>
+
+      <h3>Tab: Darstellung</h3>
+      <p><strong>Dark Mode</strong> aktivieren oder deaktivieren. Die Änderung wird sofort übernommen.</p>
+    </section>
+
+    <!-- 11. GOBD -->
+    <section id="gobd">
+      <h2>📋 11. GoBD-Hinweise</h2>
+      <div class="card">
+        <h4>Was bedeutet GoBD-konform in dieser App?</h4>
+        <ul>
+          <li>Finalisierte Rechnungen können nicht bearbeitet oder gelöscht werden</li>
+          <li>Stornierungen erzeugen automatisch eine Gegenrechnung — beide bleiben erhalten</li>
+          <li>Kassenbuch-Einträge können nicht gelöscht werden — nur Gegenbuchungen</li>
+          <li>Alle Buchungen haben Zeitstempel und sind revisionssicher gespeichert</li>
+          <li>Rechnungsnummern sind fortlaufend und lückenlos</li>
+        </ul>
+      </div>
+      <div class="hint hint-warn"><strong>Hinweis:</strong> Die App ersetzt keine steuerliche Beratung. Bei Unsicherheiten wenden Sie sich an einen Steuerberater.</div>
+      <h3>Aufbewahrungspflichten</h3>
+      <table>
+        <tr><th>Dokument</th><th>Frist</th></tr>
+        <tr><td>Rechnungen (Ein- und Ausgang)</td><td>10 Jahre</td></tr>
+        <tr><td>Kassenbuch</td><td>10 Jahre</td></tr>
+        <tr><td>EÜR-Auswertungen</td><td>10 Jahre</td></tr>
+        <tr><td>Verträge, Geschäftsbriefe</td><td>6 Jahre</td></tr>
+      </table>
+      <div class="hint hint-ok">Sichern Sie die <kbd>euer.db</kbd>-Datei regelmäßig und bewahren Sie Backups mindestens 10 Jahre auf.</div>
+    </section>
+
+    <!-- 12. FAQ -->
+    <section id="tipps">
+      <h2>💡 12. Tipps &amp; häufige Fragen</h2>
+
+      <h3>Wie erstelle ich schnell eine Rechnung für denselben Kunden?</h3>
+      <p>Tippen Sie im Rechnungseditor die ersten Buchstaben des Kundennamens — die App schlägt bekannte Kunden vor und übernimmt die Adresse automatisch.</p>
+
+      <h3>Kann ich Rechnungen aus früheren Jahren ansehen?</h3>
+      <p>Ja. In der Rechnungsliste oben rechts das Jahr wechseln.</p>
+
+      <h3>Wo ist die Datenbank gespeichert?</h3>
+      <p>Standard: im gleichen Ordner wie die .exe-Datei, Dateiname <kbd>euer.db</kbd>. Den Speicherort können Sie unter <strong>Einstellungen → Datenspeicherung</strong> ändern.</p>
+
+      <h3>Was passiert beim Umzug auf einen neuen PC?</h3>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Backup erstellen</strong><p>Einstellungen → Datenspeicherung → Backup jetzt erstellen</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Dateien übertragen</strong><p>.exe und Backup-Datei auf den neuen PC kopieren.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>App starten und aktivieren</strong><p>Mit Ihrem Lizenzschlüssel aktivieren (einmalig Internetverbindung nötig).</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Backup wiederherstellen</strong><p>Einstellungen → Datenspeicherung → Backup wiederherstellen → Datei wählen → App neu starten.</p></div></div>
+      </div>
+
+      <h3>Lizenzschlüssel verloren — was tun?</h3>
+      <p>Schauen Sie in die Gumroad-Kaufbestätigung per E-Mail. Falls nicht auffindbar, schreiben Sie an <a href="mailto:info@eur-app-pro.de" style="color: var(--orange);">info@eur-app-pro.de</a>.</p>
+
+      <h3>„Kassenstand zu niedrig" — was bedeutet das?</h3>
+      <p>Der Kassenstand reicht für die Entnahme nicht aus. Buchen Sie zuerst eine <strong>Privateinlage</strong> um die Kasse aufzufüllen, oder prüfen Sie ob Bareinnahmen vergessen wurden.</p>
+
+      <hr />
+      <div class="hint hint-ok">
+        <strong>Noch Fragen?</strong> Schreiben Sie uns an <a href="mailto:info@eur-app-pro.de" style="color: inherit; font-weight: bold;">info@eur-app-pro.de</a> — wir helfen gerne weiter.
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2026 Andreas Schlagintweit &nbsp;·&nbsp;
+    <a href="index.html">Startseite</a> &nbsp;·&nbsp;
+    <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html">Datenschutz</a>
+  </p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('aside a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  });
+</script>
+</body>
+</html>
