@@ -137,6 +137,15 @@
     <label for="name">Name / Firma</label>
     <input type="text" id="name" placeholder="Vor- und Nachname oder Firmenname">
 
+    <label for="street">Straße & Hausnummer</label>
+    <input type="text" id="street" placeholder="Musterstraße 1">
+
+    <label for="zipcity">PLZ & Ort</label>
+    <input type="text" id="zipcity" placeholder="12345 Musterstadt">
+
+    <label for="country">Land</label>
+    <input type="text" id="country" placeholder="Deutschland" value="Deutschland">
+
     <label for="email">E-Mail-Adresse</label>
     <input type="email" id="email" placeholder="ihre@email.de">
 
@@ -187,15 +196,24 @@
     const submitBtn = document.getElementById('submitBtn');
 
     function updateButton() {
-      submitBtn.disabled = !(c1.checked && c2.checked && document.getElementById('name').value && document.getElementById('email').value);
+      submitBtn.disabled = !(c1.checked && c2.checked
+        && document.getElementById('name').value
+        && document.getElementById('street').value
+        && document.getElementById('zipcity').value
+        && document.getElementById('country').value
+        && document.getElementById('email').value);
     }
     c1.addEventListener('change', updateButton);
     c2.addEventListener('change', updateButton);
-    document.getElementById('name').addEventListener('input', updateButton);
-    document.getElementById('email').addEventListener('input', updateButton);
+    ['name', 'street', 'zipcity', 'country', 'email'].forEach(id => {
+      document.getElementById(id).addEventListener('input', updateButton);
+    });
 
     function generateOrder() {
       const name = document.getElementById('name').value.trim();
+      const street = document.getElementById('street').value.trim();
+      const zipcity = document.getElementById('zipcity').value.trim();
+      const country = document.getElementById('country').value.trim();
       const email = document.getElementById('email').value.trim();
       const orderNumber = 'EUR-' + Date.now().toString().slice(-8);
 
@@ -206,7 +224,8 @@
       const body = encodeURIComponent(
         'Hallo,\n\nich habe soeben die EÜR-App Pro bestellt und werde die Zahlung per Überweisung veranlassen.\n\n' +
         'Bestellnummer: ' + orderNumber + '\n' +
-        'Name: ' + name + '\n' +
+        'Name/Firma: ' + name + '\n' +
+        'Anschrift: ' + street + ', ' + zipcity + ', ' + country + '\n' +
         'E-Mail für Lizenzversand: ' + email + '\n\n' +
         'Viele Grüße'
       );
