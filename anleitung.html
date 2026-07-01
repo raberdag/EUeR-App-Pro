@@ -175,7 +175,7 @@
     <div class="hero">
       <h1>📖 Benutzerhandbuch</h1>
       <p>Vollständige Anleitung zur EÜR-App Pro — GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler.</p>
-      <span class="version-badge">Version 0.2.0 · Stand Juni 2026</span>
+      <span class="version-badge">Version 0.3.0 · Stand Juli 2026</span>
     </div>
 
     <!-- 1. ERSTE SCHRITTE -->
@@ -309,7 +309,21 @@
         <tr><td>Betrag</td><td>Der bezahlte Betrag in Euro</td><td><span class="badge badge-red">Ja</span></td></tr>
       </table>
       <div class="hint hint-info"><strong>Kleinunternehmer:</strong> Den Bruttobetrag eingeben (was Sie tatsächlich bezahlt haben).</div>
-      <p>Ausgaben können jederzeit bearbeitet oder gelöscht werden. Oben rechts das Jahr wechseln um vergangene Jahre einzusehen.</p>
+
+      <h3>Belegnummer — Lieferant oder intern?</h3>
+      <p>Tragen Sie im Feld <strong>Belegnummer</strong> die Nummer des Lieferanten ein (z.B. Rechnungsnummer auf der Eingangsrechnung). Falls der Beleg keine eigene Nummer hat (z.B. Quittung, Kassenbon), schlägt die App automatisch eine interne Nummer im Format <kbd>ER-2026-001</kbd> vor — einfach übernehmen.</p>
+      <div class="hint hint-info">Der Platzhalter im Eingabefeld zeigt immer die nächste verfügbare interne Nummer. Klicken Sie nichts hinein, wird der vorgeschlagene Wert beim Speichern automatisch übernommen, sofern Sie das Feld leer lassen.</div>
+
+      <h3>Ausgaben korrigieren (GoBD-konform)</h3>
+      <p>Gespeicherte Ausgaben können <strong>nicht bearbeitet</strong> werden — das entspricht der GoBD-Vorgabe zur Unveränderlichkeit von Buchungen.</p>
+      <table>
+        <tr><th>Situation</th><th>Was tun?</th></tr>
+        <tr><td>Tippfehler am gleichen Buchungstag</td><td><span class="badge badge-red">Löschen</span>-Button erscheint noch am selben Tag — Eintrag löschen und neu erfassen</td></tr>
+        <tr><td>Fehler wurde erst später bemerkt</td><td><span class="badge badge-red">Storno</span>-Button klicken — erstellt automatisch eine Gegenbuchung mit negativem Betrag</td></tr>
+      </table>
+      <div class="hint hint-warn">Ab dem Folgetag ist Löschen nicht mehr möglich. Verwenden Sie dann die Storno-Funktion — beide Buchungen (Original + Storno) bleiben sichtbar und revisionssicher erhalten.</div>
+
+      <p>Oben rechts das Jahr wechseln um vergangene Jahre einzusehen.</p>
     </section>
 
     <!-- 6. KASSENBUCH -->
@@ -430,9 +444,11 @@
         <ul>
           <li>Finalisierte Rechnungen können nicht bearbeitet oder gelöscht werden</li>
           <li>Stornierungen erzeugen automatisch eine Gegenrechnung — beide bleiben erhalten</li>
+          <li>Ausgaben können nach dem Buchungstag nicht gelöscht werden — nur Storno-Gegenbuchung möglich</li>
           <li>Kassenbuch-Einträge können nicht gelöscht werden — nur Gegenbuchungen</li>
           <li>Alle Buchungen haben Zeitstempel und sind revisionssicher gespeichert</li>
           <li>Rechnungsnummern sind fortlaufend und lückenlos</li>
+          <li>Interne Belegnummern (ER-JJJJ-XXX) für Belege ohne Lieferantennummer werden automatisch vergeben</li>
         </ul>
       </div>
       <div class="hint hint-warn"><strong>Hinweis:</strong> Die App ersetzt keine steuerliche Beratung. Bei Unsicherheiten wenden Sie sich an einen Steuerberater.</div>
