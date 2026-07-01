@@ -215,7 +215,12 @@
       const zipcity = document.getElementById('zipcity').value.trim();
       const country = document.getElementById('country').value.trim();
       const email = document.getElementById('email').value.trim();
-      const orderNumber = 'EUR-' + Date.now().toString().slice(-8);
+      const now = new Date();
+      const datePart = now.getFullYear().toString()
+        + String(now.getMonth() + 1).padStart(2, '0')
+        + String(now.getDate()).padStart(2, '0');
+      const randomPart = String(Math.floor(Math.random() * 900) + 100);
+      const orderNumber = 'EUR-' + datePart + '-' + randomPart;
 
       document.getElementById('orderNumber').textContent = orderNumber;
       document.getElementById('orderRef').textContent = orderNumber;
