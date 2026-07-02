@@ -38,11 +38,45 @@
       transition: background-color 0.3s;
     }
     .back-button:hover { background-color: #f0a050; }
+    .disclaimer {
+      max-width: 860px;
+      margin: 2rem auto 0;
+      text-align: left;
+    }
+    .disclaimer h2 { color: #e07b2a; font-size: 1.15rem; margin-top: 2rem; margin-bottom: 0.5rem; border-bottom: 1px solid #333355; padding-bottom: 0.3rem; }
+    .disclaimer p { color: #c8c8e0; font-size: 0.95rem; margin-bottom: 0.8rem; line-height: 1.7; }
+    .disclaimer ul { color: #c8c8e0; font-size: 0.95rem; margin: 0.5rem 0 0.8rem 1.5rem; line-height: 1.7; }
+    .disclaimer ul li { margin-bottom: 0.3rem; }
+    .disclaimer-box { background: #2a1a0a; border: 1px solid #e07b2a; border-radius: 8px; padding: 1.2rem 1.5rem; margin-top: 1rem; }
+    .disclaimer-box p, .disclaimer-box ul { color: #f0c070; }
   </style>
 </head>
 <body>
   <h1>✈ EÜR-App Pro</h1>
   <img src="impressum.jpg" alt="Impressum" />
+
+  <div class="disclaimer">
+    <h2>Haftungsausschluss</h2>
+
+    <h2>Haftung für Inhalte</h2>
+    <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr.</p>
+
+    <h2>Haftung für die Software</h2>
+    <p>Die EÜR-App Pro ist ein Hilfsmittel zur Verwaltung von Einnahmen und Ausgaben. Sie ersetzt keine steuerliche oder rechtliche Beratung. Der Anbieter übernimmt keine Haftung für:</p>
+    <div class="disclaimer-box">
+      <ul>
+        <li>Steuerliche Fehler oder Nachzahlungen, die sich aus der Nutzung der Software ergeben</li>
+        <li>Datenverlust durch fehlerhafte Bedienung, Systemfehler oder höhere Gewalt</li>
+        <li>Schäden, die durch die Verwendung von aus der Software exportierten Daten entstehen</li>
+        <li>Entscheidungen, die auf Basis der von der Software berechneten Werte getroffen werden</li>
+      </ul>
+    </div>
+
+    <h2>GoBD-Konformität</h2>
+    <p>Die App ist nach bestem Wissen und Gewissen GoBD-konform gestaltet. Eine rechtssichere GoBD-Zertifizierung durch eine offizielle Stelle besteht nicht. Für die ordnungsgemäße Buchführung ist stets der Nutzer verantwortlich.</p>
+    <p>Für steuerliche Fragen und die Prüfung Ihrer Buchhaltung empfehlen wir die Beratung durch einen zugelassenen Steuerberater.</p>
+  </div>
+
   <br>
   <a href="index.html" class="back-button">← Zurück</a>
 </body>
