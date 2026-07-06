@@ -305,6 +305,8 @@
       padding: 0.4rem 0;
       font-size: 0.95rem;
       color: var(--text-light);
+      padding-left: 1.5em;
+      text-indent: -1.5em;
     }
     .price-card ul li::before {
       content: "✓ ";
@@ -334,13 +336,51 @@
     footer {
       background: var(--bg-dark);
       color: var(--text-muted);
-      text-align: center;
-      padding: 2rem;
+      padding: 2.5rem 2rem 1.8rem;
       font-size: 0.88rem;
       border-top: 4px solid var(--orange);
     }
     footer a { color: var(--orange); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+    .footer-copyright {
+      text-align: center;
+      margin-bottom: 1.6rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .footer-cols {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      max-width: 720px;
+      margin: 0 auto 1.4rem;
+    }
+    .footer-col h4 {
+      color: var(--orange);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0 0 0.7rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.45rem;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 1.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid #333;
+      font-size: 0.8rem;
+      color: #666;
+    }
+    @media (max-width: 500px) {
+      .footer-cols { flex-direction: column; gap: 1.8rem; align-items: center; text-align: center; }
+    }
 
     @media (max-width: 600px) {
       .hero { padding: 3rem 1rem 2.5rem; }
@@ -495,22 +535,39 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Andreas Schlagintweit &nbsp;·&nbsp;
-    <a href="mailto:info@eur-app-pro.de">info@eur-app-pro.de</a>
-    &nbsp;·&nbsp;
-    <a href="anleitung.html">Benutzerhandbuch</a>
-    &nbsp;·&nbsp;
-    <a href="blog-eur-kleinunternehmer.html">Ratgeber</a>
-    &nbsp;·&nbsp;
-    <a href="impressum.html">Impressum</a>
-    &nbsp;·&nbsp;
-    <a href="datenschutz.html">Datenschutz</a>
-    &nbsp;·&nbsp;
-    <a href="widerruf.html">Widerruf</a>
-    &nbsp;·&nbsp;
-    <a href="agb.html">AGB</a>
-  </p>
-  <p style="margin-top:0.5rem;">Entwickelt von Andreas Schlagintweit</p>
+  <div class="footer-cols">
+    <!-- Linke Spalte: Rechtliches -->
+    <div class="footer-col">
+      <h4>Rechtliches &amp; Kontakt</h4>
+      <ul>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutzerklärung</a></li>
+        <li><a href="widerruf.html">Widerrufsbelehrung</a></li>
+        <li><a href="agb.html">AGB</a></li>
+        <li><a href="mailto:info@eur-app-pro.de">info@eur-app-pro.de</a></li>
+      </ul>
+    </div>
+
+    <!-- Rechte Spalte: Hilfe & Blog -->
+    <div class="footer-col">
+      <h4>Hilfe &amp; Wissen</h4>
+      <ul>
+        <li><a href="anleitung.html">Benutzerhandbuch</a></li>
+      </ul>
+      <h4 style="margin-top:1rem;">Unser Blog</h4>
+      <ul>
+        <li><a href="blog-eur-kleinunternehmer.html">EÜR für Kleinunternehmer</a></li>
+        <li><a href="blog-kleinunternehmerregelung.html">Kleinunternehmerregelung §19 UStG</a></li>
+        <li><a href="blog-rechnung-schreiben.html">Rechnung schreiben – was muss rein?</a></li>
+        <li><a href="blog-gobd-buchfuehrung.html">GoBD-konforme Buchführung</a></li>
+        <li><a href="blog-fahrtkosten-absetzen.html">Fahrtkosten absetzen 2026</a></li>
+        <li><a href="blog-reisekosten-abrechnen.html">Reisekosten abrechnen 2026</a></li>
+        <li><a href="blog-bewirtungskosten-absetzen.html">Bewirtungskosten absetzen 2026</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">© 2026 Andreas Schlagintweit · Made in Germany 🇩🇪</div>
 </footer>
 
 <script>
