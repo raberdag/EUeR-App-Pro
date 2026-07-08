@@ -128,6 +128,17 @@
     footer a { color: var(--orange); text-decoration: none; }
 
     @media (max-width: 800px) { aside { display: none; } main { padding: 1.5rem 0 3rem; } }
+
+    .screenshot {
+      width: 100%; max-width: 860px; border-radius: 10px;
+      border: 1px solid #333355; margin: 1.2rem 0 1.8rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      display: block;
+    }
+    .screenshot-caption {
+      text-align: center; color: var(--muted); font-size: 0.82rem;
+      margin-top: -1.2rem; margin-bottom: 1.8rem;
+    }
   </style>
 </head>
 <body>
@@ -158,6 +169,7 @@
       <li><a href="#kunden">4. Kunden</a></li>
       <li><a href="#ausgaben">5. Ausgaben</a></li>
       <li class="sub"><a href="#ausgaben-belegnummer">Belegnummern</a></li>
+      <li class="sub"><a href="#ausgaben-homeoffice">Homeoffice-Tagespauschale</a></li>
       <li class="sub"><a href="#ausgaben-storno">Storno &amp; Korrektur</a></li>
       <li><a href="#kassenbuch">6. Kassenbuch</a></li>
       <li><a href="#eur">7. EÜR-Auswertung</a></li>
@@ -179,7 +191,7 @@
     <div class="hero">
       <h1>📖 Benutzerhandbuch</h1>
       <p>Vollständige Anleitung zur EÜR-App Pro — GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler.</p>
-      <span class="version-badge">Version 1.2.2 · Stand Juli 2026</span>
+      <span class="version-badge">Version 1.3.1 · Stand Juli 2026</span>
     </div>
 
     <!-- 1. ERSTE SCHRITTE -->
@@ -239,6 +251,8 @@
       <h3>Offene Posten</h3>
       <p>Alle finalisierten Rechnungen die noch nicht bezahlt wurden. Rechnungen älter als 30 Tage erscheinen in <span class="badge badge-red">Rot – Überfällig</span>.</p>
       <div class="hint hint-info">Das Dashboard zeigt immer das aktuelle Kalenderjahr. Historische Daten finden Sie in der Rechnungsliste mit Jahres-Filter.</div>
+      <img src="img/screenshot-dashboard.png" alt="EÜR-App Pro Dashboard" class="screenshot">
+      <p class="screenshot-caption">Dashboard mit Kennzahl-Karten, letzten Rechnungen und offenen Posten</p>
     </section>
 
     <!-- 3. RECHNUNGEN -->
@@ -308,6 +322,10 @@
         </ul>
       </div>
       <div class="hint hint-danger">Stornierungen können nicht rückgängig gemacht werden. Erstellen Sie danach eine neue, korrekte Rechnung.</div>
+      <img src="img/screenshot-rechnungen.png" alt="Rechnungsliste" class="screenshot">
+      <p class="screenshot-caption">Rechnungsliste mit Status, Zahlungsmarkierung und Aktionen</p>
+      <img src="img/screenshot-rechnung-pdf.png" alt="Rechnung PDF-Vorschau" class="screenshot">
+      <p class="screenshot-caption">Fertige Rechnung in der Druckvorschau</p>
     </section>
 
     <!-- 4. KUNDEN -->
@@ -348,6 +366,28 @@
         <p style="margin-top: 0.8rem;">Die Nummerierung startet pro Kalenderjahr neu: <kbd>ER-2026-001</kbd>, <kbd>ER-2027-001</kbd> usw.</p>
       </div>
 
+      <h3 id="ausgaben-reisekosten">Reisekosten erfassen</h3>
+      <p>Wählen Sie die Kategorie <strong>„Reisekosten"</strong> und klicken Sie anschließend auf <strong>„Reisekostenabrechnung"</strong>. Im Dialog können Sie Fahrtkosten (km-Pauschale oder tatsächliche Kosten), Übernachtungskosten, Verpflegungspauschalen und Nebenkosten getrennt eingeben. Die App berechnet den abzugsfähigen Betrag automatisch.</p>
+      <img src="img/screenshot-reisekosten.png" alt="Reisekostenabrechnung" class="screenshot">
+      <p class="screenshot-caption">Reisekosten-Dialog mit km-Pauschale, Übernachtung und Verpflegungskosten (Dark Mode)</p>
+
+      <h3 id="ausgaben-homeoffice">Homeoffice-Tagespauschale (§ 4 Abs. 5 Nr. 6c EStG)</h3>
+      <p>Die Homeoffice-Tagespauschale beträgt <strong>6 € pro Tag</strong> und kann für bis zu <strong>210 Tage pro Jahr</strong> (max. 1.260 €) als Betriebsausgabe angesetzt werden. Ein separates Arbeitszimmer ist nicht erforderlich.</p>
+      <p>Das grüne Banner oben in der Ausgaben-Ansicht zeigt jederzeit den aktuellen Stand: Anzahl der eingetragenen Tage, absetzbarer Betrag und verbleibende Tage bis zum Maximum.</p>
+      <table>
+        <tr><th>Funktion</th><th>Beschreibung</th></tr>
+        <tr><td><span class="badge badge-green">+ Heute</span></td><td>Trägt den heutigen Tag sofort als Home-Office-Tag ein</td></tr>
+        <tr><td><span class="badge badge-blue">📅 Kalender</span></td><td>Öffnet einen Jahreskalender zum Eintragen oder Entfernen einzelner Tage — eingetragene Tage werden grün markiert</td></tr>
+        <tr><td><span class="badge badge-blue">📒 Jahresbuchung</span></td><td>Bucht die Gesamtpauschale als Betriebsausgabe auf den 31.12. des gewählten Jahres</td></tr>
+        <tr><td><span class="badge badge-blue">🖨️ Nachweis</span></td><td>Erstellt einen druckfertigen PDF-Jahreskalender als Beleg für das Finanzamt</td></tr>
+      </table>
+      <div class="hint hint-info">
+        <strong>Jahresbuchung:</strong> Die Buchung kann auch nachträglich im Januar des Folgejahres durchgeführt werden — das Buchungsdatum wird automatisch auf den <strong>31.12. des gewählten Jahres</strong> gesetzt, sodass die Ausgabe steuerlich korrekt im richtigen Jahr erscheint. Stellen Sie dazu im Jahres-Dropdown oben das gewünschte Jahr ein.
+      </div>
+      <div class="hint hint-warn">
+        Wenn das laufende Jahr noch nicht abgeschlossen ist, empfiehlt es sich, erst alle Home-Office-Tage einzutragen und dann erst die Jahresbuchung durchzuführen — um eine Doppelbuchung zu vermeiden. Die App weist bei einer vorzeitigen Buchung ausdrücklich auf diesen Hinweis hin.
+      </div>
+
       <h3 id="ausgaben-storno">Ausgaben korrigieren (GoBD-konform)</h3>
       <p>Gespeicherte Ausgaben können <strong>nicht bearbeitet</strong> werden — das entspricht der GoBD-Vorgabe zur Unveränderlichkeit von Buchungen.</p>
       <table>
@@ -358,6 +398,8 @@
       <div class="hint hint-warn">Ab dem Folgetag ist Löschen nicht mehr möglich. Verwenden Sie dann die Storno-Funktion — beide Buchungen (Original + Storno) bleiben sichtbar und revisionssicher erhalten. Der Storno-Eintrag erscheint im gleichen Jahr wie die ursprüngliche Buchung.</div>
 
       <p>Oben rechts das Jahr wechseln um vergangene Jahre einzusehen.</p>
+      <img src="img/screenshot-ausgaben-dark.png" alt="Ausgaben mit Bewirtungsdetail" class="screenshot">
+      <p class="screenshot-caption">Ausgabenliste mit geöffnetem Bewirtungs-Detail-Dialog (Dark Mode)</p>
     </section>
 
     <!-- 6. KASSENBUCH -->
@@ -401,6 +443,8 @@
       </table>
       <p>Oben rechts das Auswertungsjahr wählen. Die EÜR kann als <strong>PDF oder Excel</strong> exportiert werden.</p>
       <div class="hint hint-ok"><strong>Tipp:</strong> Am Jahresende einen Export erstellen und mindestens 10 Jahre aufbewahren (GoBD-Pflicht).</div>
+      <img src="img/screenshot-eür.png" alt="EÜR monatliche Übersicht" class="screenshot">
+      <p class="screenshot-caption">EÜR-Auswertung mit monatlichen Einnahmen, Ausgaben und Überschuss</p>
     </section>
 
     <!-- 8. UST -->
@@ -448,6 +492,8 @@
         <tr><td><strong>Regelbesteuerung</strong></td><td>Über 25.000 € oder freiwillig</td><td>Netto + MwSt (19%) + Brutto wird ausgewiesen</td></tr>
       </table>
       <div class="hint hint-warn">Der Steuermodus gilt ab sofort für alle <strong>neu erstellten</strong> Rechnungen und Ausgaben. Bereits finalisierte Buchungen behalten ihren ursprünglichen Modus — die historische Korrektheit bleibt gewahrt.</div>
+      <img src="img/screenshot-mwst.png" alt="Einstellungen Steuer/MwSt" class="screenshot">
+      <p class="screenshot-caption">Tab „Steuer / MwSt" mit Auswahl zwischen Kleinunternehmer und Regelbesteuerung (Dark Mode)</p>
 
       <h3 id="kategorien">Tab: Ausgaben-Kategorien</h3>
       <p>Verwalten Sie die Kategorien für Ihre Betriebsausgaben. Vordefiniert sind z.B. „Betriebsausgaben", „Fortbildung", „Büromaterial" und „Sonstige Ausgaben".</p>
