@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homeoffice-Tagespauschale: 6 € pro Tag steuerlich absetzen – EÜR-App Pro Blog</title>
+  <meta name="description" content="Die Homeoffice-Tagespauschale nach § 4 Abs. 5 Satz 1 Nr. 6c EStG ermöglicht Kleinunternehmern und Freiberuflern, bis zu 1.260 € pro Jahr als Betriebsausgabe abzusetzen – ohne Einzelnachweis." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark:    #1a1a2e;
+      --bg-card:    #252540;
+      --orange:     #e07b2a;
+      --orange-light: #f0a050;
+      --text-light: #e8e8f0;
+      --text-muted: #9999bb;
+      --white:      #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #f5f5f7;
+      color: #1a1a2e;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--bg-dark);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo span { color: var(--orange); }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--white); }
+    nav .spacer { flex: 1; }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px !important;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #252550 60%, #1a1a2e 100%);
+      padding: 60px 32px 48px;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 760px;
+      margin: 0 auto 16px;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero-meta {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* ARTIKEL */
+    .article-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .article-wrap h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin: 40px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e07b2a;
+    }
+
+    .article-wrap h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 28px 0 10px;
+    }
+
+    .article-wrap p {
+      font-size: 16px;
+      color: #334155;
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+
+    .article-wrap ul {
+      margin: 0 0 16px 24px;
+    }
+
+    .article-wrap ul li {
+      font-size: 16px;
+      color: #334155;
+      line-height: 1.75;
+      margin-bottom: 6px;
+    }
+
+    /* Info-Box */
+    .infobox {
+      background: #f0f9ff;
+      border-left: 4px solid #0ea5e9;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+
+    .infobox p {
+      margin: 0;
+      font-size: 15px;
+      color: #0c4a6e;
+    }
+
+    .infobox strong { color: #0369a1; }
+
+    /* Paragraph-Box */
+    .law-box {
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+
+    .law-box p {
+      margin: 0;
+      font-size: 14px;
+      color: #78350f;
+      font-style: italic;
+    }
+
+    .law-box strong { color: #92400e; font-style: normal; }
+
+    /* Rechenbeispiel */
+    .calc-box {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .calc-box h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #15803d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      color: #166534;
+      padding: 4px 0;
+      border-bottom: 1px solid #bbf7d0;
+    }
+
+    .calc-row:last-child {
+      border-bottom: none;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 4px;
+      padding-top: 8px;
+    }
+
+    /* Hinweis-Box */
+    .warn-box {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+
+    .warn-box p {
+      margin: 0;
+      font-size: 15px;
+      color: #9a3412;
+    }
+
+    /* CTA-Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, #1a1a2e, #252550);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+      margin: 48px 0 0;
+    }
+
+    .cta-banner h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .cta-banner p {
+      color: #9999bb;
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .cta-banner a {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .cta-banner a:hover { background: var(--orange-light); }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-dark);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 32px;
+      font-size: 13px;
+    }
+
+    footer a { color: var(--orange); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">EÜR-App <span>Pro</span></a>
+  <a href="index.html">Start</a>
+  <a href="anleitung.html">Handbuch</a>
+  <div class="spacer"></div>
+  <a class="nav-cta" href="index.html#kaufen">Jetzt kaufen – 49 €</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Steuertipp</div>
+  <h1>Homeoffice-Tagespauschale:<br><span>bis zu 1.260 € pro Jahr</span> als Betriebsausgabe</h1>
+  <p class="hero-meta">8. Juli 2026 &nbsp;·&nbsp; Lesedauer ca. 4 Minuten</p>
+</div>
+
+<!-- ARTIKEL -->
+<div class="article-wrap">
+
+  <p>
+    Wer von zu Hause aus arbeitet, kann seit 2023 eine gesetzlich geregelte Tagespauschale
+    als Betriebsausgabe geltend machen — und das ohne aufwändige Einzelnachweise über
+    Mietkosten, Strom oder Internet. Die Regelung ist dauerhaft im Einkommensteuergesetz
+    verankert und gilt damit nicht als befristete Pandemie-Maßnahme.
+  </p>
+
+  <h2>Was ist die Homeoffice-Tagespauschale?</h2>
+
+  <p>
+    Die Homeoffice-Tagespauschale beträgt <strong>6 Euro pro Arbeitstag</strong>, an dem die
+    betriebliche oder berufliche Tätigkeit überwiegend in der häuslichen Umgebung ausgeübt
+    wird. Pro Kalenderjahr können maximal <strong>210 Tage</strong> angesetzt werden, was
+    einem maximalen Abzug von <strong>1.260 Euro</strong> pro Jahr entspricht.
+  </p>
+
+  <div class="law-box">
+    <p>
+      <strong>Rechtsgrundlage:</strong> § 4 Abs. 5 Satz 1 Nr. 6c EStG<br>
+      Eingeführt durch das Jahressteuergesetz 2022, dauerhaft gültig ab dem Veranlagungszeitraum 2023.
+    </p>
+  </div>
+
+  <h2>Wer kann die Pauschale nutzen?</h2>
+
+  <p>
+    Die Tagespauschale steht grundsätzlich allen Steuerpflichtigen offen, die ihre
+    betriebliche oder berufliche Tätigkeit an dem jeweiligen Tag überwiegend von zu Hause
+    aus ausgeübt haben. Das gilt insbesondere für:
+  </p>
+
+  <ul>
+    <li>Selbstständige und Freiberufler</li>
+    <li>Kleinunternehmer nach § 19 UStG</li>
+    <li>Gewerbetreibende mit Einnahmen-Überschuss-Rechnung (EÜR)</li>
+    <li>Arbeitnehmer im Rahmen ihrer Werbungskosten</li>
+  </ul>
+
+  <div class="infobox">
+    <p>
+      <strong>Wichtig:</strong> Ein steuerlich anerkanntes, separates Arbeitszimmer ist
+      für die Tagespauschale <em>nicht</em> erforderlich. Die Pauschale kann angesetzt
+      werden, sofern an dem betreffenden Tag tatsächlich überwiegend von zu Hause aus
+      gearbeitet wurde. Wo in der häuslichen Wohnung diese Tätigkeit stattfindet, ist
+      in § 4 Abs. 5 Satz 1 Nr. 6c EStG nicht definiert.
+    </p>
+  </div>
+
+  <h2>Was muss nachgewiesen werden?</h2>
+
+  <p>
+    Der große Vorteil der Tagespauschale liegt in ihrer Einfachheit: Es müssen
+    <strong>keine Einzelbelege</strong> über tatsächliche Kosten vorgelegt werden.
+    Es sind weder Mietquoten noch Strom- oder Internetrechnungen nachzuweisen.
+  </p>
+
+  <p>
+    Was jedoch dokumentiert werden sollte: <strong>An welchen Tagen wurde von zu Hause
+    gearbeitet?</strong> Eine einfache Liste mit den jeweiligen Daten reicht im Regelfall
+    aus, um im Fall einer Nachfrage des Finanzamts Auskunft geben zu können.
+  </p>
+
+  <h2>Rechenbeispiel</h2>
+
+  <div class="calc-box">
+    <h4>Beispielrechnung 2026</h4>
+    <div class="calc-row">
+      <span>Homeoffice-Tage im Jahr</span>
+      <span>120 Tage</span>
+    </div>
+    <div class="calc-row">
+      <span>Tagespauschale</span>
+      <span>× 6,00 €</span>
+    </div>
+    <div class="calc-row">
+      <span>Absetzbare Betriebsausgabe</span>
+      <span>720,00 €</span>
+    </div>
+  </div>
+
+  <p>
+    Wer das Maximum von 210 Tagen erreicht, erzielt einen steuerlichen Abzug von
+    <strong>1.260 Euro</strong>. Bei einem angenommenen Steuersatz von 30 % entspricht das
+    einer tatsächlichen Steuerersparnis von rund <strong>378 Euro</strong> — Jahr für Jahr,
+    ohne einen einzigen Beleg sammeln zu müssen.
+  </p>
+
+  <h2>Was muss ich in der EÜR eintragen?</h2>
+
+  <p>
+    Die Homeoffice-Tagespauschale wird als <strong>Betriebsausgabe</strong> in der
+    Einnahmen-Überschuss-Rechnung erfasst. Das Buchungsdatum ist der 31. Dezember des
+    jeweiligen Jahres, da es sich um eine Jahrespauschale handelt. Als Beschreibung
+    empfiehlt sich ein eindeutiger Begriff wie <em>„Homeoffice-Tagespauschale"</em> sowie
+    ein Verweis auf die Rechtsgrundlage.
+  </p>
+
+  <p>
+    Als Beleg dient die eigene Tagesliste — also eine Aufstellung aller Tage, an denen
+    von zu Hause aus gearbeitet wurde. Diese sollte aufbewahrt werden, auch wenn sie
+    nicht automatisch beim Finanzamt eingereicht wird.
+  </p>
+
+  <h2>Kombination mit dem häuslichen Arbeitszimmer</h2>
+
+  <p>
+    Wer über ein steuerlich anerkanntes häusliches Arbeitszimmer verfügt, kann alternativ
+    die tatsächlichen Raumkosten nach § 4 Abs. 5 Satz 1 Nr. 6b EStG geltend machen.
+    Beide Regelungen — Tagespauschale und Arbeitszimmer — können für dasselbe Jahr
+    nicht gleichzeitig für dieselben Tage angesetzt werden. Welche Variante günstiger ist,
+    hängt von den individuellen Verhältnissen ab.
+  </p>
+
+  <div class="warn-box">
+    <p>
+      <strong>Hinweis:</strong> Dieser Artikel dient der allgemeinen Information und stellt
+      keine steuerliche Beratung dar. Für Fragen zur individuellen steuerlichen Situation
+      empfehlen wir die Konsultation eines Steuerberaters.
+    </p>
+  </div>
+
+  <h2>Praktische Umsetzung mit EÜR-App Pro</h2>
+
+  <p>
+    EÜR-App Pro unterstützt die Erfassung der Homeoffice-Tagespauschale direkt in der
+    Ausgaben-Ansicht. Per Knopfdruck lässt sich der heutige Tag als Homeoffice-Tag
+    eintragen, über einen Jahreskalender können vergangene Tage nachgetragen werden.
+    Am Jahresende kann dann mit Hilfe der App mit zwei Klicks die korrekte Buchung mit
+    dem richtigen Gesamtbetrag auf den 31. Dezember erstellt werden.
+  </p>
+
+  <p>
+    Für eine eventuelle Nachfrage des Finanzamts lässt sich aus der App heraus ein
+    <strong>PDF-Nachweis</strong> erstellen: ein übersichtlicher Jahreskalender mit allen
+    12 Monaten, in dem die Homeoffice-Tage farblich markiert sind — druckfertig und
+    professionell aufbereitet.
+  </p>
+
+  <div class="cta-banner">
+    <h3>Homeoffice-Pauschale einfach erfassen</h3>
+    <p>EÜR-App Pro — einmalig kaufen, dauerhaft nutzen, keine Cloud.</p>
+    <a href="index.html#kaufen">Jetzt für 49 € kaufen</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    &copy; 2026 EÜR-App Pro &nbsp;·&nbsp;
+    <a href="impressum.html">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html">Datenschutz</a> &nbsp;·&nbsp;
+    <a href="index.html">Startseite</a>
+  </p>
+</footer>
+
+</body>
+</html>
