@@ -183,6 +183,53 @@
       color: #555;
     }
 
+    /* STEUER-RECHNER */
+    .rechner-section {
+      background: #fff8f2;
+      border-top: 3px solid var(--orange);
+      border-bottom: 3px solid var(--orange);
+    }
+    .rechner-section h2 { color: var(--bg-dark); }
+    .rechner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .rechner-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      border: 2px solid var(--orange);
+      border-top: 5px solid var(--orange);
+    }
+    .rechner-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .rechner-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--bg-dark);
+    }
+    .rechner-card p {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.5;
+    }
+    .rechner-card .rechner-badge {
+      display: inline-block;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.18rem 0.65rem;
+      border-radius: 20px;
+      margin-bottom: 0.7rem;
+    }
+
     /* ZIELGRUPPE */
     .zielgruppe {
       background: var(--bg-dark);
@@ -406,7 +453,7 @@
     <span class="badge">Made in Germany</span>
     <span class="badge">Windows</span>
   </div>
-  <a class="btn-primary" href="bestellung.html">Jetzt kaufen – 49,- €</a>
+  <a class="btn-primary" href="bestellung.html">Jetzt kaufen – 89,- €</a>
   <p class="price-hint" style="margin-top: 3.5rem;">Einmalige Zahlung. Kein Abo.</p>
 </div>
 
@@ -449,6 +496,38 @@
       <div class="icon">💾</div>
       <h3>Automatisches Backup</h3>
       <p>Die App sichert Ihre Daten regelmäßig automatisch – damit nichts verloren geht.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEUER-RECHNER -->
+<section class="rechner-section">
+  <h2>Integrierte Steuer-Rechner</h2>
+  <p class="section-sub">Direkt in der App — kein Taschenrechner, kein Excel, keine Recherche nötig.</p>
+  <div class="rechner-grid">
+    <div class="rechner-card">
+      <div class="rechner-badge">0,30 € / km</div>
+      <div class="icon">🚗</div>
+      <h3>Fahrtkosten-Rechner</h3>
+      <p>km-Pauschale für Fahrten zur Betriebsstätte, Kundenbesuche oder Dienstreisen. Berechnung nach § 4 Abs. 5 Nr. 6 EStG — automatische Buchung auf Knopfdruck.</p>
+    </div>
+    <div class="rechner-card">
+      <div class="rechner-badge">Verpflegungspauschale</div>
+      <div class="icon">🧳</div>
+      <h3>Reisekosten-Rechner</h3>
+      <p>Tagesgelder nach Abwesenheitsdauer (8h / 24h), Übernachtungskosten und sonstige Reisekosten — korrekt nach aktuellen gesetzlichen Pauschalen erfasst.</p>
+    </div>
+    <div class="rechner-card">
+      <div class="rechner-badge">70 % absetzbar</div>
+      <div class="icon">🍽️</div>
+      <h3>Bewirtungskosten-Rechner</h3>
+      <p>Nur 70 % der Bewirtungskosten sind steuerlich abziehbar. Der Rechner ermittelt den abzugsfähigen Betrag und übernimmt ihn direkt als Buchung.</p>
+    </div>
+    <div class="rechner-card">
+      <div class="rechner-badge">6 € / Tag · max. 210 Tage</div>
+      <div class="icon">🏠</div>
+      <h3>Homeoffice-Tagespauschale</h3>
+      <p>Tage im Homeoffice per Klick im Kalender markieren — die App berechnet den Gesamtbetrag (max. 1.260 €/Jahr) und erstellt den Nachweis als PDF für das Finanzamt.</p>
     </div>
   </div>
 </section>
@@ -506,7 +585,7 @@
   <h2>Preis & Kauf</h2>
   <p class="section-sub">Einmalige Zahlung.</p>
   <div class="price-card">
-    <div class="price">49,- €</div>
+    <div class="price">89,- €</div>
     <div class="price-label">Einmalige Zahlung · Kleinunternehmer gem. § 19 UStG, keine USt.</div>
     <ul>
       <li>Lizenzschlüssel & Download per E-Mail nach Zahlungseingang</li>
@@ -515,7 +594,7 @@
       <li>Keine monatlichen Kosten</li>
       <li>Keine Cloud-Pflicht</li>
     </ul>
-    <a class="btn-primary" href="bestellung.html">Jetzt bestellen</a>
+    <a class="btn-primary" href="bestellung.html">Jetzt zahlungspflichtig bestellen</a>
     <p class="no-sub">Zahlung per Vorkasse · Download nach Zahlungseingang</p>
   </div>
 
