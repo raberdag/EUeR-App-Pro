@@ -377,7 +377,7 @@
       </table>
       <p>In der Ausgabenliste erscheint bei Einträgen mit Anhang ein <strong>📎</strong>-Symbol. Ein Klick öffnet den Beleg mit dem Standard-Programm (PDF-Viewer oder Bildbetrachter).</p>
       <div class="hint hint-ok"><strong>Tipp für mehrseitige Rechnungen:</strong> Alle Seiten in den ADF-Einzug des Scanners legen. Nach dem Scan der ersten Seite „Weitere Seite?" bestätigen. Der Scanner zieht die nächste Seite automatisch ein. Am Ende erstellt die App ein zusammenhängendes PDF.</div>
-      <div class="hint hint-info"><strong>Speicherort:</strong> Belege landen standardmäßig im Ordner <kbd>%APPDATA%\EÜR-App\Belege\</kbd>. Der Ordner kann unter Einstellungen → Speicher frei gewählt werden.</div>
+      <div class="hint hint-info"><strong>Speicherort:</strong> Belege landen standardmäßig im Unterordner <kbd>Belege\</kbd> innerhalb des jeweiligen Betriebsordners — z.&nbsp;B. <kbd>C:\Users\IhrName\AppData\Roaming\EÜR-App\MeinBetrieb\Belege\</kbd>. Der Ordner wird beim ersten gespeicherten Beleg automatisch angelegt. Er kann unter Einstellungen → Speicher frei gewählt werden.</div>
 
       <h3 id="ausgaben-belegnummer">Belegnummern — Lieferant oder intern?</h3>
       <p>Tragen Sie im Feld <strong>Belegnummer</strong> die Nummer des Lieferanten ein (z.B. die Rechnungsnummer auf der Eingangsrechnung). Falls der Beleg keine eigene Nummer hat (z.B. Quittung, Kassenbon), schlägt die App automatisch eine interne Nummer vor.</p>
@@ -588,11 +588,11 @@
         <tr><td><strong>Ordner wählen…</strong></td><td>Öffnet einen Ordner-Browser — Auswahl wird sofort gespeichert</td></tr>
         <tr><td><strong>📂 Öffnen</strong></td><td>Öffnet den aktuellen Beleg-Ordner im Windows Explorer</td></tr>
       </table>
-      <p>Standard-Speicherort: <kbd>%APPDATA%\EÜR-App\Belege\</kbd></p>
+      <p>Standard-Speicherort: Unterordner <kbd>Belege\</kbd> im jeweiligen Betriebsordner, z.&nbsp;B. <kbd>C:\Users\IhrName\AppData\Roaming\EÜR-App\MeinBetrieb\Belege\</kbd>. Der Ordner wird automatisch beim ersten gespeicherten Beleg angelegt.</p>
       <div class="hint hint-ok"><strong>Empfehlung:</strong> Den Beleg-Ordner auf ein regelmäßig gesichertes Laufwerk legen (NAS, externe Festplatte oder OneDrive-Ordner), damit die Belege auch bei einem PC-Ausfall erhalten bleiben.</div>
 
       <h3 id="backup">Tab: Datenspeicherung</h3>
-      <p>Alle Daten werden lokal in einer SQLite-Datei (<kbd>euer.db</kbd>) gespeichert unter <kbd>%APPDATA%\EÜR-App\euer.db</kbd>. Kein Cloud-Zugriff, keine Datenweitergabe.</p>
+      <p>Alle Daten werden lokal in einer SQLite-Datei (<kbd>euer.db</kbd>) gespeichert — im jeweiligen Betriebsordner, z.&nbsp;B. <kbd>C:\Users\IhrName\AppData\Roaming\EÜR-App\MeinBetrieb\euer.db</kbd>. Den genauen Pfad sehen Sie unter Einstellungen → Speicher. Kein Cloud-Zugriff, keine Datenweitergabe.</p>
 
       <div class="card">
         <h4>Automatisches Backup</h4>
@@ -663,7 +663,7 @@
       <h3>Was passiert beim Umzug auf einen neuen PC?</h3>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Backup erstellen</strong><p>Einstellungen → Datenspeicherung → Backup jetzt erstellen</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Beleg-Ordner kopieren</strong><p>Den Ordner <kbd>%APPDATA%\EÜR-App\Belege\</kbd> (oder Ihren gewählten Beleg-Ordner) vollständig auf den neuen PC übertragen.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Beleg-Ordner kopieren</strong><p>Den Beleg-Ordner vollständig auf den neuen PC übertragen. Den aktuellen Pfad sehen Sie unter Einstellungen → Speicher. Standard ist z.&nbsp;B. <kbd>C:\Users\IhrName\AppData\Roaming\EÜR-App\MeinBetrieb\Belege\</kbd>.</p></div></div>
         <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Dateien übertragen</strong><p>.exe und Backup-Datei auf den neuen PC kopieren.</p></div></div>
         <div class="step"><div class="step-num">4</div><div class="step-body"><strong>App starten und aktivieren</strong><p>Mit Ihrem Lizenzschlüssel aktivieren.</p></div></div>
         <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Backup wiederherstellen</strong><p>Einstellungen → Datenspeicherung → Backup wiederherstellen → Datei wählen → App neu starten.</p></div></div>
