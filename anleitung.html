@@ -167,22 +167,27 @@
       <li class="sub"><a href="#rechnung-mahnung">Mahnungen</a></li>
       <li class="sub"><a href="#rechnung-storno">Storno</a></li>
       <li><a href="#kunden">4. Kunden</a></li>
-      <li><a href="#ausgaben">5. Ausgaben</a></li>
+      <li><a href="#ausgaben">5. Ausgaben &amp; Belegfotos</a></li>
       <li class="sub"><a href="#ausgaben-belegnummer">Belegnummern</a></li>
+      <li class="sub"><a href="#ausgaben-belegfotos">Belegfotos &amp; Scanner</a></li>
       <li class="sub"><a href="#ausgaben-homeoffice">Homeoffice-Tagespauschale</a></li>
       <li class="sub"><a href="#ausgaben-storno">Storno &amp; Korrektur</a></li>
-      <li><a href="#kassenbuch">6. Kassenbuch</a></li>
-      <li><a href="#eur">7. EÜR-Auswertung</a></li>
-      <li><a href="#ust">8. Umsatzsteuer</a></li>
-      <li><a href="#statistik">9. Statistiken</a></li>
-      <li><a href="#einstellungen">10. Einstellungen</a></li>
+      <li><a href="#anlagegueter">6. Anlagegüter &amp; AfA</a></li>
+      <li class="sub"><a href="#afa-erfassen">Anlagegut erfassen</a></li>
+      <li class="sub"><a href="#afa-buchen">AfA buchen</a></li>
+      <li><a href="#kassenbuch">7. Kassenbuch</a></li>
+      <li><a href="#eur">8. EÜR-Auswertung</a></li>
+      <li><a href="#ust">9. Umsatzsteuer</a></li>
+      <li><a href="#statistik">10. Statistiken</a></li>
+      <li><a href="#einstellungen">11. Einstellungen</a></li>
       <li class="sub"><a href="#briefkopf">Briefkopf &amp; Bankdaten</a></li>
       <li class="sub"><a href="#steuer">Steuer / MwSt</a></li>
       <li class="sub"><a href="#kategorien">Ausgaben-Kategorien</a></li>
       <li class="sub"><a href="#dropdowns">Leistungen &amp; Einheiten</a></li>
+      <li class="sub"><a href="#belege-ordner">Beleg-Ordner</a></li>
       <li class="sub"><a href="#backup">Backup &amp; Datensicherung</a></li>
-      <li><a href="#gobd">11. GoBD-Hinweise</a></li>
-      <li><a href="#tipps">12. Tipps &amp; FAQ</a></li>
+      <li><a href="#gobd">12. GoBD-Hinweise</a></li>
+      <li><a href="#tipps">13. Tipps &amp; FAQ</a></li>
     </ul>
   </aside>
 
@@ -191,7 +196,7 @@
     <div class="hero">
       <h1>📖 Benutzerhandbuch</h1>
       <p>Vollständige Anleitung zur EÜR-App Pro — GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler.</p>
-      <span class="version-badge">Version 1.3.1 · Stand Juli 2026</span>
+      <span class="version-badge">Version 1.4.0 · Stand Juli 2026</span>
     </div>
 
     <!-- 1. ERSTE SCHRITTE -->
@@ -250,6 +255,16 @@
       <p>Zeigt die letzten 15 Rechnungen mit Nummer, Datum, Kunde und Status.</p>
       <h3>Offene Posten</h3>
       <p>Alle finalisierten Rechnungen die noch nicht bezahlt wurden. Rechnungen älter als 30 Tage erscheinen in <span class="badge badge-red">Rot – Überfällig</span>.</p>
+
+      <h3>⚠️ Umsatz-Warnung (Kleinunternehmer)</h3>
+      <p>Das Dashboard überwacht automatisch die steuerlich relevanten Umsatzgrenzen und zeigt ein farbiges Warnbanner sobald eine Grenze näher rückt:</p>
+      <table>
+        <tr><th>Grenze</th><th>Bedeutung</th><th>Warnung ab</th></tr>
+        <tr><td><strong>25.000 € Vorjahr</strong></td><td>Überschreitung im Vorjahr → KU-Status für dieses Jahr gefährdet</td><td>80 % = orange · 100 % = rot</td></tr>
+        <tr><td><strong>25.000 € laufendes Jahr</strong></td><td>Wirkt sich auf das <em>nächste</em> Jahr aus</td><td>80 % = orange · 100 % = rot</td></tr>
+        <tr><td><strong>100.000 € laufendes Jahr</strong></td><td>Sofortiger Verlust des KU-Status <em>in diesem Jahr</em></td><td>80.000 € = orange · 100.000 € = rot</td></tr>
+      </table>
+      <div class="hint hint-info">Das Banner erscheint nur im Kleinunternehmer-Modus (§ 19 UStG) und zeigt den verbleibenden Betrag bis zur jeweiligen Grenze.</div>
       <div class="hint hint-info">Das Dashboard zeigt immer das aktuelle Kalenderjahr. Historische Daten finden Sie in der Rechnungsliste mit Jahres-Filter.</div>
       <img src="img/screenshot-dashboard.png" alt="EÜR-App Pro Dashboard" class="screenshot">
       <p class="screenshot-caption">Dashboard mit Kennzahl-Karten, letzten Rechnungen und offenen Posten</p>
@@ -338,7 +353,7 @@
 
     <!-- 5. AUSGABEN -->
     <section id="ausgaben">
-      <h2>💸 5. Ausgaben</h2>
+      <h2>💸 5. Ausgaben &amp; Belegfotos</h2>
       <p>Hier erfassen Sie alle <strong>Betriebsausgaben</strong> (Büromaterial, Software, Fortbildungen, Fahrtkosten etc.).</p>
       <h3>Neue Ausgabe erfassen</h3>
       <table>
@@ -351,6 +366,18 @@
         <tr><td>Betrag</td><td>Der bezahlte Betrag in Euro</td><td><span class="badge badge-red">Ja</span></td></tr>
       </table>
       <div class="hint hint-info"><strong>Kleinunternehmer:</strong> Den Bruttobetrag eingeben (was Sie tatsächlich bezahlt haben). Vorsteuer ist nicht absetzbar.</div>
+
+      <h3 id="ausgaben-belegfotos">Belegfotos &amp; Scanner</h3>
+      <p>Zu jeder Ausgabe kann ein digitaler Beleg angehängt werden — als Foto, gescannte Datei oder PDF. Der Beleg wird dauerhaft gespeichert und lässt sich jederzeit per Klick öffnen.</p>
+      <table>
+        <tr><th>Schaltfläche</th><th>Funktion</th></tr>
+        <tr><td><strong>📎 Datei anhängen</strong></td><td>Datei-Browser öffnet sich. Unterstützte Formate: PDF, JPG, PNG, BMP, TIFF. BMP und TIFF werden automatisch in JPEG umgewandelt.</td></tr>
+        <tr><td><strong>🖨 Scannen</strong></td><td>Windows-Scanner-Dialog (WIA) öffnet sich. Dokument einlegen, scannen. Bei mehrseitigen Dokumenten nach jeder Seite „Weitere Seite?" bestätigen — die App erstellt automatisch ein mehrseitiges PDF.</td></tr>
+        <tr><td><strong>✕</strong></td><td>Anhang entfernen</td></tr>
+      </table>
+      <p>In der Ausgabenliste erscheint bei Einträgen mit Anhang ein <strong>📎</strong>-Symbol. Ein Klick öffnet den Beleg mit dem Standard-Programm (PDF-Viewer oder Bildbetrachter).</p>
+      <div class="hint hint-ok"><strong>Tipp für mehrseitige Rechnungen:</strong> Alle Seiten in den ADF-Einzug des Scanners legen. Nach dem Scan der ersten Seite „Weitere Seite?" bestätigen. Der Scanner zieht die nächste Seite automatisch ein. Am Ende erstellt die App ein zusammenhängendes PDF.</div>
+      <div class="hint hint-info"><strong>Speicherort:</strong> Belege landen standardmäßig im Ordner <kbd>%APPDATA%\EÜR-App\Belege\</kbd>. Der Ordner kann unter Einstellungen → Speicher frei gewählt werden.</div>
 
       <h3 id="ausgaben-belegnummer">Belegnummern — Lieferant oder intern?</h3>
       <p>Tragen Sie im Feld <strong>Belegnummer</strong> die Nummer des Lieferanten ein (z.B. die Rechnungsnummer auf der Eingangsrechnung). Falls der Beleg keine eigene Nummer hat (z.B. Quittung, Kassenbon), schlägt die App automatisch eine interne Nummer vor.</p>
@@ -402,9 +429,51 @@
       <p class="screenshot-caption">Ausgabenliste mit geöffnetem Bewirtungs-Detail-Dialog (Dark Mode)</p>
     </section>
 
-    <!-- 6. KASSENBUCH -->
+    <!-- 6. ANLAGEGÜTER -->
+    <section id="anlagegueter">
+      <h2>🏛 6. Anlagegüter &amp; AfA</h2>
+      <p>Wirtschaftsgüter mit einer Nutzungsdauer von mehr als einem Jahr (Laptop, Drucker, Fahrzeug, Flugzeug …) dürfen steuerlich nicht sofort als Ausgabe abgesetzt werden. Sie werden über mehrere Jahre <strong>abgeschrieben</strong> (AfA = Absetzung für Abnutzung).</p>
+
+      <h3 id="afa-erfassen">Neues Anlagegut erfassen</h3>
+      <p>Im Menü auf <strong>„🏛 Anlagegüter"</strong> klicken, dann <strong>„+ Neues Anlagegut"</strong>.</p>
+      <table>
+        <tr><th>Feld</th><th>Beschreibung</th></tr>
+        <tr><td>Bezeichnung</td><td>Name des Wirtschaftsguts, z.B. „MacBook Pro 15″"</td></tr>
+        <tr><td>Kaufdatum</td><td>Datum der Anschaffung</td></tr>
+        <tr><td>Kaufpreis</td><td>Netto-Anschaffungskosten</td></tr>
+        <tr><td>Methode</td><td><strong>Linear</strong>: gleichmäßige Abschreibung über die Nutzungsdauer · <strong>GWG</strong>: Sofortabschreibung (nur bis 800 € netto)</td></tr>
+        <tr><td>Nutzungsdauer</td><td>Anzahl Jahre laut AfA-Tabelle des Finanzamts. Vorlagen für häufige Güter wählbar.</td></tr>
+        <tr><td>Kategorie / Notizen</td><td>Optional</td></tr>
+      </table>
+
+      <div class="card">
+        <h4>Vorlagen für typische Anlagegüter</h4>
+        <p>Über das Dropdown „Vorlage verwenden" werden Nutzungsdauer und Bezeichnung automatisch befüllt: Laptop/PC (3 J.), PKW (6 J.), Büromöbel (13 J.), Flugzeug (12 J.), GWG Sofortabschreibung und weitere.</p>
+      </div>
+
+      <h3 id="afa-buchen">AfA berechnen &amp; als Ausgabe buchen</h3>
+      <p>Die App berechnet die jährliche Abschreibung automatisch — mit anteiliger Berechnung im Kaufjahr (pro rata temporis).</p>
+      <div class="hint hint-info">
+        <strong>Beispiel:</strong> MacBook Pro, 2.300 € netto, 3 Jahre Nutzungsdauer, Kauf am 14. Juli.<br>
+        Im Kaufjahr verbleiben 6 Monate → AfA = 2.300 ÷ 3 × 6/12 = <strong>383,33 €</strong><br>
+        In den Folgejahren je <strong>766,67 €</strong> bis zum Restbuchwert 0.
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Jahr wählen</strong><p>Dropdown oben rechts in der Anlagegüter-Ansicht</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>„📒 AfA als Ausgabe buchen" klicken</strong><p>Bestätigungsdialog zeigt alle noch nicht gebuchten Positionen</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Bestätigen</strong><p>Buchung erscheint als Ausgabe mit Datum 31.12. des jeweiligen Jahres in der EÜR</p></div></div>
+      </div>
+      <div class="hint hint-ok">Bereits gebuchte Anlagegüter werden nicht doppelt gebucht. Neue Güter können jederzeit nachgebucht werden, ohne bereits gebuchte zu berühren.</div>
+
+      <div class="card">
+        <h4>GWG – Geringwertige Wirtschaftsgüter</h4>
+        <p>Güter bis <strong>800 € netto</strong> können als GWG im Kaufjahr vollständig sofortabgeschrieben werden. Methode „GWG" wählen — die AfA beträgt dann 100 % im Kaufjahr.</p>
+      </div>
+    </section>
+
+    <!-- 7. KASSENBUCH -->
     <section id="kassenbuch">
-      <h2>💰 6. Kassenbuch</h2>
+      <h2>💰 7. Kassenbuch</h2>
       <p>Für alle <strong>Bartransaktionen</strong>. GoBD-konform: Einträge können nicht gelöscht, nur durch Gegenbuchungen korrigiert werden.</p>
       <div class="hint hint-info"><strong>Wann brauche ich das Kassenbuch?</strong> Immer wenn Kunden bar bezahlen oder wenn Sie privates Geld einlegen bzw. entnehmen.</div>
 
@@ -416,7 +485,7 @@
         <tr><td style="color:#fcd34d">Privatentnahme</td><td>Sie nehmen Geld aus der Kasse für private Zwecke</td></tr>
         <tr><td style="color:#fcd34d">Barausgabe</td><td>Betriebliche Ausgabe die bar bezahlt wurde</td></tr>
         <tr><td style="color:#c4b5fd">→ Firmenkonto</td><td>Bargeld auf Geschäftskonto einzahlen</td></tr>
-        <tr><td><span class="badge badge-orange">Korrektur</span></td><td>GoBD-konforme Gegenbuchung bei Erfassungsfehlern</td></tr>
+        <tr><td><span class="badge badge-orange">Korrektur</span></td><td>Schnelle rechnungsbezogene Privatentnahme oder GoBD-konforme Korrektur bei Erfassungsfehlern</td></tr>
       </table>
 
       <h3>Privateinlage buchen</h3>
@@ -430,26 +499,30 @@
       <p>„⟳ Korrektur" in der jeweiligen Zeile klicken. Die App erstellt eine vorausgefüllte Gegenbuchung die den Originalbetrag ausgleicht. Beide Buchungen bleiben sichtbar.</p>
     </section>
 
-    <!-- 7. EÜR -->
+    <!-- 8. EÜR -->
     <section id="eur">
-      <h2>📊 7. EÜR-Auswertung</h2>
+      <h2>📊 8. EÜR-Auswertung</h2>
       <p>Die Einnahmen-Überschuss-Rechnung wird automatisch aus Ihren Rechnungen und Ausgaben berechnet.</p>
       <table>
         <tr><th>Bereich</th><th>Bedeutung</th></tr>
         <tr><td>Einnahmen</td><td>Summe aller finalisierten Rechnungen pro Monat</td></tr>
-        <tr><td>Ausgaben</td><td>Summe aller erfassten Betriebsausgaben pro Monat</td></tr>
+        <tr><td>Ausgaben</td><td>Summe aller erfassten Betriebsausgaben pro Monat (inkl. AfA)</td></tr>
         <tr><td>Überschuss</td><td>Einnahmen minus Ausgaben — Ihr steuerpflichtiger Gewinn</td></tr>
         <tr><td>Jahressummen</td><td>Gesamtbeträge für das Steuerjahr</td></tr>
       </table>
       <p>Oben rechts das Auswertungsjahr wählen. Die EÜR kann als <strong>PDF oder Excel</strong> exportiert werden.</p>
+
+      <h3>ELSTER-Ausfüllhilfe</h3>
+      <p>Das EÜR-PDF enthält am Ende eine Tabelle mit den offiziellen <strong>ELSTER-Zeilennummern</strong> der Anlage EÜR 2025. Für jede Zeile ist der entsprechende Betrag direkt zugeordnet — so lassen sich die Werte einfach in ELSTER übertragen.</p>
+      <div class="hint hint-info">Beispiele: Zeile 12 = Betriebseinnahmen · Zeile 57 = Reisekosten · Zeile 77 = AfA · Zeile 97 = Gewinn/Verlust</div>
       <div class="hint hint-ok"><strong>Tipp:</strong> Am Jahresende einen Export erstellen und mindestens 10 Jahre aufbewahren (GoBD-Pflicht).</div>
       <img src="img/screenshot-eür.png" alt="EÜR monatliche Übersicht" class="screenshot">
       <p class="screenshot-caption">EÜR-Auswertung mit monatlichen Einnahmen, Ausgaben und Überschuss</p>
     </section>
 
-    <!-- 8. UST -->
+    <!-- 9. UST -->
     <section id="ust">
-      <h2>🧾 8. Umsatzsteuer</h2>
+      <h2>🧾 9. Umsatzsteuer</h2>
       <div class="hint hint-info"><strong>Kleinunternehmer:</strong> Solange Sie unter 25.000 € Jahresumsatz bleiben, müssen Sie keine Umsatzsteuervoranmeldung abgeben. Dieser Bereich ist für Sie nicht relevant.</div>
       <p>Bei Regelbesteuerung zeigt die App die vierteljährliche Übersicht der Umsatzsteuer und Vorsteuer für die Umsatzsteuervoranmeldung (UStVA). Klicken Sie auf einen Quartalsbalken um die einzelnen Rechnungen aufzuklappen.</p>
       <div class="card">
@@ -459,15 +532,15 @@
       <div class="hint hint-warn"><strong>Hinweis zum Moduswechsel:</strong> Die Kleinunternehmerregelung (§ 19 UStG) gilt immer für das gesamte Kalenderjahr. Ein Wechsel zur Regelbesteuerung sollte daher grundsätzlich zum Jahreswechsel erfolgen. Sprechen Sie im Zweifel mit Ihrem Steuerberater.</div>
     </section>
 
-    <!-- 9. STATISTIK -->
+    <!-- 10. STATISTIK -->
     <section id="statistik">
-      <h2>📈 9. Statistiken</h2>
+      <h2>📈 10. Statistiken</h2>
       <p>Grafische Auswertungen Ihrer Geschäftsentwicklung: Monatsvergleich (Einnahmen/Ausgaben pro Monat), Kunden-Ranking nach Umsatz und Jahresvergleich mit Vorjahren.</p>
     </section>
 
-    <!-- 10. EINSTELLUNGEN -->
+    <!-- 11. EINSTELLUNGEN -->
     <section id="einstellungen">
-      <h2>⚙️ 10. Einstellungen</h2>
+      <h2>⚙️ 11. Einstellungen</h2>
 
       <h3 id="briefkopf">Tab: Briefkopf &amp; Bankdaten</h3>
       <p>Ihre Daten die auf jeder Rechnung erscheinen. Änderungen gelten sofort für neue Rechnungen.</p>
@@ -508,6 +581,16 @@
       <p><strong>Einheiten:</strong> Vordefinierte Einheiten für die Mengenspalte (z.B. „Std.", „Min. BT", „Pauschal").</p>
       <p><strong>Kassenbuch-Texte:</strong> Vordefinierte Beschreibungen für Einlagen und Entnahmen im Kassenbuch.</p>
 
+      <h3 id="belege-ordner">Tab: Speicher – Beleg-Ordner</h3>
+      <p>Der Speicherort für eingescannte Belege und Belegfotos kann frei gewählt werden.</p>
+      <table>
+        <tr><th>Schaltfläche</th><th>Funktion</th></tr>
+        <tr><td><strong>Ordner wählen…</strong></td><td>Öffnet einen Ordner-Browser — Auswahl wird sofort gespeichert</td></tr>
+        <tr><td><strong>📂 Öffnen</strong></td><td>Öffnet den aktuellen Beleg-Ordner im Windows Explorer</td></tr>
+      </table>
+      <p>Standard-Speicherort: <kbd>%APPDATA%\EÜR-App\Belege\</kbd></p>
+      <div class="hint hint-ok"><strong>Empfehlung:</strong> Den Beleg-Ordner auf ein regelmäßig gesichertes Laufwerk legen (NAS, externe Festplatte oder OneDrive-Ordner), damit die Belege auch bei einem PC-Ausfall erhalten bleiben.</div>
+
       <h3 id="backup">Tab: Datenspeicherung</h3>
       <p>Alle Daten werden lokal in einer SQLite-Datei (<kbd>euer.db</kbd>) gespeichert unter <kbd>%APPDATA%\EÜR-App\euer.db</kbd>. Kein Cloud-Zugriff, keine Datenweitergabe.</p>
 
@@ -529,9 +612,9 @@
       <p><strong>Dark Mode</strong> aktivieren oder deaktivieren. Die Änderung wird sofort übernommen.</p>
     </section>
 
-    <!-- 11. GOBD -->
+    <!-- 12. GOBD -->
     <section id="gobd">
-      <h2>📋 11. GoBD-Hinweise</h2>
+      <h2>📋 12. GoBD-Hinweise</h2>
       <div class="card">
         <h4>Was bedeutet GoBD-konform in dieser App?</h4>
         <ul>
@@ -558,9 +641,9 @@
       <div class="hint hint-ok">Sichern Sie die <kbd>euer.db</kbd>-Datei regelmäßig und bewahren Sie Backups mindestens 10 Jahre auf.</div>
     </section>
 
-    <!-- 12. FAQ -->
+    <!-- 13. FAQ -->
     <section id="tipps">
-      <h2>💡 12. Tipps &amp; häufige Fragen</h2>
+      <h2>💡 13. Tipps &amp; häufige Fragen</h2>
 
       <h3>Wie erstelle ich schnell eine Rechnung für denselben Kunden?</h3>
       <p>Tippen Sie im Rechnungseditor die ersten Buchstaben des Kundennamens — die App schlägt bekannte Kunden vor und übernimmt die Adresse automatisch.</p>
@@ -580,9 +663,11 @@
       <h3>Was passiert beim Umzug auf einen neuen PC?</h3>
       <div class="steps">
         <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Backup erstellen</strong><p>Einstellungen → Datenspeicherung → Backup jetzt erstellen</p></div></div>
-        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Dateien übertragen</strong><p>.exe und Backup-Datei auf den neuen PC kopieren.</p></div></div>
-        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>App starten und aktivieren</strong><p>Mit Ihrem Lizenzschlüssel aktivieren.</p></div></div>
-        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>Backup wiederherstellen</strong><p>Einstellungen → Datenspeicherung → Backup wiederherstellen → Datei wählen → App neu starten.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Beleg-Ordner kopieren</strong><p>Den Ordner <kbd>%APPDATA%\EÜR-App\Belege\</kbd> (oder Ihren gewählten Beleg-Ordner) vollständig auf den neuen PC übertragen.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Dateien übertragen</strong><p>.exe und Backup-Datei auf den neuen PC kopieren.</p></div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-body"><strong>App starten und aktivieren</strong><p>Mit Ihrem Lizenzschlüssel aktivieren.</p></div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-body"><strong>Backup wiederherstellen</strong><p>Einstellungen → Datenspeicherung → Backup wiederherstellen → Datei wählen → App neu starten.</p></div></div>
+        <div class="step"><div class="step-num">6</div><div class="step-body"><strong>Beleg-Ordner einstellen</strong><p>Einstellungen → Speicher → Ordner wählen → auf den kopierten Beleg-Ordner zeigen.</p></div></div>
       </div>
 
       <h3>Lizenzschlüssel verloren — was tun?</h3>
