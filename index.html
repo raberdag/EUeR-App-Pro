@@ -379,6 +379,58 @@
       color: #f0c070;
     }
 
+    /* BLOG-SEKTION */
+    .blog-section {
+      background: #f0f0f5;
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem;
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      text-align: left;
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.4rem 1.4rem 1rem;
+      text-decoration: none;
+      color: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .blog-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .blog-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .blog-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 0;
+    }
+    .blog-card p {
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .blog-read {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--orange);
+    }
+
     /* IMPRESSUM / FOOTER */
     footer {
       background: var(--bg-dark);
@@ -609,6 +661,71 @@
     ⚠️ <strong>Windows-Hinweis:</strong> Beim ersten Start erscheint eine SmartScreen-Warnung von Windows.
     Klicken Sie auf <em>"Weitere Informationen"</em> → <em>"Trotzdem ausführen"</em>.
     Dies ist normal bei der Installation neuer Software und stellt hier kein Sicherheitsrisiko dar. Diese Software enthält keinen schädlichen Code!
+  </div>
+</section>
+
+<!-- BLOG-SEKTION -->
+<section class="blog-section" id="blog">
+  <h2>Wissen & Tipps für Selbständige</h2>
+  <p class="section-sub">Steuern, Buchhaltung und Recht – verständlich erklärt.</p>
+  <div class="blog-grid">
+
+    <a class="blog-card" href="blog-eur-kleinunternehmer.html">
+      <div class="blog-icon">📊</div>
+      <h3>EÜR für Kleinunternehmer 2026</h3>
+      <p>Wer eine EÜR machen muss, welche Fristen gelten und wie man sie GoBD-konform ohne teure Cloud-Software erstellt.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-kleinunternehmerregelung.html">
+      <div class="blog-icon">§</div>
+      <h3>Kleinunternehmerregelung § 19 UStG</h3>
+      <p>Wer die Regelung nutzen darf, aktuelle Umsatzgrenzen, Vor- und Nachteile und was beim Überschreiten der Grenze passiert.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-rechnung-schreiben.html">
+      <div class="blog-icon">🧾</div>
+      <h3>Rechnung richtig schreiben</h3>
+      <p>Pflichtangaben nach § 14 UStG, der korrekte Kleinunternehmer-Hinweis und die häufigsten Fehler bei Rechnungen.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-gobd-buchfuehrung.html">
+      <div class="blog-icon">🔒</div>
+      <h3>GoBD-konforme Buchführung</h3>
+      <p>Was die GoBD konkret verlangt, häufige Fehler und wie Rechnungen, Ausgaben und Kassenbuch richtig dokumentiert werden.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-fahrtkosten-absetzen.html">
+      <div class="blog-icon">🚗</div>
+      <h3>Fahrtkosten absetzen 2026</h3>
+      <p>Kilometerpauschale, Dienstreise, Entfernungspauschale – verständlich erklärt für Selbstständige und Freiberufler.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-reisekosten-abrechnen.html">
+      <div class="blog-icon">🧳</div>
+      <h3>Reisekostenabrechnung 2026</h3>
+      <p>Tagegeld, Verpflegungsmehraufwand, Übernachtungskosten – richtig abrechnen und als Betriebsausgabe absetzen.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-bewirtungskosten-absetzen.html">
+      <div class="blog-icon">🍽️</div>
+      <h3>Bewirtungskosten absetzen 2026</h3>
+      <p>Die 70%-Regel, Nachweispflichten und häufige Fehler – verständlich erklärt für Selbstständige und Unternehmer.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
+    <a class="blog-card" href="blog-homeoffice-tagespauschale.html">
+      <div class="blog-icon">🏠</div>
+      <h3>Homeoffice-Tagespauschale: 6 € pro Tag</h3>
+      <p>Bis zu 1.260 € pro Jahr als Betriebsausgabe absetzen – ohne Einzelnachweis, direkt per Kalender in der App erfassen.</p>
+      <span class="blog-read">Weiterlesen →</span>
+    </a>
+
   </div>
 </section>
 
