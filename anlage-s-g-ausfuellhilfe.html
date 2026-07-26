@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anlage EÜR, S &amp; G – Ausfüllhilfe für die Steuererklärung</title>
+  <meta name="description" content="Kostenlose Ausfüllhilfe für Anlage EÜR, Anlage S und Anlage G der Einkommensteuererklärung. Alle amtlichen Kennzahlen auf einen Blick.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1a2e;
+      color: #e8e8f0;
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+      line-height: 1.6;
+    }
+    h1 { color: #e07b2a; font-size: 1.8rem; text-align: center; margin-bottom: 0.3rem; }
+    .subtitle { color: #9999bb; text-align: center; font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .warn-box {
+      background: #2a1a00;
+      border: 1px solid #e07b2a;
+      border-left: 4px solid #e07b2a;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 1.8rem;
+      font-size: 0.9rem;
+      color: #f0c080;
+    }
+    .warn-box strong { color: #e07b2a; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 4px; margin-bottom: 0; flex-wrap: wrap; }
+    .tab-btn {
+      background: #16213e;
+      border: 1px solid #333355;
+      border-bottom: none;
+      color: #9999bb;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 6px 6px 0 0;
+      font-size: 0.92rem;
+      transition: background 0.2s;
+    }
+    .tab-btn.active { background: #0f3460; color: #e07b2a; font-weight: 600; }
+    .tab-btn:hover:not(.active) { background: #1a2a50; color: #e8e8f0; }
+
+    .tab-panel {
+      display: none;
+      background: #16213e;
+      border: 1px solid #333355;
+      border-radius: 0 6px 6px 6px;
+      padding: 28px;
+    }
+    .tab-panel.active { display: block; }
+
+    h2 { color: #e07b2a; font-size: 1.15rem; margin: 1.6rem 0 0.8rem; border-bottom: 1px solid #333355; padding-bottom: 0.4rem; }
+    h2:first-child { margin-top: 0; }
+    h3 { color: #f0a050; font-size: 1rem; margin: 1.2rem 0 0.5rem; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    @media (max-width: 600px) { .form-grid, .form-grid.cols-3 { grid-template-columns: 1fr; } }
+
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field label { font-size: 0.82rem; color: #9999bb; }
+    .field .kz { font-size: 0.75rem; color: #6666aa; font-style: italic; }
+    .field .hint { font-size: 0.75rem; color: #5a5a8a; margin-top: 2px; }
+    .field input, .field select, .field textarea {
+      background: #0f1a30;
+      border: 1px solid #333355;
+      border-radius: 4px;
+      color: #e8e8f0;
+      padding: 8px 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: #e07b2a; }
+    .field input[type="number"] { text-align: right; }
+    .field textarea { resize: vertical; min-height: 60px; }
+
+    .section-divider { border: none; border-top: 1px solid #2a2a4a; margin: 1.4rem 0; }
+
+    /* EÜR-Tabelle */
+    .eur-section { margin-bottom: 1.4rem; }
+    .eur-section-title {
+      background: #0f3460;
+      color: #e07b2a;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 6px 12px;
+      border-radius: 4px 4px 0 0;
+      border: 1px solid #1e4080;
+    }
+    .eur-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 120px;
+      align-items: center;
+      border: 1px solid #2a2a4a;
+      border-top: none;
+      padding: 6px 12px;
+      gap: 10px;
+      background: #111828;
+    }
+    .eur-row:nth-child(even) { background: #0e1520; }
+    .eur-row .kz-badge {
+      background: #1a2a4a;
+      color: #e07b2a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .eur-row .desc { font-size: 0.85rem; }
+    .eur-row .desc .hint { font-size: 0.75rem; color: #5a5a8a; display: block; }
+    .eur-row input[type="number"] {
+      background: #0f1a30;
+      border: 1px solid #333355;
+      border-radius: 4px;
+      color: #e8e8f0;
+      padding: 5px 8px;
+      font-size: 0.9rem;
+      text-align: right;
+      width: 100%;
+    }
+    .eur-row input:focus { outline: none; border-color: #e07b2a; }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: #0f3460;
+      border-radius: 4px;
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+    .result-row .label { color: #9999bb; }
+    .result-row .value { color: #4ade80; font-weight: 700; font-size: 1.1rem; }
+    .result-row.loss .value { color: #f87171; }
+
+    .btn-row { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-save { background: #e07b2a; color: #fff; }
+    .btn-print { background: #0f3460; color: #e07b2a; border: 1px solid #e07b2a; }
+    .btn-reset { background: #2a1a1a; color: #f87171; border: 1px solid #f87171; font-size: 0.85rem; }
+
+    .info-box {
+      background: #0f2a1a;
+      border: 1px solid #22c55e;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #86efac;
+      margin-top: 16px;
+    }
+    .info-box strong { color: #4ade80; }
+
+    .note-box {
+      background: #1a1a00;
+      border: 1px solid #555500;
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: #cccc80;
+      margin-top: 12px;
+    }
+
+    .kz-pair-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .saved-note { font-size: 0.8rem; color: #4ade80; margin-top: 6px; display: none; }
+
+    /* ── DRUCKANSICHT ── */
+    .print-area { display: none; }
+
+    @media print {
+      body { background: #fff; color: #000; padding: 0; max-width: none; }
+      .tabs, .tab-panel, .warn-box, .btn-row, .subtitle, h1 { display: none !important; }
+      .print-area { display: block !important; }
+      .print-page {
+        page-break-after: always;
+        padding: 16mm 16mm;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+        color: #000;
+      }
+      .print-page:last-child { page-break-after: avoid; }
+      .print-header { text-align: center; margin-bottom: 10pt; }
+      .print-header h2 { font-size: 12pt; border-bottom: 2pt solid #000; padding-bottom: 4pt; margin-bottom: 5pt; }
+      .print-header p { font-size: 8.5pt; color: #333; }
+      .print-stamm { display: grid; grid-template-columns: 1fr 1fr; gap: 5pt; margin-bottom: 8pt; }
+      .print-stamm-field { border-bottom: 1pt solid #aaa; padding: 2pt 0; }
+      .print-stamm-field .pl { font-size: 7pt; color: #666; }
+      .print-stamm-field .pv { font-size: 9pt; font-weight: 600; }
+      .print-section { margin: 7pt 0; }
+      .print-section h3 { font-size: 9.5pt; background: #eee; padding: 3pt 6pt; margin-bottom: 3pt; font-weight: 700; }
+      .print-section-header { font-size: 9.5pt; background: #1e3a6a; color: #fff; padding: 3pt 6pt; margin-bottom: 0; font-weight: 700; }
+      .print-row {
+        display: grid;
+        grid-template-columns: 55pt 1fr 80pt;
+        border-bottom: 0.5pt solid #ddd;
+        padding: 2.5pt 4pt;
+        font-size: 8.5pt;
+      }
+      .print-row.header { background: #f5f5f5; font-weight: 700; font-size: 8pt; }
+      .print-row .pr { text-align: right; font-weight: 600; }
+      .print-row .kz { color: #555; font-size: 7.5pt; font-weight: 700; }
+      .print-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6pt;
+        margin: 5pt 0;
+      }
+      .print-kz-row {
+        display: grid;
+        grid-template-columns: 1fr 70pt;
+        border-bottom: 0.5pt solid #ddd;
+        padding: 2.5pt 4pt;
+        font-size: 8.5pt;
+      }
+      .print-kz-row .pr { text-align: right; font-weight: 600; }
+      .print-total {
+        display: flex;
+        justify-content: space-between;
+        border-top: 2pt solid #000;
+        padding: 4pt 4pt;
+        font-weight: 700;
+        font-size: 9.5pt;
+        margin-top: 4pt;
+      }
+      .print-warn {
+        border: 1pt solid #cc8800;
+        padding: 5pt 7pt;
+        font-size: 7.5pt;
+        color: #663300;
+        margin-top: 8pt;
+      }
+      .print-legend {
+        font-size: 7pt;
+        color: #666;
+        margin-top: 4pt;
+        border-top: 0.5pt solid #ccc;
+        padding-top: 3pt;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>📋 Anlage EÜR, S &amp; G – Ausfüllhilfe</h1>
+<p class="subtitle">Steuererklärung für Selbstständige (Anlage S) und Gewerbetreibende (Anlage G) — mit vollständiger Anlage EÜR</p>
+
+<div class="warn-box">
+  <strong>⚠️ Hinweis zu Kennzahlen:</strong> Das Finanzamt (ELSTER) kann Zeilennummern und Kennzahlen jährlich ändern. Überprüfen Sie vor jeder Abgabe anhand des aktuellen offiziellen Formulars, ob die hier angegebenen Kennzahlen noch aktuell sind. Diese Hilfe basiert auf den Formularen des Veranlagungsjahres 2024. Eine direkte Übermittlung an ELSTER ist in dieser Hilfe nicht vorgesehen.
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('stammdaten', this)">👤 Stammdaten</button>
+  <button class="tab-btn" onclick="showTab('anlage-eur', this)">📊 Anlage EÜR</button>
+  <button class="tab-btn" onclick="showTab('anlage-s', this)">📄 Anlage S</button>
+  <button class="tab-btn" onclick="showTab('anlage-g', this)">🏪 Anlage G</button>
+</div>
+
+<!-- ══════════════════ TAB STAMMDATEN ══════════════════ -->
+<div id="tab-stammdaten" class="tab-panel active">
+  <h2>Persönliche Daten</h2>
+  <p style="color:#9999bb;font-size:0.88rem;margin-bottom:1rem;">Diese Daten werden in alle Anlagen übernommen und im Browser gespeichert.</p>
+  <div class="form-grid">
+    <div class="field"><label>Nachname</label><input type="text" id="s_nachname" placeholder="Mustermann"></div>
+    <div class="field"><label>Vorname</label><input type="text" id="s_vorname" placeholder="Max"></div>
+    <div class="field"><label>Geburtsdatum</label><input type="text" id="s_geburtsdatum" placeholder="01.01.1980"></div>
+    <div class="field"><label>Steuer-Identifikationsnummer</label><input type="text" id="s_steuer_id" placeholder="12 345 678 901"></div>
+  </div>
+  <hr class="section-divider">
+  <h2>Adresse</h2>
+  <div class="form-grid full">
+    <div class="field"><label>Straße und Hausnummer</label><input type="text" id="s_strasse" placeholder="Musterstraße 1"></div>
+  </div>
+  <div class="form-grid cols-3">
+    <div class="field"><label>PLZ</label><input type="text" id="s_plz" placeholder="12345"></div>
+    <div class="field"><label>Ort</label><input type="text" id="s_ort" placeholder="Musterstadt"></div>
+    <div class="field"><label>Bundesland</label><input type="text" id="s_bundesland" placeholder="Bayern"></div>
+  </div>
+  <hr class="section-divider">
+  <h2>Finanzamt &amp; Steuernummer</h2>
+  <div class="form-grid">
+    <div class="field"><label>Zuständiges Finanzamt</label><input type="text" id="s_finanzamt" placeholder="Finanzamt Musterstadt"></div>
+    <div class="field"><label>Steuernummer</label><input type="text" id="s_steuernummer" placeholder="xx/xxx/xxxxx"></div>
+    <div class="field"><label>Veranlagungsjahr</label>
+      <select id="s_jahr">
+        <option value="2025">2025</option>
+        <option value="2024" selected>2024</option>
+        <option value="2023">2023</option>
+      </select>
+    </div>
+    <div class="field"><label>Betriebs-Steuernummer <span class="kz">(falls abweichend)</span></label><input type="text" id="s_betriebs_stnr" placeholder="nur wenn abweichend"></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-save" onclick="saveAll()">💾 Stammdaten speichern</button>
+  </div>
+  <div class="saved-note" id="saved-note-stamm">✓ Gespeichert</div>
+</div>
+
+<!-- ══════════════════ TAB ANLAGE EÜR ══════════════════ -->
+<div id="tab-anlage-eur" class="tab-panel">
+  <h2>Anlage EÜR – Einnahmenüberschussrechnung</h2>
+  <p style="color:#9999bb;font-size:0.88rem;margin-bottom:1rem;">
+    Pflichtanlage für alle Selbstständigen und Gewerbetreibenden mit EÜR. Geben Sie Ihre Beträge je Kennzahl ein — der Gewinn wird automatisch berechnet.
+  </p>
+
+  <!-- EINNAHMEN -->
+  <div class="eur-section">
+    <div class="eur-section-title">📥 Betriebseinnahmen</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 111</span>
+      <div class="desc">Betriebseinnahmen als Kleinunternehmer (§ 19 UStG) <span class="hint">Alle Netto-Einnahmen aus Rechnungen — Brutto bei Kleinunternehmer</span></div>
+      <input type="number" id="kz_111" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 140</span>
+      <div class="desc">Umsatzsteuer-Erstattungen vom Finanzamt <span class="hint">Nur bei Regelbesteuerung relevant</span></div>
+      <input type="number" id="kz_140" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 160</span>
+      <div class="desc">Veräußerungserlöse aus Anlagevermögen <span class="hint">z.B. Verkauf von Betriebsgeräten</span></div>
+      <input type="number" id="kz_160" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <!-- FREMDLEISTUNGEN & PERSONAL -->
+  <div class="eur-section">
+    <div class="eur-section-title">👥 Fremdleistungen &amp; Personal</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 110</span>
+      <div class="desc">Fremdleistungen <span class="hint">Externe Dienstleister, Honorarkräfte, Subunternehmer</span></div>
+      <input type="number" id="kz_110" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 120</span>
+      <div class="desc">Löhne, Gehälter, Lohnnebenkosten <span class="hint">Nur bei eigenen Angestellten</span></div>
+      <input type="number" id="kz_120" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <!-- AFA -->
+  <div class="eur-section">
+    <div class="eur-section-title">📉 Abschreibungen (AfA)</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 130</span>
+      <div class="desc">AfA auf bewegliche Wirtschaftsgüter <span class="hint">Lineare oder degressive Abschreibung über Nutzungsdauer (z.B. Laptop, Kamera, Flugzeug)</span></div>
+      <input type="number" id="kz_130" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 132</span>
+      <div class="desc">Geringwertige Wirtschaftsgüter (GWG) <span class="hint">Sofortabschreibung: 250 € – 800 € netto</span></div>
+      <input type="number" id="kz_132" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 131</span>
+      <div class="desc">AfA auf unbewegliche Wirtschaftsgüter <span class="hint">Gebäude, Hallen (selten bei Freiberuflern)</span></div>
+      <input type="number" id="kz_131" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <!-- RAUMKOSTEN -->
+  <div class="eur-section">
+    <div class="eur-section-title">🏢 Raumkosten</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 150</span>
+      <div class="desc">Miete, Pacht, Nebenkosten (Büro / Schulungsraum / Hangar) <span class="hint">Nur betrieblich genutzte Räume</span></div>
+      <input type="number" id="kz_150" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 163</span>
+      <div class="desc">Homeoffice-Tagespauschale (§ 4 Abs. 5 Nr. 6c EStG) <span class="hint">6 €/Tag, max. 1.260 €/Jahr</span></div>
+      <input type="number" id="kz_163" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <!-- FAHRT & REISE -->
+  <div class="eur-section">
+    <div class="eur-section-title">🚗 Fahrt- &amp; Reisekosten (beschränkt abziehbar)</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 144</span>
+      <div class="desc">Fahrtkosten / Kfz-Kosten <span class="hint">0,30 €/km Pauschale oder tatsächliche Kfz-Kosten (betrieblicher Anteil)</span></div>
+      <input type="number" id="kz_144" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 221</span>
+      <div class="desc">Reisekosten bei Geschäftsreisen <span class="hint">Übernachtung + Verpflegungsmehraufwand (Tagespauschalen beachten)</span></div>
+      <input type="number" id="kz_221" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <!-- REPRÄSENTATION -->
+  <div class="eur-section">
+    <div class="eur-section-title">🍽️ Repräsentation (beschränkt abziehbar)</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 165</span>
+      <div class="desc">Bewirtungskosten (70 % abziehbar) <span class="hint">Geschäftsessen — nur 70 % absetzbar, Bewirtungsbeleg erforderlich</span></div>
+      <input type="number" id="kz_165" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 166</span>
+      <div class="desc">Geschenke an Geschäftspartner <span class="hint">Max. 50 € netto pro Person und Jahr (§ 4 Abs. 5 Nr. 1 EStG)</span></div>
+      <input type="number" id="kz_166" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <!-- SONSTIGE -->
+  <div class="eur-section">
+    <div class="eur-section-title">📋 Sonstige Betriebsausgaben</div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 224</span>
+      <div class="desc">Werbekosten <span class="hint">Website, Visitenkarten, Flyer, Anzeigen</span></div>
+      <input type="number" id="kz_224" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 229</span>
+      <div class="desc">Büromaterial, Porto, Fachliteratur <span class="hint">Papier, Schreibzeug, Fachbücher, Kartenmaterial (z.B. Jeppesen/ICAO)</span></div>
+      <input type="number" id="kz_229" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 280</span>
+      <div class="desc">Telekommunikation <span class="hint">Telefon, Handy, Internet — nur betrieblicher Anteil</span></div>
+      <input type="number" id="kz_280" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 281</span>
+      <div class="desc">Fortbildungskosten <span class="hint">Kurse, Seminare, FI-Refresher, Medical, Lizenzerneuerungen</span></div>
+      <input type="number" id="kz_281" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 239</span>
+      <div class="desc">Versicherungen (betrieblich) <span class="hint">Piloten-Haftpflicht, Berufshaftpflicht, Betriebshaftpflicht</span></div>
+      <input type="number" id="kz_239" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 238</span>
+      <div class="desc">Beiträge, Gebühren, Abgaben <span class="hint">Berufsverbände (AOPA), LBA-Gebühren, Kammerbeiträge</span></div>
+      <input type="number" id="kz_238" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 194</span>
+      <div class="desc">Rechts- und Steuerberatungskosten <span class="hint">Steuerberater, Anwalt, Buchhaltungssoftware (z.B. EÜR-App Pro)</span></div>
+      <input type="number" id="kz_194" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+    <div class="eur-row">
+      <span class="kz-badge">Kz 183</span>
+      <div class="desc">Übrige Betriebsausgaben <span class="hint">Sammelposten für alles, was in keine andere Kategorie passt</span></div>
+      <input type="number" id="kz_183" placeholder="0,00" step="0.01" oninput="calcEUR()">
+    </div>
+  </div>
+
+  <div class="result-row" id="eur_result">
+    <span class="label">Gewinn / Verlust (Betriebseinnahmen − Betriebsausgaben)</span>
+    <span class="value" id="eur_gewinn_val">0,00 €</span>
+  </div>
+
+  <div class="info-box">
+    <strong>Wo eintragen in ELSTER?</strong><br>
+    Die Anlage EÜR wird in ELSTER als separate Anlage elektronisch übermittelt. Tragen Sie jeden Betrag in das Feld mit der entsprechenden Kennzahl ein. Den errechneten Gewinn übertragen Sie dann in <strong>Anlage S (Kz 100)</strong> oder <strong>Anlage G (Kz 10)</strong>.
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-save" onclick="saveAll()">💾 Speichern</button>
+    <button class="btn btn-print" onclick="window.print()">🖨️ Drucken / PDF</button>
+    <button class="btn btn-reset" onclick="resetEUR()">↺ EÜR zurücksetzen</button>
+  </div>
+</div>
+
+<!-- ══════════════════ TAB ANLAGE S ══════════════════ -->
+<div id="tab-anlage-s" class="tab-panel">
+  <h2>Anlage S – Einkünfte aus selbstständiger Arbeit</h2>
+  <p style="color:#9999bb;font-size:0.88rem;margin-bottom:1rem;">
+    Für Freiberufler: Ärzte, Rechtsanwälte, Ingenieure, freiberufliche Lehrer, Piloten (freiberuflich als Fluglehrer) u.ä. (§ 18 EStG).<br>
+    Den Gewinn berechnen Sie in der <strong>Anlage EÜR</strong> — hier wird er nur eingetragen.
+  </p>
+
+  <h3>Art der Tätigkeit <span class="kz">(Zeile 4)</span></h3>
+  <div class="form-grid full">
+    <div class="field">
+      <input type="text" id="as_taetigkeit" placeholder="z.B. Freiberuflicher Fluglehrer / Flugunterricht">
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <h2>Gewinn aus selbstständiger Arbeit</h2>
+  <p style="color:#9999bb;font-size:0.85rem;margin-bottom:10px;">Den Gewinn entnehmen Sie aus Ihrer Anlage EÜR. Verheiratete tragen Person A (Steuerpflichtiger) und Person B (Ehegatte) getrennt ein.</p>
+
+  <div class="kz-pair-grid">
+    <div class="field">
+      <label>Gewinn / Verlust — Person A (Steuerpflichtiger) <span class="kz">Kz 100</span></label>
+      <input type="number" id="as_gewinn_a" placeholder="0,00" step="0.01">
+      <span class="hint">Aus Anlage EÜR übernehmen</span>
+    </div>
+    <div class="field">
+      <label>Gewinn / Verlust — Person B (Ehegatte/Lebenspartner) <span class="kz">Kz 300</span></label>
+      <input type="number" id="as_gewinn_b" placeholder="0,00" step="0.01">
+      <span class="hint">Nur bei gemeinsamer Veranlagung</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <h2>Weitere Kennzahlen (falls zutreffend)</h2>
+
+  <div class="kz-pair-grid">
+    <div class="field">
+      <label>Sonstige selbstständige Einkünfte — Person A <span class="kz">Kz 140</span></label>
+      <input type="number" id="as_sonstige_a" placeholder="0,00" step="0.01">
+      <span class="hint">z.B. Aufsichtsratsvergütungen, gelegentliche freiberufliche Tätigkeit</span>
+    </div>
+    <div class="field">
+      <label>Sonstige selbstständige Einkünfte — Person B <span class="kz">Kz 340</span></label>
+      <input type="number" id="as_sonstige_b" placeholder="0,00" step="0.01">
+    </div>
+    <div class="field">
+      <label>Veräußerungs- / Aufgabegewinn — Person A <span class="kz">Kz 200</span></label>
+      <input type="number" id="as_ver_a" placeholder="0,00" step="0.01">
+      <span class="hint">Gewinn aus Praxisveräußerung, Aufgabe der Tätigkeit</span>
+    </div>
+    <div class="field">
+      <label>Veräußerungs- / Aufgabegewinn — Person B <span class="kz">Kz 400</span></label>
+      <input type="number" id="as_ver_b" placeholder="0,00" step="0.01">
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>💡 Hinweis §34a EStG (Thesaurierungsbegünstigung):</strong><br>
+    Wenn Sie Gewinne nicht entnehmen, können Sie unter bestimmten Voraussetzungen eine ermäßigte Besteuerung nach §34a EStG beantragen. Sprechen Sie dazu mit Ihrem Steuerberater.
+  </div>
+
+  <div class="info-box">
+    <strong>Wo eintragen in ELSTER?</strong><br>
+    In ELSTER: <em>Einkommensteuererklärung → Anlage S</em>. Den Gewinn aus der Anlage EÜR in <strong>Kz 100</strong> (Zeile 6) eintragen. Die Anlage EÜR wird als separate Anlage hinzugefügt.
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-save" onclick="saveAll()">💾 Speichern</button>
+    <button class="btn btn-print" onclick="window.print()">🖨️ Drucken / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════ TAB ANLAGE G ══════════════════ -->
+<div id="tab-anlage-g" class="tab-panel">
+  <h2>Anlage G – Einkünfte aus Gewerbebetrieb</h2>
+  <p style="color:#9999bb;font-size:0.88rem;margin-bottom:1rem;">
+    Für Gewerbetreibende mit Gewerbeschein (§ 15 EStG). Piloten, die gewerblich tätig sind (z.B. Luftfahrtunternehmen als Einzelunternehmen), nutzen diese Anlage.<br>
+    Den Gewinn berechnen Sie in der <strong>Anlage EÜR</strong> — hier wird er nur eingetragen.
+  </p>
+
+  <h3>Art des Gewerbebetriebs <span class="kz">(Zeile 4)</span></h3>
+  <div class="form-grid full">
+    <div class="field">
+      <input type="text" id="ag_taetigkeit" placeholder="z.B. Luftfahrtunternehmen / Flugunterricht (gewerblich)">
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <h2>Gewinn aus Gewerbebetrieb</h2>
+  <p style="color:#9999bb;font-size:0.85rem;margin-bottom:10px;">Den Gewinn entnehmen Sie aus Ihrer Anlage EÜR.</p>
+
+  <div class="kz-pair-grid">
+    <div class="field">
+      <label>Gewinn / Verlust Einzelunternehmer — Person A <span class="kz">Kz 10</span></label>
+      <input type="number" id="ag_gewinn_a" placeholder="0,00" step="0.01">
+      <span class="hint">Aus Anlage EÜR übernehmen</span>
+    </div>
+    <div class="field">
+      <label>Gewinn / Verlust Einzelunternehmer — Person B <span class="kz">Kz 11</span></label>
+      <input type="number" id="ag_gewinn_b" placeholder="0,00" step="0.01">
+      <span class="hint">Nur bei gemeinsamer Veranlagung</span>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <h2>Gewerbesteuer</h2>
+  <p style="color:#9999bb;font-size:0.85rem;margin-bottom:10px;">Den Gewerbesteuer-Messbetrag und den Gewerbesteuerbetrag entnehmen Sie dem Gewerbesteuerbescheid des Finanzamts.</p>
+
+  <div class="kz-pair-grid">
+    <div class="field">
+      <label>Gewerbesteuer-Messbetrag laut Bescheid — Person A <span class="kz">Kz 64</span></label>
+      <input type="number" id="ag_messbetrag_a" placeholder="0,00" step="0.01">
+    </div>
+    <div class="field">
+      <label>Gewerbesteuer-Messbetrag laut Bescheid — Person B <span class="kz">Kz 65</span></label>
+      <input type="number" id="ag_messbetrag_b" placeholder="0,00" step="0.01">
+    </div>
+    <div class="field">
+      <label>Gezahlte Gewerbesteuer — Person A <span class="kz">Kz 66</span></label>
+      <input type="number" id="ag_gst_a" placeholder="0,00" step="0.01">
+      <span class="hint">Tatsächlich im Veranlagungsjahr bezahlte Gewerbesteuer</span>
+    </div>
+    <div class="field">
+      <label>Gezahlte Gewerbesteuer — Person B <span class="kz">Kz 67</span></label>
+      <input type="number" id="ag_gst_b" placeholder="0,00" step="0.01">
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <h2>Weitere Kennzahlen (falls zutreffend)</h2>
+
+  <div class="kz-pair-grid">
+    <div class="field">
+      <label>Veräußerungs- / Aufgabegewinn <span class="kz">Kz 200</span></label>
+      <input type="number" id="ag_ver" placeholder="0,00" step="0.01">
+      <span class="hint">Gewinn aus Betriebsveräußerung oder -aufgabe</span>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <strong>💡 Gewerbesteuer-Freibetrag:</strong><br>
+    Einzelunternehmer haben einen Gewerbesteuer-Freibetrag von <strong>24.500 €</strong>. Liegt Ihr Gewinn darunter, fällt keine Gewerbesteuer an. Außerdem kann die Gewerbesteuer pauschal auf die Einkommensteuer angerechnet werden (§35 EStG — bis zum 3,8-fachen des Messbetrags).
+  </div>
+
+  <div class="info-box">
+    <strong>Wo eintragen in ELSTER?</strong><br>
+    In ELSTER: <em>Einkommensteuererklärung → Anlage G</em>. Den Gewinn aus der Anlage EÜR in <strong>Kz 10</strong> (Zeile 6) eintragen. Gewerbesteuer-Messbetrag und gezahlte Gewerbesteuer aus dem Gewerbesteuerbescheid übernehmen.
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-save" onclick="saveAll()">💾 Speichern</button>
+    <button class="btn btn-print" onclick="window.print()">🖨️ Drucken / PDF</button>
+  </div>
+</div>
+
+<!-- ══════════════════ DRUCKBEREICH ══════════════════ -->
+<div class="print-area">
+
+  <!-- Seite 1: Anlage EÜR -->
+  <div class="print-page">
+    <div class="print-header">
+      <h2>Anlage EÜR – Einnahmenüberschussrechnung</h2>
+      <p>Veranlagungsjahr <span class="pj"></span> &nbsp;|&nbsp; Finanzamt: <span class="pfa"></span></p>
+    </div>
+    <div class="print-stamm">
+      <div class="print-stamm-field"><div class="pl">Name, Vorname</div><div class="pv" id="p_name"></div></div>
+      <div class="print-stamm-field"><div class="pl">Steuernummer</div><div class="pv" id="p_stnr"></div></div>
+      <div class="print-stamm-field"><div class="pl">Anschrift</div><div class="pv" id="p_adresse"></div></div>
+      <div class="print-stamm-field"><div class="pl">Steuer-ID</div><div class="pv" id="p_steuer_id"></div></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Betriebseinnahmen</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">111</span><span>Betriebseinnahmen (Kleinunternehmer § 19 UStG)</span><span class="pr" id="p_kz_111"></span></div>
+      <div class="print-row"><span class="kz">140</span><span>Umsatzsteuer-Erstattungen</span><span class="pr" id="p_kz_140"></span></div>
+      <div class="print-row"><span class="kz">160</span><span>Veräußerungserlöse aus Anlagevermögen</span><span class="pr" id="p_kz_160"></span></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Fremdleistungen &amp; Personal</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">110</span><span>Fremdleistungen</span><span class="pr" id="p_kz_110"></span></div>
+      <div class="print-row"><span class="kz">120</span><span>Löhne, Gehälter, Lohnnebenkosten</span><span class="pr" id="p_kz_120"></span></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Abschreibungen (AfA)</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">130</span><span>AfA auf bewegliche Wirtschaftsgüter</span><span class="pr" id="p_kz_130"></span></div>
+      <div class="print-row"><span class="kz">132</span><span>Geringwertige Wirtschaftsgüter (GWG)</span><span class="pr" id="p_kz_132"></span></div>
+      <div class="print-row"><span class="kz">131</span><span>AfA auf unbewegliche Wirtschaftsgüter</span><span class="pr" id="p_kz_131"></span></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Raumkosten</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">150</span><span>Miete, Pacht, Nebenkosten (Büro / Schulungsraum / Hangar)</span><span class="pr" id="p_kz_150"></span></div>
+      <div class="print-row"><span class="kz">163</span><span>Homeoffice-Tagespauschale (§ 4 Abs. 5 Nr. 6c EStG)</span><span class="pr" id="p_kz_163"></span></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Fahrt- &amp; Reisekosten</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">144</span><span>Fahrtkosten / Kfz-Kosten</span><span class="pr" id="p_kz_144"></span></div>
+      <div class="print-row"><span class="kz">221</span><span>Reisekosten bei Geschäftsreisen</span><span class="pr" id="p_kz_221"></span></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Repräsentation</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">165</span><span>Bewirtungskosten (70 % abziehbar)</span><span class="pr" id="p_kz_165"></span></div>
+      <div class="print-row"><span class="kz">166</span><span>Geschenke an Geschäftspartner (max. 50 € p.P./Jahr)</span><span class="pr" id="p_kz_166"></span></div>
+    </div>
+
+    <div class="print-section">
+      <div class="print-section-header">Sonstige Betriebsausgaben</div>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">224</span><span>Werbekosten</span><span class="pr" id="p_kz_224"></span></div>
+      <div class="print-row"><span class="kz">229</span><span>Büromaterial, Porto, Fachliteratur</span><span class="pr" id="p_kz_229"></span></div>
+      <div class="print-row"><span class="kz">280</span><span>Telekommunikation (betrieblicher Anteil)</span><span class="pr" id="p_kz_280"></span></div>
+      <div class="print-row"><span class="kz">281</span><span>Fortbildungskosten</span><span class="pr" id="p_kz_281"></span></div>
+      <div class="print-row"><span class="kz">239</span><span>Versicherungen (betrieblich)</span><span class="pr" id="p_kz_239"></span></div>
+      <div class="print-row"><span class="kz">238</span><span>Beiträge, Gebühren, Abgaben</span><span class="pr" id="p_kz_238"></span></div>
+      <div class="print-row"><span class="kz">194</span><span>Rechts- und Steuerberatungskosten</span><span class="pr" id="p_kz_194"></span></div>
+      <div class="print-row"><span class="kz">183</span><span>Übrige Betriebsausgaben</span><span class="pr" id="p_kz_183"></span></div>
+    </div>
+
+    <div class="print-total">
+      <span>Gewinn / Verlust</span>
+      <span id="p_eur_gewinn"></span>
+    </div>
+    <div class="print-warn">
+      ⚠️ Kennzahlen basieren auf Veranlagungsjahr 2024. Jährlich im aktuellen ELSTER-Formular prüfen. Eine direkte Übermittlung an ELSTER ist in dieser Hilfe nicht vorgesehen.
+    </div>
+  </div>
+
+  <!-- Seite 2: Anlage S -->
+  <div class="print-page">
+    <div class="print-header">
+      <h2>Anlage S – Einkünfte aus selbstständiger Arbeit</h2>
+      <p>Veranlagungsjahr <span class="pj"></span> &nbsp;|&nbsp; Finanzamt: <span class="pfa"></span></p>
+    </div>
+    <div class="print-stamm">
+      <div class="print-stamm-field"><div class="pl">Name, Vorname</div><div class="pv" id="ps_name"></div></div>
+      <div class="print-stamm-field"><div class="pl">Steuernummer</div><div class="pv" id="ps_stnr"></div></div>
+      <div class="print-stamm-field"><div class="pl">Anschrift</div><div class="pv" id="ps_adresse"></div></div>
+      <div class="print-stamm-field"><div class="pl">Steuer-ID</div><div class="pv" id="ps_steuer_id"></div></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Art der Tätigkeit (Zeile 4)</h3>
+      <div class="print-kz-row"><span id="p_as_taetigkeit"></span><span></span></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Gewinn aus selbstständiger Arbeit</h3>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">100</span><span>Gewinn / Verlust — Person A (Steuerpflichtiger)</span><span class="pr" id="p_as_gewinn_a"></span></div>
+      <div class="print-row"><span class="kz">300</span><span>Gewinn / Verlust — Person B (Ehegatte / Lebenspartner)</span><span class="pr" id="p_as_gewinn_b"></span></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Weitere Kennzahlen</h3>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">140</span><span>Sonstige selbstständige Einkünfte — Person A</span><span class="pr" id="p_as_sonstige_a"></span></div>
+      <div class="print-row"><span class="kz">340</span><span>Sonstige selbstständige Einkünfte — Person B</span><span class="pr" id="p_as_sonstige_b"></span></div>
+      <div class="print-row"><span class="kz">200</span><span>Veräußerungs- / Aufgabegewinn — Person A</span><span class="pr" id="p_as_ver_a"></span></div>
+      <div class="print-row"><span class="kz">400</span><span>Veräußerungs- / Aufgabegewinn — Person B</span><span class="pr" id="p_as_ver_b"></span></div>
+    </div>
+    <div class="print-legend">* Kz (A / B): Die erste Kennzahl gilt für Person A (Steuerpflichtiger / Ehemann), die zweite für Person B (Ehefrau / Lebenspartner). Bei Einzelveranlagung nur Person A ausfüllen.</div>
+    <div class="print-warn">
+      ⚠️ Kennzahlen basieren auf Veranlagungsjahr 2024. Jährlich im aktuellen ELSTER-Formular prüfen.
+    </div>
+  </div>
+
+  <!-- Seite 3: Anlage G -->
+  <div class="print-page">
+    <div class="print-header">
+      <h2>Anlage G – Einkünfte aus Gewerbebetrieb</h2>
+      <p>Veranlagungsjahr <span class="pj"></span> &nbsp;|&nbsp; Finanzamt: <span class="pfa"></span></p>
+    </div>
+    <div class="print-stamm">
+      <div class="print-stamm-field"><div class="pl">Name, Vorname</div><div class="pv" id="pg_name"></div></div>
+      <div class="print-stamm-field"><div class="pl">Steuernummer</div><div class="pv" id="pg_stnr"></div></div>
+      <div class="print-stamm-field"><div class="pl">Anschrift</div><div class="pv" id="pg_adresse"></div></div>
+      <div class="print-stamm-field"><div class="pl">Steuer-ID</div><div class="pv" id="pg_steuer_id"></div></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Art des Gewerbebetriebs (Zeile 4)</h3>
+      <div class="print-kz-row"><span id="p_ag_taetigkeit"></span><span></span></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Gewinn aus Gewerbebetrieb</h3>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">10</span><span>Gewinn / Verlust Einzelunternehmer — Person A</span><span class="pr" id="p_ag_gewinn_a"></span></div>
+      <div class="print-row"><span class="kz">11</span><span>Gewinn / Verlust Einzelunternehmer — Person B</span><span class="pr" id="p_ag_gewinn_b"></span></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Gewerbesteuer</h3>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">64</span><span>Gewerbesteuer-Messbetrag laut Bescheid — Person A</span><span class="pr" id="p_ag_messbetrag_a"></span></div>
+      <div class="print-row"><span class="kz">65</span><span>Gewerbesteuer-Messbetrag laut Bescheid — Person B</span><span class="pr" id="p_ag_messbetrag_b"></span></div>
+      <div class="print-row"><span class="kz">66</span><span>Gezahlte Gewerbesteuer — Person A</span><span class="pr" id="p_ag_gst_a"></span></div>
+      <div class="print-row"><span class="kz">67</span><span>Gezahlte Gewerbesteuer — Person B</span><span class="pr" id="p_ag_gst_b"></span></div>
+    </div>
+
+    <div class="print-section">
+      <h3>Weitere Kennzahlen</h3>
+      <div class="print-row header"><span class="kz">Kz</span><span>Bezeichnung</span><span class="pr">Betrag €</span></div>
+      <div class="print-row"><span class="kz">200</span><span>Veräußerungs- / Aufgabegewinn</span><span class="pr" id="p_ag_ver"></span></div>
+    </div>
+    <div class="print-legend">* Kz (A / B): Die erste Kennzahl gilt für Person A (Steuerpflichtiger / Ehemann), die zweite für Person B (Ehefrau / Lebenspartner). Gewerbesteuer-Freibetrag Einzelunternehmer: 24.500 €.</div>
+    <div class="print-warn">
+      ⚠️ Kennzahlen basieren auf Veranlagungsjahr 2024. Jährlich im aktuellen ELSTER-Formular prüfen.
+    </div>
+  </div>
+</div>
+
+<script>
+  const EUR_KZ = ['111','140','160','110','120','130','132','131','150','163',
+                  '144','221','165','166','224','229','280','281','239','238','194','183'];
+
+  const ALL_FIELDS = [
+    's_nachname','s_vorname','s_geburtsdatum','s_steuernummer','s_steuer_id',
+    's_strasse','s_plz','s_ort','s_bundesland','s_finanzamt','s_betriebs_stnr','s_jahr',
+    ...EUR_KZ.map(k => 'kz_' + k),
+    'as_taetigkeit','as_gewinn_a','as_gewinn_b','as_sonstige_a','as_sonstige_b','as_ver_a','as_ver_b',
+    'ag_taetigkeit','ag_gewinn_a','ag_gewinn_b','ag_messbetrag_a','ag_messbetrag_b',
+    'ag_gst_a','ag_gst_b','ag_ver'
+  ];
+
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    if (btn) btn.classList.add('active');
+  }
+
+  function fmt(val) {
+    return parseFloat(val || 0).toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  }
+
+  function v(id) { return parseFloat(document.getElementById(id)?.value || 0); }
+
+  function calcEUR() {
+    const einnahmen = v('kz_111') + v('kz_140') + v('kz_160');
+    const ausgaben  = v('kz_110') + v('kz_120') +
+                      v('kz_130') + v('kz_132') + v('kz_131') +
+                      v('kz_150') + v('kz_163') +
+                      v('kz_144') + v('kz_221') +
+                      v('kz_165') + v('kz_166') +
+                      v('kz_224') + v('kz_229') + v('kz_280') + v('kz_281') +
+                      v('kz_239') + v('kz_238') + v('kz_194') + v('kz_183');
+    const gewinn = einnahmen - ausgaben;
+    const el = document.getElementById('eur_gewinn_val');
+    el.textContent = fmt(gewinn) + ' €';
+    document.getElementById('eur_result').classList.toggle('loss', gewinn < 0);
+  }
+
+  function resetEUR() {
+    if (!confirm('Alle EÜR-Beträge zurücksetzen?')) return;
+    EUR_KZ.forEach(k => {
+      const el = document.getElementById('kz_' + k);
+      if (el) { el.value = ''; localStorage.removeItem('anlage_kz_' + k); }
+    });
+    calcEUR();
+  }
+
+  function saveAll() {
+    ALL_FIELDS.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) localStorage.setItem('anlage_' + id, el.value);
+    });
+    const note = document.getElementById('saved-note-stamm');
+    if (note) { note.style.display = 'block'; setTimeout(() => note.style.display = 'none', 2500); }
+  }
+
+  function loadAll() {
+    ALL_FIELDS.forEach(id => {
+      const el = document.getElementById(id);
+      const val = localStorage.getItem('anlage_' + id);
+      if (el && val !== null) el.value = val;
+    });
+    calcEUR();
+  }
+
+  function fillPrint() {
+    const name = (document.getElementById('s_vorname').value + ' ' + document.getElementById('s_nachname').value).trim();
+    const adresse = [document.getElementById('s_strasse').value,
+                     (document.getElementById('s_plz').value + ' ' + document.getElementById('s_ort').value).trim()]
+                     .filter(Boolean).join(', ');
+    const fa = document.getElementById('s_finanzamt').value;
+    const jahr = document.getElementById('s_jahr').value;
+    const stnr = document.getElementById('s_steuernummer').value;
+    const stid = document.getElementById('s_steuer_id').value;
+
+    document.querySelectorAll('.pj').forEach(e => e.textContent = jahr);
+    document.querySelectorAll('.pfa').forEach(e => e.textContent = fa);
+
+    ['p_name','ps_name','pg_name'].forEach(id => { const e=document.getElementById(id); if(e) e.textContent=name; });
+    ['p_stnr','ps_stnr','pg_stnr'].forEach(id => { const e=document.getElementById(id); if(e) e.textContent=stnr; });
+    ['p_adresse','ps_adresse','pg_adresse'].forEach(id => { const e=document.getElementById(id); if(e) e.textContent=adresse; });
+    ['p_steuer_id','ps_steuer_id','pg_steuer_id'].forEach(id => { const e=document.getElementById(id); if(e) e.textContent=stid; });
+
+    // EÜR Kz
+    EUR_KZ.forEach(k => {
+      const e = document.getElementById('p_kz_' + k);
+      if (e) e.textContent = fmt(v('kz_' + k));
+    });
+    document.getElementById('p_eur_gewinn').textContent = document.getElementById('eur_gewinn_val').textContent;
+
+    // Anlage S
+    const setTxt = (pid, sid) => {
+      const e = document.getElementById(pid);
+      const s = document.getElementById(sid);
+      if (e && s) e.textContent = s.value ? (isNaN(s.value) ? s.value : fmt(s.value)) : '—';
+    };
+    setTxt('p_as_taetigkeit', 'as_taetigkeit');
+    setTxt('p_as_gewinn_a', 'as_gewinn_a');
+    setTxt('p_as_gewinn_b', 'as_gewinn_b');
+    setTxt('p_as_sonstige_a', 'as_sonstige_a');
+    setTxt('p_as_sonstige_b', 'as_sonstige_b');
+    setTxt('p_as_ver_a', 'as_ver_a');
+    setTxt('p_as_ver_b', 'as_ver_b');
+
+    // Anlage G
+    setTxt('p_ag_taetigkeit', 'ag_taetigkeit');
+    setTxt('p_ag_gewinn_a', 'ag_gewinn_a');
+    setTxt('p_ag_gewinn_b', 'ag_gewinn_b');
+    setTxt('p_ag_messbetrag_a', 'ag_messbetrag_a');
+    setTxt('p_ag_messbetrag_b', 'ag_messbetrag_b');
+    setTxt('p_ag_gst_a', 'ag_gst_a');
+    setTxt('p_ag_gst_b', 'ag_gst_b');
+    setTxt('p_ag_ver', 'ag_ver');
+  }
+
+  window.addEventListener('beforeprint', fillPrint);
+  window.addEventListener('load', loadAll);
+</script>
+</body>
+</html>
