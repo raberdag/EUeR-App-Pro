@@ -75,7 +75,8 @@
       font-size: 0.82rem; font-weight: 600; margin-top: 0.8rem;
     }
 
-    section { margin-bottom: 3.5rem; scroll-margin-top: 80px; }
+    section { margin-bottom: 3.5rem; scroll-margin-top: 90px; }
+    h3[id] { scroll-margin-top: 90px; }
     section h2 {
       color: var(--orange); font-size: 1.45rem; font-weight: 700;
       margin-bottom: 0.4rem; padding-bottom: 0.5rem;
@@ -170,6 +171,7 @@
       <li><a href="#ausgaben">5. Ausgaben &amp; Belegfotos</a></li>
       <li class="sub"><a href="#ausgaben-belegnummer">Belegnummern</a></li>
       <li class="sub"><a href="#ausgaben-belegfotos">Belegfotos &amp; Scanner</a></li>
+      <li class="sub"><a href="#ausgaben-reisekosten">Reisekosten</a></li>
       <li class="sub"><a href="#ausgaben-homeoffice">Homeoffice-Tagespauschale</a></li>
       <li class="sub"><a href="#ausgaben-storno">Storno &amp; Korrektur</a></li>
       <li><a href="#anlagegueter">6. Anlagegüter &amp; AfA</a></li>
@@ -186,8 +188,15 @@
       <li class="sub"><a href="#dropdowns">Leistungen &amp; Einheiten</a></li>
       <li class="sub"><a href="#belege-ordner">Beleg-Ordner</a></li>
       <li class="sub"><a href="#backup">Backup &amp; Datensicherung</a></li>
-      <li><a href="#gobd">12. GoBD-Hinweise</a></li>
-      <li><a href="#tipps">13. Tipps &amp; FAQ</a></li>
+      <li><a href="#steuererklaerung">12. Steuererklärung</a></li>
+      <li class="sub"><a href="#steuer-stammdaten">Stammdaten</a></li>
+      <li class="sub"><a href="#steuer-eur">Anlage EÜR</a></li>
+      <li class="sub"><a href="#steuer-aveur">Anlage AVEÜR</a></li>
+      <li class="sub"><a href="#steuer-anlage-s">Anlage S</a></li>
+      <li class="sub"><a href="#steuer-anlage-g">Anlage G</a></li>
+      <li class="sub"><a href="#steuer-kz">Kennzahlen-Zuordnung</a></li>
+      <li><a href="#gobd">13. GoBD-Hinweise</a></li>
+      <li><a href="#tipps">14. Tipps &amp; FAQ</a></li>
     </ul>
   </aside>
 
@@ -196,7 +205,7 @@
     <div class="hero">
       <h1>📖 Benutzerhandbuch</h1>
       <p>Vollständige Anleitung zur EÜR-App Pro — GoBD-konforme Einnahmen-Überschuss-Rechnung für Kleinunternehmer und Freiberufler.</p>
-      <span class="version-badge">Version 1.4.0 · Stand Juli 2026</span>
+      <span class="version-badge">Version 1.4.3 · Stand Juli 2026</span>
     </div>
 
     <!-- 1. ERSTE SCHRITTE -->
@@ -210,7 +219,7 @@
       </div>
       <div class="hint hint-warn">
         <strong>Virenschutz-Meldung (z.B. Avira, Windows Defender):</strong> Manche Virenschutzprogramme melden die EÜR-App-Pro.exe als „potenzielle Bedrohung". Das ist ein sogenannter <strong>False Positive</strong> — ein Fehlalarm. Die Ursache liegt darin, dass die App als einzelne .exe-Datei gebündelt ist (PyInstaller), was Virenscanner manchmal fälschlicherweise als verdächtig einstufen. Die App enthält keinen Schadcode.<br><br>
-        <strong>Was tun?</strong> Öffnen Sie die Quarantäne Ihres Virenschutzprogramms, wählen Sie die Datei <kbd>EÜR-App-Pro-v1.2.2.exe</kbd> und klicken Sie auf <strong>„Wiederherstellen"</strong> bzw. <strong>„Als Ausnahme hinzufügen"</strong>. Bei Fragen schreiben Sie uns: <strong>info@eur-app-pro.de</strong>
+        <strong>Was tun?</strong> Öffnen Sie die Quarantäne Ihres Virenschutzprogramms, wählen Sie die Datei <kbd>EÜR-App-Pro-v1.x.x.exe</kbd> und klicken Sie auf <strong>„Wiederherstellen"</strong> bzw. <strong>„Als Ausnahme hinzufügen"</strong>. Bei Fragen schreiben Sie uns: <strong>info@eur-app-pro.de</strong>
       </div>
 
       <h3 id="lizenz">Lizenzaktivierung</h3>
@@ -380,7 +389,7 @@
         <tr><td><strong>✕</strong></td><td>Anhang entfernen</td></tr>
       </table>
       <p>In der Ausgabenliste erscheint bei Einträgen mit Anhang ein <strong>📎</strong>-Symbol. Ein Klick öffnet den Beleg mit dem Standard-Programm (PDF-Viewer oder Bildbetrachter).</p>
-      <div class="hint hint-ok"><strong>Tipp für mehrseitige Rechnungen:</strong> Alle Seiten in den ADF-Einzug des Scanners legen. Nach dem Scan der ersten Seite „Weitere Seite?" bestätigen. Der Scanner zieht die nächste Seite automatisch ein. Am Ende erstellt die App ein zusammenhängendes PDF.</div>
+      <div class="hint hint-ok"><strong>Tipp für mehrseitige Rechnungen:</strong> Alle Seiten in den ADF-Einzug des Scanners legen. Nach dem Scan der ersten Seite „Weitere Seite?" bestätigen. Der Scanner zieht die nächste Seite automatisch ein. Am Ende erstellt die App ein zusammenhängendes PDF.<br><br><strong>Hinweis zum ADF:</strong> Die automatische Mehrseiten-Funktion hängt vom verwendeten Scanner-Modell und dessen WIA-Treiber ab. Manche Scanner (z.&nbsp;B. bestimmte Brother-Modelle) scannen beim ADF-Betrieb über WIA nur die erste Seite und ziehen die weiteren Seiten durch, ohne sie zu scannen. In diesem Fall: jede Seite einzeln einlegen und jeweils „Weitere Seite?" bestätigen — die App fügt alle Seiten am Ende zu einem PDF zusammen.</div>
       <div class="hint hint-info"><strong>Speicherort:</strong> Belege landen standardmäßig im Unterordner <kbd>Belege\</kbd> innerhalb des jeweiligen Betriebsordners — z.&nbsp;B. <kbd>C:\Users\IhrName\AppData\Roaming\EÜR-App\MeinBetrieb\Belege\</kbd>. Der Ordner wird beim ersten gespeicherten Beleg automatisch angelegt. Er kann unter Einstellungen → Speicher frei gewählt werden.</div>
 
       <h3 id="ausgaben-belegnummer">Belegnummern — Lieferant oder intern?</h3>
@@ -416,7 +425,7 @@
         <strong>Jahresbuchung:</strong> Die Buchung kann auch nachträglich im Januar des Folgejahres durchgeführt werden — das Buchungsdatum wird automatisch auf den <strong>31.12. des gewählten Jahres</strong> gesetzt, sodass die Ausgabe steuerlich korrekt im richtigen Jahr erscheint. Stellen Sie dazu im Jahres-Dropdown oben das gewünschte Jahr ein.
       </div>
       <div class="hint hint-warn">
-        Wenn das laufende Jahr noch nicht abgeschlossen ist, empfiehlt es sich, erst alle Home-Office-Tage einzutragen und dann erst die Jahresbuchung durchzuführen — um eine Doppelbuchung zu vermeiden. Die App weist bei einer vorzeitigen Buchung ausdrücklich auf diesen Hinweis hin.
+        Wenn das laufende Jahr noch nicht abgeschlossen ist, empfiehlt es sich, erst alle Home-Office-Tage einzutragen und dann erst die Jahresbuchung durchzuführen — um eine Doppelbuchung zu vermeiden. Die App weist bei einer vorzeitigen Buchung ausdrücklich auf eventuelle Doppelbuchungen hin.
       </div>
 
       <h3 id="ausgaben-storno">Ausgaben korrigieren (GoBD-konform)</h3>
@@ -472,6 +481,11 @@
       <div class="card">
         <h4>GWG – Geringwertige Wirtschaftsgüter</h4>
         <p>Güter bis <strong>800 € netto</strong> können als GWG im Kaufjahr vollständig sofortabgeschrieben werden. Methode „GWG" wählen — die AfA beträgt dann 100 % im Kaufjahr.</p>
+      </div>
+
+      <div class="hint hint-info">
+        <strong>📂 Anlage AVEÜR – Ausfüllhilfe:</strong> Zum Jahresabschluss benötigen Sie das Anlagenverzeichnis als Pflichtbeilage zur Anlage EÜR. Die EÜR-App Pro erstellt eine <strong>Ausfüllhilfe</strong> aus Ihren erfassten Anlagegütern — mit allen relevanten Werten (Kaufdatum, Anschaffungskosten, Nutzungsdauer, AfA-Betrag, Buchwert Anfang/Ende) sowie einer Übersicht der Kennzahlen Kz 130 und Kz 132 für die Anlage EÜR. Die Werte tragen Sie anschließend selbst in das ELSTER-Formular ein — eine direkte Übermittlung an ELSTER ist in dieser App nicht vorgesehen.<br><br>
+        <strong>Wo finden?</strong> Menü → <strong>📋 Steuererklärung → Tab „📂 Anlage AVEÜR"</strong> — oder direkt in der Anlagegüter-Ansicht über den Button <strong>„📄 Anlage AVEÜR drucken"</strong>.
       </div>
     </section>
 
@@ -573,12 +587,34 @@
       <p class="screenshot-caption">Tab „Steuer / MwSt" mit Auswahl zwischen Kleinunternehmer und Regelbesteuerung (Dark Mode)</p>
 
       <h3 id="kategorien">Tab: Ausgaben-Kategorien</h3>
-      <p>Verwalten Sie die Kategorien für Ihre Betriebsausgaben. Vordefiniert sind z.B. „Betriebsausgaben", „Fortbildung", „Büromaterial" und „Sonstige Ausgaben".</p>
+      <p>Verwalten Sie die Kategorien für Ihre Betriebsausgaben. Jede Kategorie ist einer <strong>EÜR-Kennzahl (Kz)</strong> zugeordnet — so wird jede Buchung automatisch in die richtige Zeile der Anlage EÜR einsortiert.</p>
       <ul>
         <li><strong>Neue Kategorie hinzufügen:</strong> Namen eingeben und „Hinzufügen" klicken.</li>
         <li><strong>Kategorie löschen:</strong> „Löschen"-Button in der jeweiligen Zeile — nur möglich wenn die Kategorie nicht mehr verwendet wird.</li>
       </ul>
-      <div class="hint hint-info">Kategorien helfen bei der Auswertung in der EÜR und erleichtern die Zuordnung beim Jahresabschluss.</div>
+      <div class="card">
+        <h4>Vorhandene Standard-Kategorien (Auswahl)</h4>
+        <table>
+          <tr><th>Kategorie</th><th>EÜR-Kennzahl</th><th>Beispiele</th></tr>
+          <tr><td>Abschreibungen (AfA)</td><td>Kz 130</td><td>Laptop, Kamera, Flugzeug</td></tr>
+          <tr><td>GWG (Sofortabschr.)</td><td>Kz 132</td><td>Geräte 250–800 € netto</td></tr>
+          <tr><td>Miete / Büro</td><td>Kz 150</td><td>Büroraum, Schulungsraum, Hangar</td></tr>
+          <tr><td>Homeoffice</td><td>Kz 163</td><td>6 €/Tag, max. 1.260 €/Jahr</td></tr>
+          <tr><td>Fahrtkosten</td><td>Kz 144</td><td>Kfz-Kosten, km-Pauschale</td></tr>
+          <tr><td>Reisekosten</td><td>Kz 221</td><td>Übernachtung, Verpflegung</td></tr>
+          <tr><td>Bewirtungskosten</td><td>Kz 165</td><td>Geschäftsessen (70 % abziehbar)</td></tr>
+          <tr><td>Werbekosten</td><td>Kz 224</td><td>Website, Flyer, Anzeigen</td></tr>
+          <tr><td>Büromaterial</td><td>Kz 229</td><td>Papier, Porto, Fachliteratur</td></tr>
+          <tr><td>Telekommunikation</td><td>Kz 280</td><td>Telefon, Handy, Internet</td></tr>
+          <tr><td>Fortbildung</td><td>Kz 281</td><td>Kurse, Seminare, Lizenzerneuerungen</td></tr>
+          <tr><td>Versicherungen</td><td>Kz 239</td><td>Berufs- und Betriebshaftpflicht</td></tr>
+          <tr><td>Beiträge / Gebühren</td><td>Kz 238</td><td>AOPA, LBA-Gebühren, Kammern</td></tr>
+          <tr><td>Rechts- und Steuerberatung</td><td>Kz 194</td><td>Steuerberater, Anwalt</td></tr>
+          <tr><td>Software / KI-Tools / EDV</td><td>Kz 183</td><td>Software-Abos, KI-Tools (z.B. Claude AI)</td></tr>
+          <tr><td>Betriebsausgaben / Sonstige</td><td>Kz 183</td><td>Sammelposten für alles übrige</td></tr>
+        </table>
+      </div>
+      <div class="hint hint-info">Buchen Sie eine Ausgabe mit der passenden Kategorie — die App ordnet sie beim Jahresabschluss automatisch der richtigen EÜR-Kennzahl zu. Unter <strong>📋 Steuererklärung → Anlage EÜR</strong> sehen Sie das Ergebnis sofort.</div>
 
       <h3 id="dropdowns">Tab: Leistungsbeschreibungen &amp; Einheiten</h3>
       <p><strong>Leistungsbeschreibungen:</strong> Vordefinierte Texte für die Leistungsspalte auf Rechnungen. Mit ▲/▼ Reihenfolge anpassen, mit ＋ hinzufügen, mit ✕ entfernen.</p>
@@ -616,9 +652,109 @@
       <p><strong>Dark Mode</strong> aktivieren oder deaktivieren. Die Änderung wird sofort übernommen.</p>
     </section>
 
-    <!-- 12. GOBD -->
+    <!-- 12. STEUERERKLÄRUNG -->
+    <section id="steuererklaerung">
+      <h2>📋 12. Steuererklärung</h2>
+      <p>Der Menüpunkt <strong>„📋 Steuererklärung"</strong> (zwischen Umsatzsteuer und Kunden-Statistik) bündelt alles, was Sie für Ihre jährliche Einkommensteuererklärung benötigen: Stammdaten, Anlage EÜR, Anlage S und Anlage G.</p>
+
+      <h3 id="steuer-stammdaten">Tab: Stammdaten</h3>
+      <p>Tragen Sie Ihre persönlichen Daten einmalig ein — sie werden automatisch in alle drei Anlagen übernommen:</p>
+      <ul>
+        <li>Name, Geburtsdatum, Anschrift</li>
+        <li>Steuernummer, Steuer-Identifikationsnummer, Finanzamt</li>
+        <li>Berufsbezeichnung (für Anlage S), Wirtschafts-ID (für Anlage G)</li>
+      </ul>
+      <div class="hint hint-ok">
+        <strong>Tipp:</strong> Der Button <strong>„📥 Aus App-Einstellungen übernehmen"</strong> befüllt Name, Adresse und Steuernummer automatisch aus Ihren Briefkopf-Einstellungen.
+      </div>
+
+      <h3 id="steuer-eur">Tab: Anlage EÜR</h3>
+      <p>Die Anlage EÜR ist die Basis jeder Steuererklärung für Selbstständige und Gewerbetreibende. Sie zeigt alle Einnahmen und Ausgaben aufgeteilt nach den <strong>amtlichen Kennzahlen (Kz)</strong> des ELSTER-Formulars.</p>
+      <div class="card">
+        <h4>Automatische Befüllung aus Ihren Buchungen</h4>
+        <p>Sobald Sie Ausgaben mit einer Kategorie buchen, werden die Beträge automatisch der richtigen EÜR-Kennzahl zugeordnet — ohne manuelles Übertragen:</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Ausgabe buchen</strong><p>z.B. Telekommunikation → wird Kz 280 zugeordnet</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Steuererklärung → Anlage EÜR</strong><p>Jahr wählen, Seite öffnen</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Kennzahl-Tabelle</strong><p>Kz 280 zeigt den Jahresbetrag — fertig</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-body"><strong>PDF drucken</strong><p>Als Ausfüllhilfe für ELSTER verwenden</p></div></div>
+        </div>
+      </div>
+      <p>Die EÜR-Ansicht gliedert sich in 7 amtliche Abschnitte:</p>
+      <table>
+        <tr><th>Abschnitt</th><th>Enthält Kennzahlen</th></tr>
+        <tr><td>Betriebseinnahmen</td><td>Kz 111, 140, 160</td></tr>
+        <tr><td>Fremdleistungen &amp; Personal</td><td>Kz 110, 120</td></tr>
+        <tr><td>Abschreibungen (AfA)</td><td>Kz 130, 131, 132</td></tr>
+        <tr><td>Raumkosten</td><td>Kz 150, 163</td></tr>
+        <tr><td>Fahrt- &amp; Reisekosten</td><td>Kz 144, 221</td></tr>
+        <tr><td>Repräsentation</td><td>Kz 165, 166</td></tr>
+        <tr><td>Sonstige Betriebsausgaben</td><td>Kz 183, 194, 224, 229, 238, 239, 280, 281</td></tr>
+      </table>
+      <div class="hint hint-warn">Die Anlage EÜR wird in ELSTER als eigene elektronische Anlage übermittelt. Diese App berechnet und druckt die Werte — die Übermittlung an ELSTER nehmen Sie direkt in ELSTER vor.</div>
+
+      <h3 id="steuer-aveur">Tab: Anlage AVEÜR</h3>
+      <p>Das <strong>Anlagenverzeichnis (AVEÜR)</strong> ist eine Pflichtbeilage zur Anlage EÜR für alle Betriebe, die Wirtschaftsgüter abschreiben. Dieser Tab erstellt eine druckfertige <strong>Ausfüllhilfe</strong> direkt aus Ihren erfassten Anlagegütern.</p>
+      <div class="card">
+        <h4>Was enthält die Ausfüllhilfe?</h4>
+        <ul>
+          <li>Vollständiges Anlagenverzeichnis: Bezeichnung, Kaufdatum, Anschaffungskosten, Nutzungsdauer, Methode, AfA-Betrag, Buchwert Anfang und Ende</li>
+          <li>Übersicht der Kennzahlen: <strong>Kz 130</strong> (lineare AfA) und <strong>Kz 132</strong> (GWG-Sofortabschreibung) — getrennt ausgewiesen</li>
+          <li>Stammdaten (Name, Steuernummer, Finanzamt, Jahr)</li>
+        </ul>
+      </div>
+      <div class="hint hint-warn">Die Ausfüllhilfe ist <strong>kein offizielles ELSTER-Formular</strong>. Die Werte tragen Sie anschließend selbst in das ELSTER-Formular ein — eine direkte Übermittlung an ELSTER ist nicht vorgesehen.</div>
+      <div class="hint hint-ok"><strong>Wo finden?</strong> Menü → <strong>📋 Steuererklärung → Tab „📂 Anlage AVEÜR"</strong> — oder direkt in der Anlagegüter-Ansicht über den Button <strong>„📄 Anlage AVEÜR drucken"</strong>.</div>
+
+      <h3 id="steuer-anlage-s">Tab: Anlage S (selbstständige Arbeit)</h3>
+      <p>Für <strong>Freiberufler</strong> nach § 18 EStG — z.B. freiberufliche Fluglehrer, Ärzte, Ingenieure, Dolmetscher.</p>
+      <table>
+        <tr><th>Kennzahl</th><th>Bedeutung</th></tr>
+        <tr><td><strong>Kz 100</strong></td><td>Gewinn / Verlust — Person A (aus Anlage EÜR übernehmen)</td></tr>
+        <tr><td><strong>Kz 300</strong></td><td>Gewinn / Verlust — Person B (Ehegatte, nur bei gemeinsamer Veranlagung)</td></tr>
+        <tr><td>Kz 140 / 340</td><td>Sonstige selbstständige Einkünfte (z.B. Aufsichtsratsvergütungen)</td></tr>
+        <tr><td>Kz 200 / 400</td><td>Veräußerungs- oder Aufgabegewinn</td></tr>
+      </table>
+      <div class="hint hint-info">Den Gewinn (Kz 100) entnehmen Sie aus der Anlage EÜR — er wird automatisch berechnet und kann per Klick in das Anlage-S-Feld übernommen werden.</div>
+
+      <h3 id="steuer-anlage-g">Tab: Anlage G (Gewerbebetrieb)</h3>
+      <p>Für <strong>Gewerbetreibende</strong> nach § 15 EStG — Einzelunternehmer mit Gewerbeschein.</p>
+      <table>
+        <tr><th>Kennzahl</th><th>Bedeutung</th></tr>
+        <tr><td><strong>Kz 10</strong></td><td>Gewinn Einzelunternehmer — Person A (aus Anlage EÜR übernehmen)</td></tr>
+        <tr><td><strong>Kz 11</strong></td><td>Gewinn Einzelunternehmer — Person B</td></tr>
+        <tr><td>Kz 64 / 65</td><td>Gewerbesteuer-Messbetrag laut Bescheid (Person A / B)</td></tr>
+        <tr><td>Kz 66 / 67</td><td>Gezahlte Gewerbesteuer (Person A / B)</td></tr>
+        <tr><td>Kz 200</td><td>Veräußerungs- / Aufgabegewinn</td></tr>
+      </table>
+      <div class="hint hint-ok">Gewerbesteuer-Freibetrag für Einzelunternehmer: <strong>24.500 €</strong>. Liegt Ihr Gewinn darunter, fällt keine Gewerbesteuer an. Die gezahlte Gewerbesteuer kann nach § 35 EStG pauschal auf die Einkommensteuer angerechnet werden.</div>
+
+      <h3 id="steuer-kz">Kennzahlen-Zuordnung durch Kategorien</h3>
+      <p>Die Verbindung zwischen Ihrer Buchführung und der Steuererklärung läuft vollautomatisch über die <strong>Kategorie-Kz-Zuordnung</strong>:</p>
+      <div class="card">
+        <h4>Beispiel: Claude AI Pro (Software-Abo)</h4>
+        <ul>
+          <li>Ausgabe buchen → Kategorie <strong>„Software / KI-Tools / EDV"</strong> wählen</li>
+          <li>Kategorie ist <strong>Kz 183</strong> (Übrige Betriebsausgaben) zugeordnet</li>
+          <li>In der Anlage EÜR erscheint der Betrag automatisch bei <strong>Kz 183</strong></li>
+          <li>Gewinn wird entsprechend reduziert</li>
+        </ul>
+      </div>
+      <div class="hint hint-info">Sie können Jahresbeträge auch in einer einzigen Buchung erfassen (z.B. alle Telekommunikationskosten im Dezember als Jahressumme) — das ist steuerlich zulässig und spart Zeit.</div>
+
+      <h3>PDF-Ausfüllhilfe drucken</h3>
+      <p>In jedem Tab finden Sie den Button <strong>„🖨️ Drucken / PDF speichern"</strong>. Das erzeugte Dokument enthält:</p>
+      <ul>
+        <li>Ihre Stammdaten (Name, Steuernummer, Finanzamt)</li>
+        <li>Alle Kennzahlen mit den berechneten Beträgen aus Ihren Buchungen</li>
+        <li>Hinweise zur Eintragung in ELSTER</li>
+        <li>Für Anlage S und G: Anhang mit der vollständigen Anlage EÜR</li>
+      </ul>
+    </section>
+
+    <!-- 13. GOBD -->
     <section id="gobd">
-      <h2>📋 12. GoBD-Hinweise</h2>
+      <h2>📋 13. GoBD-Hinweise</h2>
       <div class="card">
         <h4>Was bedeutet GoBD-konform in dieser App?</h4>
         <ul>
@@ -645,9 +781,9 @@
       <div class="hint hint-ok">Sichern Sie die <kbd>euer.db</kbd>-Datei regelmäßig und bewahren Sie Backups mindestens 10 Jahre auf.</div>
     </section>
 
-    <!-- 13. FAQ -->
+    <!-- 14. FAQ -->
     <section id="tipps">
-      <h2>💡 13. Tipps &amp; häufige Fragen</h2>
+      <h2>💡 14. Tipps &amp; häufige Fragen</h2>
 
       <h3>Wie erstelle ich schnell eine Rechnung für denselben Kunden?</h3>
       <p>Tippen Sie im Rechnungseditor die ersten Buchstaben des Kundennamens — die App schlägt bekannte Kunden vor und übernimmt die Adresse automatisch.</p>
