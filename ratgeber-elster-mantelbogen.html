@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hauptvordruck (EST 1A) ausfüllen – Schritt für Schritt mit ELSTER</title>
+  <meta name="description" content="So füllt Klara Strich den Hauptvordruck (EST 1A) in ELSTER aus — welche Felder wirklich wichtig sind und was man getrost überspringen kann.">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e8e8f0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 1120px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    h1 { color: #e07b2a; font-size: 1.7rem; margin-bottom: 0.3rem; text-align: center; }
+    h2 { color: #e07b2a; font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.6rem; border-bottom: 1px solid #333355; padding-bottom: 0.3rem; }
+    p { color: #c8c8e0; margin-bottom: 0.9rem; font-size: 0.98rem; }
+    ul { color: #c8c8e0; margin: 0.5rem 0 0.9rem 1.5rem; font-size: 0.98rem; }
+    ul li { margin-bottom: 0.4rem; }
+    a { color: #e07b2a; }
+    a:hover { color: #f0a050; }
+    .meta { color: #9999bb; font-size: 0.85rem; text-align: center; margin-bottom: 2rem; }
+    .breadcrumb { color: #9999bb; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #9999bb; }
+    .breadcrumb a:hover { color: #e07b2a; }
+
+    .hint-box {
+      background: #16213e; border: 1px solid #333355;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .hint-box p:last-child { margin-bottom: 0; }
+    .success-box {
+      background: #0d1f0d; border: 1px solid #2d7a2d;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .success-box p { color: #90d090; margin-bottom: 0; }
+
+    .step-header { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 0.6rem; }
+    .step-badge {
+      background: #e07b2a; color: white; border-radius: 50%;
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 1rem;
+    }
+    .step-title { color: #e8e8f0; font-weight: bold; font-size: 1.05rem; }
+    .callout {
+      background: #e07b2a; color: white; border-radius: 6px;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: bold;
+      display: inline-block; margin: 6px 0;
+    }
+    .callout::before { content: "▶ "; }
+
+    /* Browser Mockup */
+    .browser-mockup {
+      background: #f0f0f0; border-radius: 10px; overflow: hidden;
+      margin: 1rem 0 1.2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .browser-bar {
+      background: #e0e0e0; padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .browser-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .browser-dot.red   { background: #ff5f57; }
+    .browser-dot.yellow{ background: #febc2e; }
+    .browser-dot.green { background: #28c840; }
+    .browser-url {
+      flex: 1; background: white; border-radius: 4px;
+      padding: 3px 10px; font-size: 0.82rem; color: #444;
+      font-family: monospace; margin-left: 8px;
+    }
+    .browser-content { background: white; }
+
+    /* ELSTER echtes Design */
+    .elster-header {
+      background: white; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #8dc63f;
+    }
+    .elster-logo {
+      color: #8dc63f; font-weight: 900; font-size: 1.4rem;
+      letter-spacing: 2px; font-family: Arial Black, Arial, sans-serif;
+    }
+    .elster-tagline { color: #666; font-size: 0.78rem; margin-left: 8px; }
+    .elster-user { color: #1a7ab5; font-size: 0.8rem; }
+    .elster-phases {
+      display: flex; background: #555; border-bottom: 3px solid #8dc63f;
+    }
+    .elster-phase {
+      padding: 7px 14px; font-size: 0.74rem; color: #ccc;
+      display: flex; align-items: center; gap: 5px;
+      border-right: 1px solid #666; line-height: 1.3;
+    }
+    .elster-phase.active { background: #444; color: white; font-weight: bold; }
+
+    .elster-layout { display: flex; min-height: 200px; }
+    .elster-sidebar {
+      width: 175px; background: #f5f5f5;
+      border-right: 1px solid #ddd; padding: 8px 0; flex-shrink: 0;
+    }
+    .elster-sidebar-section {
+      padding: 6px 14px 3px; font-size: 0.72rem;
+      color: #999; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .elster-sidebar-item {
+      padding: 7px 14px; font-size: 0.78rem; color: #1a7ab5; cursor: default;
+    }
+    .elster-sidebar-item.active {
+      background: white; border-left: 3px solid #e07b2a;
+      font-weight: bold; color: #333;
+    }
+    .elster-sidebar-item.done { color: #2d7a2d; }
+    .elster-sidebar-item.inactive { color: #aaa; }
+    .elster-body { padding: 16px 20px; background: white; flex: 1; }
+    .elster-form-title {
+      color: #333; font-weight: bold; font-size: 0.95rem;
+      margin-bottom: 14px; padding-bottom: 6px;
+      border-bottom: 2px solid #8dc63f;
+    }
+
+    /* Formularfelder */
+    .form-row {
+      display: flex; align-items: flex-start;
+      gap: 10px; margin-bottom: 7px; flex-wrap: wrap;
+    }
+    .form-label {
+      color: #444; font-size: 0.78rem;
+      min-width: 200px; flex-shrink: 0; padding-top: 4px;
+    }
+    .form-label .zeile { color: #999; font-size: 0.7rem; display: block; }
+    .form-input {
+      border: 1px solid #bbb; border-radius: 3px;
+      padding: 4px 8px; font-size: 0.82rem; color: #333;
+      background: white; min-width: 160px;
+    }
+    .form-input.filled {
+      background: #fffbe6; border-color: #e07b2a;
+      font-weight: bold; color: #003366;
+    }
+    .form-input.leer {
+      background: #f9f9f9; color: #bbb; font-style: italic;
+    }
+    .form-input.skip {
+      background: #f0f0f0; border-color: #ddd;
+      color: #aaa; font-style: italic;
+    }
+    .form-note { font-size: 0.72rem; color: #888; padding-top: 4px; }
+
+    /* Legende */
+    .legende {
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+      margin: 0.8rem 0 1.2rem; font-size: 0.82rem; color: #9999bb;
+    }
+    .legende-item { display: flex; align-items: center; gap: 6px; }
+    .legende-box {
+      width: 20px; height: 14px; border-radius: 2px;
+      border: 1px solid #888; flex-shrink: 0;
+    }
+    .legende-box.filled { background: #fffbe6; border-color: #e07b2a; }
+    .legende-box.skip   { background: #f0f0f0; border-color: #ddd; }
+
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid #333355; flex-wrap: wrap; gap: 0.8rem;
+    }
+    .nav-btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: bold; text-decoration: none; font-size: 0.9rem;
+    }
+    .nav-btn.back { background: #333355; color: #e8e8f0; }
+    .nav-btn.next { background: #e07b2a; color: white; }
+    .nav-btn:hover { opacity: 0.85; }
+    /* SIDEBAR LAYOUT */
+    .page-wrapper { display: flex; gap: 2rem; align-items: flex-start; }
+    .ratgeber-sidebar { width: 210px; flex-shrink: 0; position: sticky; top: 24px; background: #16213e; border: 1px solid #333355; border-radius: 10px; padding: 1rem 0; }
+    .ratgeber-main { flex: 1; min-width: 0; }
+    .sb-section { padding: 6px 16px 3px; font-size: 0.7rem; color: #666688; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 8px; }
+    .sb-section:first-child { margin-top: 0; }
+    .sb-link { display: block; padding: 6px 16px; font-size: 0.82rem; color: #9999bb; text-decoration: none; border-left: 3px solid transparent; line-height: 1.35; }
+    .sb-link:hover { color: #e07b2a; background: #1e2a48; }
+    .sb-link.active { color: #e07b2a; border-left-color: #e07b2a; background: #1e2a48; font-weight: bold; }
+    .sb-divider { border: none; border-top: 1px solid #333355; margin: 8px 0; }
+    @media (max-width: 780px) { .page-wrapper { flex-direction: column; } .ratgeber-sidebar { width: 100%; position: static; } }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <aside class="ratgeber-sidebar">
+      <div class="sb-section">Ratgeber</div>
+      <a class="sb-link" href="ratgeber.html">← Übersicht</a>
+      <hr class="sb-divider">
+      <div class="sb-section">ELSTER – Schritt für Schritt</div>
+      <a class="sb-link" href="ratgeber-elster-start.html">① Navigation &amp; Login</a>
+      <a class="sb-link active" href="ratgeber-elster-mantelbogen.html">② Hauptvordruck</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-eur.html">③ Anlage EÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-aveuer.html">④ Anlage AVEÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-s.html">⑤ Anlage S</a>
+      <a class="sb-link" href="ratgeber-elster-abschicken.html">⑥ Prüfen &amp; Versenden</a>
+    </aside>
+    <main class="ratgeber-main">
+
+  <p class="breadcrumb">
+    <a href="ratgeber.html">← Ratgeber</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-start.html">ELSTER Navigation</a> &nbsp;›&nbsp;
+    Hauptvordruck
+  </p>
+
+  <h1>Den Hauptvordruck ausfüllen</h1>
+  <p class="meta">Praxisbeispiel mit Klara Strich · Steuerjahr 2025</p>
+
+  <div class="hint-box">
+    <p><strong>„Mantelbogen" oder „Hauptvordruck"?</strong> In alten Steuer-Ratgebern und Papierformularen heißt das Deckblatt der Einkommensteuererklärung „Mantelbogen". In ELSTER digital heißt dasselbe Formular <strong>„Hauptvordruck"</strong> (offiziell: EST 1A). Inhaltlich ist es identisch — nur der Name hat sich geändert.</p>
+  </div>
+
+  <p>Der Hauptvordruck enthält persönliche Angaben, die sich von Jahr zu Jahr kaum ändern. Beim ersten Mal dauert es vielleicht 30–45 Minuten, danach sind es jedes Jahr nur noch ein paar Minuten — ELSTER füllt vieles automatisch vor.</p>
+
+  <div class="legende">
+    <div class="legende-item"><div class="legende-box filled"></div> Klara füllt dieses Feld aus</div>
+    <div class="legende-item"><div class="legende-box skip"></div> Dieses Feld lässt Klara leer</div>
+  </div>
+
+  <!-- Abschnitt 1: Persönliche Daten -->
+  <div class="step-header">
+    <div class="step-badge">1</div>
+    <div class="step-title">Persönliche Daten — Adresse, Geburtsdatum, Familienstand</div>
+  </div>
+  <p>Der erste Abschnitt fragt nach den Grunddaten. Name und Identifikationsnummer hat Klara bereits im Anlagenassistenten eingegeben — hier folgen Adresse, Geburtsdatum und Familienstand.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Einkommensteuererklärung 2025 · Hauptvordruck</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Hauptvordruck</div>
+          <div class="elster-sidebar-item active">Persönliche Daten</div>
+          <div class="elster-sidebar-item inactive">Steuernummer / FA</div>
+          <div class="elster-sidebar-item inactive">Bankverbindung</div>
+          <div class="elster-sidebar-item inactive">Vorsorgeaufwand</div>
+          <div class="elster-sidebar-item inactive">weitere Abschnitte</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Persönliche Angaben (EST 1A)</div>
+          <div class="form-row">
+            <div class="form-label">Vorname <span class="zeile">bereits eingetragen</span></div>
+            <input class="form-input filled" readonly value="Klara">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Name <span class="zeile">bereits eingetragen</span></div>
+            <input class="form-input filled" readonly value="Strich">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Geburtsdatum</div>
+            <input class="form-input filled" readonly value="15.03.1985">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Straße, Hausnummer</div>
+            <input class="form-input filled" readonly value="Musterstraße 7">
+          </div>
+          <div class="form-row">
+            <div class="form-label">PLZ / Ort</div>
+            <input class="form-input filled" readonly value="80331  München">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Telefon (freiwillig)</div>
+            <input class="form-input leer" readonly value="— optional, Klara lässt es leer">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Familienstand</div>
+            <input class="form-input filled" readonly value="ledig">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Adresse, Geburtsdatum, Familienstand eintragen — Name ist bereits vorausgefüllt</div>
+  <div class="hint-box">
+    <p><strong>Ab Jahr 2:</strong> Diese Felder sind bereits vorausgefüllt. Klara prüft nur ob sich etwas geändert hat (Umzug, Heirat) — das dauert 30 Sekunden.</p>
+  </div>
+
+  <!-- Abschnitt 2: Steuernummer -->
+  <div class="step-header">
+    <div class="step-badge">2</div>
+    <div class="step-title">Steuernummer und Finanzamt</div>
+  </div>
+  <p>Die Steuernummer steht auf jedem Schreiben des Finanzamts — auf dem letzten Steuerbescheid oder der Anmeldebestätigung. Die 11-stellige Identifikationsnummer wurde bereits im Anlagenassistenten eingetragen und ist hier schon vorausgefüllt.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Hauptvordruck · Steuernummer</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Hauptvordruck</div>
+          <div class="elster-sidebar-item done">✓ Persönliche Daten</div>
+          <div class="elster-sidebar-item active">Steuernummer / FA</div>
+          <div class="elster-sidebar-item inactive">Bankverbindung</div>
+          <div class="elster-sidebar-item inactive">Vorsorgeaufwand</div>
+          <div class="elster-sidebar-item inactive">weitere Abschnitte</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Steuernummer und Finanzamt</div>
+          <div class="form-row">
+            <div class="form-label">Steuernummer</div>
+            <input class="form-input filled" readonly value="123/456/78901">
+            <div class="form-note">Steht auf allen Briefen deines Finanzamts</div>
+          </div>
+          <div class="form-row">
+            <div class="form-label">Zuständiges Finanzamt</div>
+            <input class="form-input filled" readonly value="Finanzamt München">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Identifikationsnummer</div>
+            <input class="form-input filled" readonly value="12 345 678 901">
+            <div class="form-note">Bereits eingetragen (aus Anlagenassistent)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Steuernummer + Finanzamt eintragen — Identifikationsnummer ist bereits drin</div>
+
+  <!-- Abschnitt 3: Bankverbindung -->
+  <div class="step-header">
+    <div class="step-badge">3</div>
+    <div class="step-title">Bankverbindung — damit das Finanzamt überweisen kann</div>
+  </div>
+  <p>Falls Klara eine Steuererstattung bekommt, überweist das Finanzamt den Betrag auf ihr Konto. Die IBAN trägt sie einmalig ein — sie ändert sich praktisch nie. Außerdem empfiehlt es sich, eine <strong>Einzugsermächtigung</strong> zu erteilen: dann zieht das Finanzamt etwaige Nachzahlungen automatisch ein — kein Verpassen von Fristen.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Hauptvordruck · Bankverbindung</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Hauptvordruck</div>
+          <div class="elster-sidebar-item done">✓ Persönliche Daten</div>
+          <div class="elster-sidebar-item done">✓ Steuernummer / FA</div>
+          <div class="elster-sidebar-item active">Bankverbindung</div>
+          <div class="elster-sidebar-item inactive">Vorsorgeaufwand</div>
+          <div class="elster-sidebar-item inactive">weitere Abschnitte</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Bankverbindung für Erstattungen</div>
+          <div class="form-row">
+            <div class="form-label">Kontoinhaber</div>
+            <input class="form-input filled" readonly value="Klara Strich">
+          </div>
+          <div class="form-row">
+            <div class="form-label">IBAN</div>
+            <input class="form-input filled" readonly value="DE12 3456 7890 1234 5678 90">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Einzugsermächtigung</div>
+            <input class="form-input filled" readonly value="☑ Ja — Finanzamt darf einziehen">
+            <div class="form-note">Empfehlung: Ja — dann kümmerst du dich um nichts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">IBAN eintragen + Einzugsermächtigung erteilen (Ja)</div>
+
+  <!-- Abschnitt 4: Vorsorgeaufwand -->
+  <div class="step-header">
+    <div class="step-badge">4</div>
+    <div class="step-title">Anlage Vorsorgeaufwand — Kranken- und Rentenversicherung</div>
+  </div>
+  <p>Die <strong>Anlage Vorsorgeaufwand</strong> war in der Anlagenauswahl bereits automatisch angehakt. Hier trägt Klara ihre Beiträge zur <strong>Kranken- und Pflegeversicherung</strong> sowie eventuell zur <strong>privaten Rentenversicherung</strong> ein. Diese Beiträge sind steuerlich absetzbar und mindern die Steuerlast direkt.</p>
+
+  <div class="hint-box">
+    <p><strong>Wo finde ich meine Beiträge?</strong> Die jährliche Beitragsbescheinigung kommt automatisch von der Krankenkasse — entweder per Post oder im Online-Portal der Krankenkasse. Wer gesetzlich versichert ist: die Bescheinigung heißt „Beitragsbescheinigung für die Steuererklärung" und liegt oft schon im Januar vor.</p>
+  </div>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Hauptvordruck · Vorsorgeaufwand</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Hauptvordruck</div>
+          <div class="elster-sidebar-item done">✓ Persönliche Daten</div>
+          <div class="elster-sidebar-item done">✓ Steuernummer / FA</div>
+          <div class="elster-sidebar-item done">✓ Bankverbindung</div>
+          <div class="elster-sidebar-item active">Vorsorgeaufwand</div>
+          <div class="elster-sidebar-item inactive">weitere Abschnitte</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Anlage Vorsorgeaufwand</div>
+          <div class="form-row">
+            <div class="form-label">Kranken- und Pflegeversicherung<span class="zeile">Beitrag laut Bescheinigung Krankenkasse</span></div>
+            <input class="form-input filled" readonly value="4.200,00 €">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Private Rentenversicherung<span class="zeile">falls vorhanden</span></div>
+            <input class="form-input skip" readonly value="— Klara hat keine">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Sonstige Vorsorgeaufwendungen</div>
+            <input class="form-input skip" readonly value="— entfällt">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Kranken- und Pflegeversicherungsbeitrag aus der Jahresbescheinigung eintragen</div>
+
+  <!-- Abschnitt 5: Was Klara überspringt -->
+  <div class="step-header">
+    <div class="step-badge">5</div>
+    <div class="step-title">Was Klara getrost überspringen kann</div>
+  </div>
+  <p>Der Hauptvordruck hat noch viele weitere Abschnitte — die meisten sind für Klara als alleinstehende Freiberuflerin ohne Kinder, Mieteinnahmen oder Kapitalerträge nicht relevant:</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Hauptvordruck · weitere Abschnitte</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Hauptvordruck</div>
+          <div class="elster-sidebar-item done">✓ Persönliche Daten</div>
+          <div class="elster-sidebar-item done">✓ Steuernummer / FA</div>
+          <div class="elster-sidebar-item done">✓ Bankverbindung</div>
+          <div class="elster-sidebar-item done">✓ Vorsorgeaufwand</div>
+          <div class="elster-sidebar-item active">weitere Abschnitte</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Diese Abschnitte — Klara überspringt sie</div>
+          <div class="form-row">
+            <div class="form-label">Sonderausgaben (Spenden etc.)</div>
+            <input class="form-input skip" readonly value="— Klara hat keine Spenden">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Außergewöhnliche Belastungen</div>
+            <input class="form-input skip" readonly value="— entfällt">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Haushaltsnahe Dienstleistungen</div>
+            <input class="form-input skip" readonly value="— entfällt">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Anlage Kind</div>
+            <input class="form-input skip" readonly value="— keine Kinder">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Anlage N (Arbeitnehmer)</div>
+            <input class="form-input skip" readonly value="— Klara ist nicht angestellt">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint-box">
+    <p><strong>Nicht erschrecken!</strong> ELSTER zeigt alle möglichen Abschnitte — auch die, die für dich nicht relevant sind. Wenn du dir bei einem Feld unsicher bist: einfach einen Screenshot machen und die KI fragen. Die Antwort kommt in Sekunden.</p>
+  </div>
+
+  <div class="success-box">
+    <p><strong>Hauptvordruck fertig!</strong> Klara hat alle relevanten Felder ausgefüllt. Ab dem nächsten Jahr dauert das höchstens 10 Minuten — fast alles bleibt gleich und ist vorausgefüllt. Weiter geht's mit der Anlage EÜR — die wird als separates Formular geöffnet.</p>
+  </div>
+
+  <div class="page-nav">
+    <a href="ratgeber-elster-start.html" class="nav-btn back">← ELSTER Navigation</a>
+    <a href="ratgeber-elster-anlage-eur.html" class="nav-btn next">Weiter: Anlage EÜR →</a>
+  </div>
+
+  <footer style="margin-top:4rem; padding-top:1.5rem; border-top:1px solid #333355; text-align:center; font-size:0.8rem; color:#666688;">
+    <a href="index.html" style="color:#666688;">EÜR-App Pro</a> &nbsp;·&nbsp;
+    <a href="impressum.html" style="color:#666688;">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html" style="color:#666688;">Datenschutzerklärung</a> &nbsp;·&nbsp;
+    <a href="agb.html" style="color:#666688;">AGB</a> &nbsp;·&nbsp;
+    <a href="widerruf.html" style="color:#666688;">Widerruf</a>
+  </footer>
+
+    </main>
+  </div>
+
+</body>
+</html>

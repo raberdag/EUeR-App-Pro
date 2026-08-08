@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steuererklärung als Kleinunternehmer selbst machen – Schritt für Schritt 2026</title>
+  <meta name="description" content="Als §19 Kleinunternehmer die Steuererklärung selbst machen: Welche Formulare du brauchst, wie der Jahresablauf aussieht, welche Tools helfen — und was es kostet im Vergleich zum Steuerberater.">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e8e8f0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 860px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    h1 { color: #e07b2a; font-size: 1.9rem; margin-bottom: 0.3rem; text-align: center; }
+    .subtitle { color: #9999bb; text-align: center; margin-bottom: 2.5rem; font-size: 0.95rem; }
+    h2 { color: #e07b2a; font-size: 1.3rem; margin-top: 2.5rem; margin-bottom: 0.6rem; border-bottom: 1px solid #333355; padding-bottom: 0.3rem; }
+    h3 { color: #f0a050; font-size: 1.05rem; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+    p { color: #c8c8e0; margin-bottom: 0.9rem; font-size: 0.98rem; }
+    ul, ol { color: #c8c8e0; margin: 0.5rem 0 0.9rem 1.5rem; font-size: 0.98rem; }
+    ul li, ol li { margin-bottom: 0.4rem; }
+    strong { color: #e8e8f0; }
+    a { color: #e07b2a; }
+    a:hover { color: #f0a050; }
+
+    .hero-quote {
+      background: #16213e;
+      border-left: 4px solid #e07b2a;
+      border-radius: 0 8px 8px 0;
+      padding: 1.3rem 1.8rem;
+      margin: 1.5rem 0 2rem;
+      font-size: 1.07rem;
+      color: #f0c070;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .hint-box {
+      background: #16213e;
+      border: 1px solid #333355;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .hint-box p:last-child { margin-bottom: 0; }
+
+    .success-box {
+      background: #0d1f0d;
+      border: 1px solid #2d7a2d;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .success-box p:last-child { margin-bottom: 0; }
+    .success-box p { color: #90d090; }
+
+    .warning-box {
+      background: #1f1a0d;
+      border: 1px solid #8a6a00;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .warning-box p:last-child { margin-bottom: 0; }
+    .warning-box p { color: #d0b060; }
+
+    .cta-box {
+      background: #2a1a0a;
+      border: 1px solid #e07b2a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .cta-box p { color: #f0c070; margin-bottom: 1rem; }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #e07b2a;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover { background-color: #f0a050; }
+
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.92rem; }
+    th, td { text-align: left; padding: 0.65rem 0.9rem; border-bottom: 1px solid #333355; color: #c8c8e0; }
+    th { color: #e8e8f0; background: #252540; font-size: 0.9rem; }
+    tr:nth-child(even) td { background: #16213e; }
+
+    .cost-comparison {
+      display: flex;
+      gap: 1.2rem;
+      margin: 1.2rem 0 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cost-card {
+      flex: 1;
+      min-width: 220px;
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      text-align: center;
+    }
+    .cost-card.self { background: #0d1f0d; border: 1px solid #2d7a2d; }
+    .cost-card.stb  { background: #1f1a0d; border: 1px solid #555533; }
+    .cost-card .amount { font-size: 2rem; font-weight: bold; margin: 0.4rem 0; }
+    .cost-card.self .amount { color: #60d060; }
+    .cost-card.stb  .amount { color: #a09050; }
+    .cost-card .label { font-size: 0.9rem; color: #9999bb; }
+    .cost-card .sublabel { font-size: 0.8rem; color: #777799; margin-top: 0.3rem; }
+
+    .step-list { list-style: none; margin-left: 0; padding-left: 0; }
+    .step-list li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      background: #e07b2a;
+      color: white;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
+    .step-text { color: #c8c8e0; font-size: 0.98rem; line-height: 1.65; }
+    .step-text strong { color: #e8e8f0; }
+
+    .toc {
+      background: #16213e;
+      border: 1px solid #333355;
+      border-radius: 8px;
+      padding: 1.2rem 1.8rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .toc p { color: #9999bb; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .toc ol { margin: 0; }
+    .toc ol li { margin-bottom: 0.25rem; font-size: 0.95rem; }
+    .toc a { color: #c8c8e0; text-decoration: none; }
+    .toc a:hover { color: #e07b2a; }
+
+    .legal {
+      font-size: 0.85rem;
+      color: #666688;
+      font-style: italic;
+      border-top: 1px solid #333355;
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 12px 25px;
+      background-color: #333355;
+      color: #e8e8f0;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .back-button:hover { background-color: #404068; }
+    .center { text-align: center; }
+    .meta { color: #9999bb; font-size: 0.85rem; text-align: center; margin-bottom: 2rem; }
+
+    .disclaimer-top {
+      background: #1a1400;
+      border: 2px solid #7a6000;
+      border-radius: 8px;
+      padding: 1.3rem 1.6rem;
+      margin-bottom: 2.5rem;
+    }
+    .disclaimer-top .disclaimer-title {
+      color: #c8a820;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .disclaimer-top p {
+      color: #a89050;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    /* SIDEBAR LAYOUT */
+    body { max-width: 1120px; }
+
+    .page-wrapper {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .ratgeber-sidebar {
+      width: 210px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 24px;
+      background: #16213e;
+      border: 1px solid #333355;
+      border-radius: 10px;
+      padding: 1rem 0;
+    }
+    .ratgeber-main { flex: 1; min-width: 0; }
+
+    .sb-section {
+      padding: 6px 16px 3px;
+      font-size: 0.7rem;
+      color: #666688;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 8px;
+    }
+    .sb-section:first-child { margin-top: 0; }
+    .sb-link {
+      display: block;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      color: #9999bb;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      line-height: 1.35;
+    }
+    .sb-link:hover { color: #e07b2a; background: #1e2a48; }
+    .sb-link.active {
+      color: #e07b2a;
+      border-left-color: #e07b2a;
+      background: #1e2a48;
+      font-weight: bold;
+    }
+    .sb-divider {
+      border: none;
+      border-top: 1px solid #333355;
+      margin: 8px 0;
+    }
+
+    @media (max-width: 780px) {
+      .page-wrapper { flex-direction: column; }
+      .ratgeber-sidebar { width: 100%; position: static; }
+      .cost-comparison { flex-direction: column; }
+    }
+    @media (min-width: 781px) {
+      .cost-comparison { flex-direction: row; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="ratgeber-sidebar">
+      <div class="sb-section">Ratgeber</div>
+      <a class="sb-link active" href="#kleinunternehmer">Bin ich Kleinunternehmer?</a>
+      <a class="sb-link" href="#formulare">Welche Formulare?</a>
+      <a class="sb-link" href="#jahresablauf">Jahresablauf</a>
+      <a class="sb-link" href="#tools">Das Werkzeugset</a>
+      <a class="sb-link" href="#kosten">Kosten-Vergleich</a>
+      <a class="sb-link" href="#wann-stb">Wann Steuerberater?</a>
+      <hr class="sb-divider">
+      <div class="sb-section">ELSTER – Schritt für Schritt</div>
+      <a class="sb-link" href="ratgeber-elster-start.html">① Navigation &amp; Login</a>
+      <a class="sb-link" href="ratgeber-elster-mantelbogen.html">② Hauptvordruck</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-eur.html">③ Anlage EÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-aveuer.html">④ Anlage AVEÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-s.html">⑤ Anlage S</a>
+      <a class="sb-link" href="ratgeber-elster-abschicken.html">⑥ Prüfen &amp; Versenden</a>
+    </aside>
+
+    <!-- HAUPTINHALT -->
+    <main class="ratgeber-main">
+
+  <div class="disclaimer-top">
+    <span class="disclaimer-title">⚠ Wichtiger Hinweis — bitte zuerst lesen</span>
+    <p>Dieser Ratgeber ist ein <strong style="color:#c8a820;">privater Erfahrungsbericht</strong> und dient ausschließlich der allgemeinen Information. Er stellt <strong style="color:#c8a820;">keine Steuerberatung, keine Rechtsberatung und keine verbindliche Auskunft</strong> des Finanzamts oder einer Behörde dar. Steuerliche Regelungen können sich jederzeit und kurzfristig ändern — die hier gemachten Angaben spiegeln den Stand zum Zeitpunkt der letzten Aktualisierung wider und können seither veraltet sein. Jeder steuerliche Sachverhalt ist individuell. Was für eine Person zutrifft, muss für eine andere nicht gelten. Bei konkreten steuerlichen Fragen wende dich an einen zugelassenen Steuerberater oder das zuständige Finanzamt. Der Autor übernimmt keinerlei Haftung für die Richtigkeit, Vollständigkeit oder Aktualität der hier enthaltenen Informationen sowie für Schäden, die aus der Nutzung dieser Informationen entstehen könnten.</p>
+  </div>
+
+  <h1>EÜR-App Pro</h1>
+  <p class="subtitle">Ratgeber</p>
+
+  <h1 style="font-size: 1.55rem; margin-top: 1rem;">Als §&nbsp;19 Kleinunternehmer die Steuererklärung selbst machen</h1>
+  <p class="meta">Stand: August 2026 &nbsp;·&nbsp; Letzte Aktualisierung: August 2026</p>
+
+  <div class="hero-quote">
+    „Als Kleinunternehmer musst du dem Finanzamt am Ende des Jahres im Wesentlichen nur drei Dinge liefern: Was hast du eingenommen? Was hast du ausgegeben? Was bleibt übrig? Das war's."
+  </div>
+
+  <p>Viele Kleinunternehmer glauben, sie bräuchten zwingend einen Steuerberater — weil das Thema Steuern so kompliziert klingt. Die Realität: Wer nach §&nbsp;19 UStG von der Umsatzsteuer befreit ist, hat einen deutlich kleineren steuerlichen Aufwand als die meisten vermuten. Dieser Ratgeber zeigt dir, welche Formulare du tatsächlich brauchst, wie der Jahresablauf konkret aussieht, welche Tools wirklich helfen — und was es im Vergleich zum Steuerberater kostet.</p>
+
+  <div class="toc">
+    <p><strong>Inhalt</strong></p>
+    <ol>
+      <li><a href="#kleinunternehmer">Bin ich überhaupt Kleinunternehmer?</a></li>
+      <li><a href="#formulare">Welche Formulare brauche ich wirklich?</a></li>
+      <li><a href="#jahresablauf">Der Jahresablauf — Schritt für Schritt</a></li>
+      <li><a href="#tools">Das Werkzeugset</a></li>
+      <li><a href="#kosten">Selbst machen vs. Steuerberater — was kostet was?</a></li>
+      <li><a href="#wann-stb">Wann lohnt sich trotzdem ein Steuerberater?</a></li>
+    </ol>
+  </div>
+
+
+  <h2 id="kleinunternehmer">1. Bin ich überhaupt Kleinunternehmer?</h2>
+
+  <p>Die Kleinunternehmerregelung nach <strong>§&nbsp;19 UStG</strong> befreit dich von der Pflicht, Umsatzsteuer auf deinen Rechnungen auszuweisen und ans Finanzamt abzuführen — und damit auch von der lästigen monatlichen oder vierteljährlichen Umsatzsteuervoranmeldung.</p>
+
+  <p>Die Grenzen (Stand 2026):</p>
+  <table>
+    <tr><th>Grenze</th><th>Betrag</th></tr>
+    <tr><td>Umsatz im Vorjahr</td><td>bis 25.000&nbsp;€</td></tr>
+    <tr><td>Voraussichtlicher Umsatz im laufenden Jahr</td><td>bis 100.000&nbsp;€</td></tr>
+  </table>
+
+  <div class="warning-box">
+    <p><strong>Wichtig:</strong> Wird die 100.000-€-Grenze im laufenden Jahr überschritten, entfällt die Kleinunternehmerregelung <strong>sofort</strong> ab diesem Zeitpunkt — nicht erst im Folgejahr. Rechtzeitig im Blick behalten!</p>
+  </div>
+
+  <p><strong>Was der §&nbsp;19-Status bedeutet:</strong></p>
+  <ul>
+    <li>Keine Umsatzsteuer auf deinen Rechnungen</li>
+    <li>Keine Umsatzsteuervoranmeldungen</li>
+    <li>Keine Umsatzsteuerjahreserklärung</li>
+    <li>Pflichthinweis auf jeder Rechnung: <em>„Gemäß §&nbsp;19 UStG wird keine Umsatzsteuer berechnet."</em></li>
+  </ul>
+
+  <p><strong>Was der §&nbsp;19-Status NICHT bedeutet:</strong> Der Status betrifft ausschließlich die Umsatzsteuer. <strong>Einkommensteuer fällt trotzdem an</strong> — dein Gewinn (Einnahmen minus Ausgaben) erhöht bei Gewinn deine persönliche Einkommensteuer. Und genau darum geht es in diesem Ratgeber.</p>
+
+  <p>Mehr zur Kleinunternehmerregelung im Detail: <a href="blog-kleinunternehmerregelung.html">Kleinunternehmerregelung §&nbsp;19 UStG einfach erklärt →</a></p>
+
+
+  <h2 id="formulare">2. Welche Formulare brauche ich wirklich?</h2>
+
+  <p>Keine Angst vor der langen Formularliste bei Elster — du brauchst als §&nbsp;19 Kleinunternehmer einen überschaubaren Satz an Formularen:</p>
+
+  <div class="success-box">
+    <p><strong>Das Wichtigste vorweg:</strong> Wenn du deine Einnahmen und Ausgaben das Jahr über sauber in EÜR-App Pro erfasst hast, dauert das Ausfüllen aller relevanten EÜR-Formulare in WISO-Steuer oder Elster <strong>insgesamt etwa eine Stunde</strong> — beim ersten Mal etwas mehr wegen des Hauptvordrucks, ab dem zweiten Jahr oft deutlich weniger. Die Zahlen liegen fertig vor, du überträgst sie — das war's.</p>
+  </div>
+
+  <table>
+    <tr><th>Formular</th><th>Was ist das?</th><th>Wer braucht es?</th><th>Wie oft?</th><th>Aufwand</th></tr>
+    <tr><td><strong>Hauptvordruck (ESt 1A)</strong></td><td>Persönliche Daten, Bankverbindung, allgemeine Angaben</td><td>Alle</td><td>Einmalig vollständig — danach jährlich nur wenige geänderte Felder</td><td>Erstes Mal: 1–2 Std.<br>Ab Jahr 2: 10 Min.</td></tr>
+    <tr><td><strong>Anlage EÜR</strong></td><td>Einnahmen minus Ausgaben = Gewinn</td><td>Alle Selbstständigen</td><td>Jährlich</td><td>10–15 Min. (Zahlen aus EÜR-App Pro übertragen)</td></tr>
+    <tr><td><strong>Anlage AVEÜR</strong></td><td>Anlagevermögen (PC, Kamera, Fahrzeug …)</td><td>Wer Betriebsvermögen hat</td><td>Jährlich</td><td>15–30 Min.</td></tr>
+    <tr><td><strong>Anlage G</strong></td><td>Gewerbliche Einkünfte</td><td>Gewerbetreibende</td><td>Jährlich</td><td>10–15 Min.</td></tr>
+    <tr><td><strong>Anlage S</strong></td><td>Freiberufliche Einkünfte</td><td>Freiberufler</td><td>Jährlich</td><td>10–15 Min.</td></tr>
+    <tr><td><strong>Anlage Vorsorgeaufwand</strong></td><td>Kranken-, Renten-, Pflegeversicherung</td><td>Praktisch alle</td><td>Jährlich</td><td>15–20 Min. (Belege raussuchen)</td></tr>
+  </table>
+  <p style="font-size:0.85rem; color:#777799; margin-top:-0.5rem;">Zeitangaben sind Erfahrungswerte — individuell unterschiedlich je nach Vorkenntnissen und Datenlage.</p>
+
+  <div class="hint-box">
+    <p><strong>Der Hauptvordruck klingt einschüchternd — ist er aber nicht.</strong> Beim ersten Mal füllst du ihn einmalig vollständig aus. KI-Assistenten wie Google Gemini, ChatGPT oder Claude erklären dir genau, was in welches Feld gehört — völlig legal und sehr empfehlenswert. In den Folgejahren musst du nur noch wenige geänderte Werte aktualisieren (neue Bankverbindung, andere Adresse etc.).</p>
+  </div>
+
+  <p><strong>Je nach Lebenssituation kommen hinzu</strong> (WISO-Steuer fragt automatisch ab, ob diese relevant sind):</p>
+  <ul>
+    <li><strong>Anlage N</strong> — wenn du zusätzlich angestellt bist</li>
+    <li><strong>Anlage Kind</strong> — wenn du Kinder hast</li>
+    <li><strong>Anlage Haushaltsnahe Dienstleistungen</strong> — wenn zutreffend</li>
+  </ul>
+
+  <div class="success-box">
+    <p><strong>Dein entscheidender Vorteil als §&nbsp;19 Kleinunternehmer:</strong> Keine Umsatzsteuervoranmeldungen, keine Umsatzsteuerjahreserklärung. Das entfällt komplett — und macht deinen jährlichen Aufwand deutlich überschaubarer als bei umsatzsteuerpflichtigen Unternehmern.</p>
+  </div>
+
+  <p>Mehr zum Aufbau der EÜR: <a href="blog-eur-kleinunternehmer.html">EÜR für Kleinunternehmer 2026 →</a></p>
+
+
+  <h2 id="jahresablauf">3. Der Jahresablauf — Schritt für Schritt</h2>
+
+  <h3>Das ganze Jahr über (laufend)</h3>
+  <ul class="step-list">
+    <li>
+      <span class="step-num">1</span>
+      <span class="step-text"><strong>Einnahmen und Ausgaben erfassen</strong> — am besten zeitnah, nicht auf einen Schlag am Jahresende. EÜR-App Pro macht das in wenigen Minuten pro Woche.</span>
+    </li>
+    <li>
+      <span class="step-num">2</span>
+      <span class="step-text"><strong>Belege aufbewahren</strong> — digital oder in Papierform. Gesetzliche Aufbewahrungspflicht: <strong>10 Jahre</strong> für Buchungsbelege (§&nbsp;147 AO). Digitale Belege müssen unveränderbar gespeichert sein (GoBD).</span>
+    </li>
+    <li>
+      <span class="step-num">3</span>
+      <span class="step-text"><strong>Rechnungen korrekt ausstellen</strong> — ohne Umsatzsteuerausweis, mit §&nbsp;19-Pflichthinweis. EÜR-App Pro setzt diesen Hinweis automatisch auf jede Rechnung.</span>
+    </li>
+  </ul>
+
+  <h3>Zum Jahresende</h3>
+  <ul class="step-list">
+    <li>
+      <span class="step-num">4</span>
+      <span class="step-text"><strong>EÜR abschließen</strong> — EÜR-App Pro erstellt die Jahresübersicht auf Knopfdruck. Anlage EÜR und AVEÜR liegen damit vor.</span>
+    </li>
+    <li>
+      <span class="step-num">5</span>
+      <span class="step-text"><strong>Belege vollständig prüfen</strong> — sind alle Ausgaben des Jahres erfasst? Gerade Jahresrechnung für Internet, Software-Abos, Versicherungen prüfen.</span>
+    </li>
+  </ul>
+
+  <h3>Bis 31. Juli des Folgejahres</h3>
+  <ul class="step-list">
+    <li>
+      <span class="step-num">6</span>
+      <span class="step-text"><strong>WISO-Steuer starten</strong> — das Programm führt dich durch alle relevanten Formulare. Gewinnzahlen aus EÜR-App Pro einfach übertragen, Anlage EÜR einpflegen.</span>
+    </li>
+    <li>
+      <span class="step-num">7</span>
+      <span class="step-text"><strong>Hauptvordruck ausfüllen</strong> — beim ersten Mal mit KI-Unterstützung (Gemini, Claude, ChatGPT). Ab dem zweiten Jahr meist nur noch Kleinigkeiten anpassen.</span>
+    </li>
+    <li>
+      <span class="step-num">8</span>
+      <span class="step-text"><strong>Über Elster oder direkt aus WISO einreichen</strong> — fertig. Das war's.</span>
+    </li>
+  </ul>
+
+  <div class="hint-box">
+    <p><strong>Frist verpassen?</strong> Du kannst online direkt über Elster eine <strong>Fristverlängerung</strong> beantragen. Das geht mit einem speziellen digitalen Formular — allerdings nur mit plausiblem Grund (z.&nbsp;B. Krankheit, Elementarschäden). Manchmal hilft auch ein freundliches Telefonat mit dem zuständigen Sachbearbeiter beim Finanzamt, der kulanzhalber etwas mehr Zeit einräumen kann — eine rechtliche Garantie gibt es dafür nicht, aber es ist häufig möglich.</p>
+  </div>
+
+
+  <h2 id="tools">4. Das Werkzeugset — was du wirklich brauchst</h2>
+
+  <table>
+    <tr><th>Tool</th><th>Wofür?</th><th>Kosten</th></tr>
+    <tr>
+      <td><strong>EÜR-App Pro</strong></td>
+      <td>Laufende Buchführung, GoBD-konforme Rechnungen, automatische EÜR-Auswertung</td>
+      <td>6,99&nbsp;€/Monat</td>
+    </tr>
+    <tr>
+      <td><strong>Elster</strong> (kostenlos)</td>
+      <td>Elektronische Übermittlung der Steuererklärung ans Finanzamt</td>
+      <td>Kostenlos</td>
+    </tr>
+    <tr>
+      <td><strong>WISO-Steuer</strong></td>
+      <td>Geführte Einkommensteuererklärung — einfacher als Elster direkt</td>
+      <td>ca. 35&nbsp;€/Jahr</td>
+    </tr>
+    <tr>
+      <td><strong>KI-Assistent</strong><br><small>Google Gemini, Claude, ChatGPT</small></td>
+      <td>Formulare erklären lassen, Schritt-für-Schritt begleiten, Hauptvordruck ausfüllen</td>
+      <td>Kostenlos (Basis)</td>
+    </tr>
+  </table>
+
+  <div class="hint-box">
+    <p><strong>KI als hilfreicher Begleiter beim Ausfüllen der Formulare:</strong> KI-Assistenten wie Google Gemini (kostenlos), Claude oder ChatGPT kennen fast alle Elster-Formulare und können dir erklären, was in welches Feld gehört. Einfach die Frage stellen — „Was trage ich in Zeile 4 der Anlage EÜR ein?" — und du bekommst eine verständliche Antwort. Das nimmt die Angst vor dem Ausfüllen komplett weg. Steuerberater bieten natürlich wertvolle und kompetente Unterstützung — als §&nbsp;19 Kleinunternehmer mit überschaubaren Einnahmen und Ausgaben wirst du diese Expertise in den meisten Fällen aber schlicht nicht brauchen.</p>
+  </div>
+
+  <h3>Profi-Tipp: Formulare per Screenshot erklären lassen</h3>
+  <p>Du musst der KI gar nicht mühsam in Worten beschreiben, welches Feld dich verwirrt. Praktisch alle modernen KI-Assistenten können <strong>Bilder lesen</strong> — mach einfach einen Screenshot des betreffenden Formularbereichs, füge ihn ins Chat-Fenster ein und frag: <em>„Was gehört hier rein?"</em> Die KI sieht genau dasselbe wie du und gibt dir eine punktgenaue Antwort.</p>
+
+  <div class="hint-box">
+    <p><strong>Screenshot mit Auswahlrahmen — so geht's (Windows, kostenlos):</strong></p>
+    <ol style="margin-top: 0.5rem;">
+      <li>Tastenkombination <strong>Win&nbsp;+&nbsp;Shift&nbsp;+&nbsp;S</strong> drücken — der Bildschirm verdunkelt sich leicht</li>
+      <li>Mit der Maus den gewünschten Bereich aufziehen und loslassen</li>
+      <li>Der Screenshot liegt jetzt automatisch in der <strong>Zwischenablage</strong> — direkt mit <strong>Strg&nbsp;+&nbsp;V</strong> ins KI-Chatfenster einfügen (oder rechte Maustaste → <em>Einfügen</em>)</li>
+      <li>Wird der Screenshot auch als Datei benötigt: Ein kleines Benachrichtigungsfenster erscheint unten rechts — darauf klicken, um ihn im Snipping Tool zu öffnen und zu speichern. Gespeicherte Screenshots landen standardmäßig im Ordner <strong>Bilder → Screenshots</strong></li>
+    </ol>
+    <p style="margin-top: 0.7rem; margin-bottom: 0;">Tipp: Im Snipping Tool (nach dem Klick auf die Benachrichtigung) kannst du den Screenshot auch mit Pfeilen, Markierungen oder Text ergänzen — sehr nützlich, um der KI genau zu zeigen, worauf du hinweisen möchtest. Wer das regelmäßig macht und mehr Komfort möchte, findet im Netz spezialisierte Screenshot-Programme mit noch mehr Bearbeitungsmöglichkeiten.</p>
+  </div>
+
+
+  <h2 id="kosten">5. Selbst machen vs. Steuerberater — was kostet was?</h2>
+
+  <div class="cost-comparison">
+    <div class="cost-card self">
+      <div class="label">Selbst machen</div>
+      <div class="amount">ca. 155&nbsp;€</div>
+      <div class="sublabel">pro Jahr</div>
+      <div class="sublabel" style="margin-top: 0.7rem; font-size: 0.85rem;">
+        6,99&nbsp;€/Monat EÜR-App Pro (ca. 84&nbsp;€)<br>
+        + WISO-Steuer ca. 35&nbsp;€<br>
+        + KI-Assistent kostenlos
+      </div>
+    </div>
+    <div class="cost-card stb">
+      <div class="label">Steuerberater</div>
+      <div class="amount">500–900&nbsp;€</div>
+      <div class="sublabel">pro Jahr (typisch für Kleinunternehmer)</div>
+      <div class="sublabel" style="margin-top: 0.7rem; font-size: 0.85rem;">
+        Nach StBVV (Steuerberatervergütungsverordnung)<br>
+        je nach Umsatz und Aufwand<br>
+        Vollpakete mit Buchführung: bis 2.500&nbsp;€/Jahr
+      </div>
+    </div>
+  </div>
+
+  <p>Der Unterschied: <strong>bis zu 750&nbsp;€ pro Jahr</strong> — für einen Kleinunternehmer mit überschaubaren Einnahmen und Ausgaben eine erhebliche Summe.</p>
+
+  <p>Dazu kommt ein oft übersehener Vorteil: Wer seine eigene EÜR führt, versteht sein Geschäft besser — Einnahmen, Ausgaben, saisonale Schwankungen. Dieses Wissen bleibt dir als Mehrwert erhalten, egal ob du einen Steuerberater hast oder nicht.</p>
+
+
+  <h2 id="wann-stb">6. Wann lohnt sich trotzdem ein Steuerberater?</h2>
+
+  <p>Ehrliche Antwort — denn manchmal ist er sinnvoll:</p>
+  <ul>
+    <li>Wenn du neben der Selbstständigkeit <strong>Immobilieneinkünfte, Kapitalerträge</strong> oder andere komplexe Einkunftsarten hast</li>
+    <li>Wenn du <strong>kurz vor den Umsatzgrenzen</strong> des §&nbsp;19 bist und strategisch planen willst, ob ein Verbleib oder ein Wechsel zur Regelbesteuerung sinnvoller ist</li>
+    <li>Wenn du dir bei einer <strong>konkreten Einzelfrage</strong> unsicher bist — eine Einzelfrage beim Steuerberater ist deutlich günstiger als ein Jahresmandat</li>
+    <li>Wenn du eine <strong>GbR, UG oder GmbH</strong> betreibst — da steigt die Komplexität erheblich</li>
+    <li>Wenn du eine <strong>Betriebsprüfung</strong> erwartest oder Einspruch einlegen möchtest</li>
+  </ul>
+
+  <div class="hint-box">
+    <p>Tipp: Viele Steuerberater bieten auch Einzelstunden an, ohne dass du ein Jahresmandat abschließen musst. Für eine einmalige Überprüfung oder eine konkrete Frage kann das eine sinnvolle und günstige Option sein.</p>
+  </div>
+
+
+  <div class="cta-box">
+    <p><strong>Los geht's — mit dem richtigen Werkzeug:</strong><br>
+    EÜR-App Pro erledigt die laufende Buchführung GoBD-konform, erstellt deine EÜR-Auswertung auf Knopfdruck und setzt den §&nbsp;19-Pflichthinweis automatisch auf jede Rechnung. Der Rest ist WISO + Elster + ein bisschen KI.</p>
+    <a class="btn-primary" href="https://apps.microsoft.com/detail/9NS24636C74X" target="_blank" rel="noopener">EÜR-App Pro im Microsoft Store</a>
+  </div>
+
+  <h2 id="beispiel">7. Praxisbeispiel: Ein Jahr mit der Graphic-Designerin Klara Strich</h2>
+
+  <p>Genug Theorie — schauen wir uns an, wie das in der Praxis aussieht. Klara Strich ist freiberufliche Grafikdesignerin (<em>„Klara Strich Design"</em>), §&nbsp;19 UStG Kleinunternehmerin, arbeitet von zuhause aus und besucht ihre Kunden gelegentlich persönlich. Ein ganz normales Jahr.</p>
+
+  <h3>Klaras Einnahmen 2025</h3>
+  <p>Klara stellt ihren Kunden monatlich Honorare in Rechnung. Am Jahresende ergibt sich folgendes Bild:</p>
+
+  <table>
+    <tr><th>Datum</th><th>Kunde</th><th>Beschreibung</th><th style="text-align:right">Betrag</th></tr>
+    <tr><td>versch. Monate</td><td>Müller &amp; Partner GmbH</td><td>Corporate Design, Logo, Geschäftsdrucksachen</td><td style="text-align:right">6.400,00&nbsp;€</td></tr>
+    <tr><td>versch. Monate</td><td>Bäckerei Sonnenschein</td><td>Website-Grafik, Flyer, Social-Media-Vorlagen</td><td style="text-align:right">4.200,00&nbsp;€</td></tr>
+    <tr><td>versch. Monate</td><td>Verschiedene Kleinkunden</td><td>Einzelaufträge, Visitenkarten, Präsentationen</td><td style="text-align:right">3.800,00&nbsp;€</td></tr>
+    <tr><td>15.11.2025</td><td>Stadtmarketing Musterstadt</td><td>Broschüre Stadtfest (Barzahlung bei Übergabe)</td><td style="text-align:right">2.400,00&nbsp;€</td></tr>
+    <tr><td colspan="3"><strong>Gesamteinnahmen</strong></td><td style="text-align:right"><strong>16.800,00&nbsp;€</strong></td></tr>
+  </table>
+
+  <div class="hint-box">
+    <p><strong>Der Barzahlungs-Eintrag:</strong> Die 2.400&nbsp;€ vom Stadtmarketing hat Klara bar erhalten und direkt ins Kassenbuch der EÜR-App Pro eingetragen — dauert 30 Sekunden. Damit ist auch dieser Betrag GoBD-konform dokumentiert.</p>
+  </div>
+
+  <h3>Klaras Ausgaben 2025</h3>
+  <p>Im Laufe des Jahres hat Klara ihre Ausgaben direkt in EÜR-App Pro erfasst — jeden Beleg sofort nach Erhalt, damit am Jahresende nichts fehlt:</p>
+
+  <div class="hint-box">
+    <p><strong>Belege digital und sicher ablegen:</strong> EÜR-App Pro ermöglicht es, zu jeder Ausgabe direkt einen Beleg anzuhängen — als Foto (schnell mit dem Handy abgelichtet), Scan oder PDF. Alles landet GoBD-konform auf dem eigenen Rechner, ohne Cloud-Zwang. Klara fotografiert ihre Papierbelege einfach sofort nach dem Erhalt und wirft das Original danach in einen Ordner — die digitale Kopie in der App ist ihr eigentliches Archiv. Nie wieder Belege suchen.</p>
+  </div>
+
+  <table>
+    <tr><th>Kategorie</th><th>Details</th><th style="text-align:right">Betrag</th></tr>
+    <tr><td><strong>Software &amp; Abos</strong></td><td>Adobe Creative Cloud, EÜR-App Pro, Cloud-Backup</td><td style="text-align:right">520,00&nbsp;€</td></tr>
+    <tr><td><strong>Telekommunikation</strong></td><td>Internet (50&nbsp;% beruflich) + Mobiltelefon (50&nbsp;% beruflich)</td><td style="text-align:right">480,00&nbsp;€</td></tr>
+    <tr><td><strong>Homeoffice-Pauschale</strong></td><td>180 Arbeitstage × 6,00&nbsp;€ (gesetzliche Tagespauschale)</td><td style="text-align:right">1.080,00&nbsp;€</td></tr>
+    <tr><td><strong>Fahrtkosten</strong></td><td>1.200&nbsp;km Kundenbesuche × 0,30&nbsp;€ Kilometerpauschale</td><td style="text-align:right">360,00&nbsp;€</td></tr>
+    <tr><td><strong>Fortbildung</strong></td><td>Online-Kurs „UI/UX Design 2025"</td><td style="text-align:right">299,00&nbsp;€</td></tr>
+    <tr><td><strong>Büromaterial &amp; Arbeitsmittel</strong></td><td>Druckerpatronen, Papier, USB-Stick, Skizzenbuch</td><td style="text-align:right">145,00&nbsp;€</td></tr>
+    <tr><td><strong>Abschreibung Grafik-PC</strong></td><td>Anschaffung April 2025: 4.800,00&nbsp;€ · linear 3 Jahre · 9/12 Monate (Apr–Dez)</td><td style="text-align:right">1.200,00&nbsp;€</td></tr>
+    <tr><td colspan="2"><strong>Gesamtausgaben</strong></td><td style="text-align:right"><strong>4.084,00&nbsp;€</strong></td></tr>
+  </table>
+
+  <div class="hint-box">
+    <p><strong>Was es mit der Abschreibung auf sich hat:</strong> Klara hat 4.800&nbsp;€ für den PC bezahlt — aber sie darf diesen Betrag nicht auf einmal als Ausgabe absetzen. Wirtschaftsgüter über 800&nbsp;€ (netto; als Kleinunternehmerin ohne Vorsteuerabzug gilt der Bruttobetrag) müssen über ihre voraussichtliche Nutzungsdauer abgeschrieben werden. Bei einem PC sind das üblicherweise 3 Jahre. Da der Kauf im April war, zählen für 2025 nur 9 Monate: 4.800&nbsp;€ ÷ 3 Jahre ÷ 12 Monate × 9 Monate = <strong>1.200&nbsp;€ AfA 2025</strong>. In den Jahren 2026 und 2027 kommen jeweils weitere 1.600&nbsp;€ dazu. EÜR-App Pro berechnet und verwaltet das automatisch — Klara muss sich darum nicht selbst kümmern. Die Details landen in der <strong>Anlage AVEÜR</strong>.</p>
+  </div>
+
+  <h3>Klaras Ausgaben in den offiziellen EÜR-Kategorien</h3>
+  <p>Die Ausgaben müssen in der Anlage EÜR nach vorgegebenen Kategorien eingetragen werden — nicht einfach als freier Text. So sieht die Zuordnung bei Klara aus:</p>
+
+  <table>
+    <tr><th>Klaras Ausgabe</th><th>EÜR-Kategorie</th><th style="text-align:right">Betrag</th></tr>
+    <tr><td>Software &amp; Abos</td><td>Sonstige unbeschränkt abziehbare Betriebsausgaben</td><td style="text-align:right">520,00&nbsp;€</td></tr>
+    <tr><td>Telekommunikation</td><td>Aufwendungen für Telekommunikation</td><td style="text-align:right">480,00&nbsp;€</td></tr>
+    <tr><td>Homeoffice-Pauschale</td><td>Tagespauschale für häusliches Arbeitszimmer (§ 4 Abs. 5 Nr. 6c EStG)</td><td style="text-align:right">1.080,00&nbsp;€</td></tr>
+    <tr><td>Fahrtkosten (Kilometerpauschale)</td><td>Reisekosten bei Auswärtstätigkeit</td><td style="text-align:right">360,00&nbsp;€</td></tr>
+    <tr><td>Fortbildung</td><td>Fortbildungskosten</td><td style="text-align:right">299,00&nbsp;€</td></tr>
+    <tr><td>Büromaterial &amp; Arbeitsmittel</td><td>Sonstige unbeschränkt abziehbare Betriebsausgaben</td><td style="text-align:right">145,00&nbsp;€</td></tr>
+    <tr><td>Grafik-PC (Abschreibung 2025)</td><td>Absetzung für Abnutzung (AfA) — siehe Anlage AVEÜR</td><td style="text-align:right">1.200,00&nbsp;€</td></tr>
+    <tr><td colspan="2"><strong>Gesamtausgaben</strong></td><td style="text-align:right"><strong>4.084,00&nbsp;€</strong></td></tr>
+  </table>
+
+  <div class="hint-box">
+    <p><strong>Keine Angst vor den Kategorienamen:</strong> WISO-Steuer fragt im Interview-Stil ab und ordnet automatisch zu — Klara muss diese Begriffe nicht kennen. Wer direkt über ELSTER eingibt, findet die Kategorien als Dropdown-Auswahl; die integrierte Ausfüllhilfe von EÜR-App Pro erklärt dabei jeden Schritt.</p>
+  </div>
+
+  <h3>Die Anlage AVEÜR — Klaras Grafik-PC im Detail</h3>
+  <p>Für jedes abgeschriebene Wirtschaftsgut über 800&nbsp;€ wird die Anlage AVEÜR ausgefüllt. Klara trägt dort für ihren PC folgendes ein:</p>
+
+  <table>
+    <tr><th>Feld</th><th>Klaras Eingabe</th></tr>
+    <tr><td>Bezeichnung des Wirtschaftsguts</td><td>Grafik-PC</td></tr>
+    <tr><td>Anschaffungsdatum</td><td>15.04.2025</td></tr>
+    <tr><td>Anschaffungskosten</td><td>4.800,00&nbsp;€ (Bruttobetrag — als Kleinunternehmerin kein Vorsteuerabzug)</td></tr>
+    <tr><td>Nutzungsdauer</td><td>3 Jahre</td></tr>
+    <tr><td>AfA-Methode</td><td>Linear (gleichmäßig über die Nutzungsdauer)</td></tr>
+    <tr><td>AfA-Betrag 2025</td><td>1.200,00&nbsp;€ (9 von 12 Monaten: Apr–Dez)</td></tr>
+    <tr><td>Buchwert Ende 2025</td><td>3.600,00&nbsp;€ (verbleibt für 2026 und 2027)</td></tr>
+  </table>
+
+  <div class="hint-box">
+    <p><strong>EÜR-App Pro erledigt das automatisch:</strong> Klara trägt den PC einmalig mit Kaufdatum, Preis und Nutzungsdauer ein — die App berechnet den AfA-Betrag für jedes Jahr selbst und übernimmt den Wert direkt in die EÜR-Auswertung. In den Folgejahren 2026 und 2027 erscheinen automatisch die jeweiligen 1.600&nbsp;€ AfA, ohne dass Klara erneut etwas eingeben muss.</p>
+  </div>
+
+  <h3>Das Ergebnis — ein Knopfdruck in EÜR-App Pro</h3>
+  <p>Am Jahresende klickt Klara auf „EÜR-Auswertung" und bekommt sofort ihre Zusammenfassung:</p>
+
+  <div style="background:#0d1020; border:1px solid #333355; border-radius:8px; padding:1.4rem 1.8rem; margin:1rem 0; font-family:'Segoe UI',sans-serif;">
+    <div style="color:#9999bb; font-size:0.8rem; margin-bottom:0.8rem;">EÜR-App Pro · Klara Strich Design · Geschäftsjahr 2025</div>
+    <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #222244;">
+      <span style="color:#c8c8e0;">Betriebseinnahmen gesamt</span>
+      <span style="color:#e8e8f0; font-weight:bold;">16.800,00&nbsp;€</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #222244;">
+      <span style="color:#c8c8e0;">Betriebsausgaben gesamt</span>
+      <span style="color:#c8c8e0;">− 4.084,00&nbsp;€</span>
+    </div>
+    <div style="display:flex; justify-content:space-between; padding:0.8rem 0 0.3rem; margin-top:0.3rem; border-top:2px solid #e07b2a;">
+      <span style="color:#e07b2a; font-weight:bold; font-size:1.05rem;">Gewinn (Überschuss)</span>
+      <span style="color:#e07b2a; font-weight:bold; font-size:1.05rem;">12.716,00&nbsp;€</span>
+    </div>
+    <div style="color:#9999bb; font-size:0.8rem; margin-top:0.6rem;">Dieser Betrag fließt in die Anlage S (freiberufliche Einkünfte) der Einkommensteuererklärung.</div>
+  </div>
+
+  <div class="success-box">
+    <p><strong>Das war's — wirklich.</strong> Diese eine Zahl (12.716,00&nbsp;€) ist alles, was Klara für die Anlage EÜR und die Anlage S braucht. WISO-Steuer fragt die Detailkategorien ab und ordnet sie automatisch den richtigen Feldern zu. Klara muss keine einzige Zeilennummer kennen.</p>
+  </div>
+
+  <h3>Und jetzt? Die Zahlen ans Finanzamt — zwei Wege</h3>
+  <p>Klara hat ihre EÜR fertig. Der Gewinn steht fest: 12.716,00&nbsp;€. Jetzt muss dieser Betrag zusammen mit den übrigen Angaben als Einkommensteuererklärung ans Finanzamt. Dafür gibt es zwei Wege:</p>
+
+  <div style="display:flex; gap:1.2rem; margin:1.5rem 0; flex-wrap:wrap;">
+
+    <div style="flex:1; min-width:260px; background:#16213e; border:1px solid #333355; border-radius:8px; padding:1.3rem 1.5rem;">
+      <div style="color:#e07b2a; font-weight:bold; font-size:1rem; margin-bottom:0.8rem;">Weg 1 — Direkt über ELSTER</div>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;">Klara hat ihren ELSTER-Account bereits — den braucht jeder Kleinunternehmer schon zur Anmeldung des Betriebs, also vor der allerersten Rechnung. Kein Extra-Schritt.</p>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;">In „Mein ELSTER" füllt sie die Formulare direkt aus: Hauptvordruck, Anlage EÜR, Anlage AVEÜR und Anlage S. Die Zahlen kommen aus EÜR-App Pro — einfach übertragen.</p>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;"><strong style="color:#e8e8f0;">Nicht alleine:</strong> EÜR-App Pro begleitet Klara mit einer integrierten <a href="anlage-s-g-ausfuellhilfe.html">Ausfüllhilfe</a>, die Schritt für Schritt erklärt, welche Zahl wohin gehört. So ist Weg 1 auch für Einsteiger machbar.</p>
+      <div style="margin-top:1rem;">
+        <a href="ratgeber-elster-start.html" style="display:inline-block; background:#e07b2a; color:white; padding:8px 16px; border-radius:6px; font-size:0.85rem; font-weight:bold; text-decoration:none;">→ Schritt-für-Schritt-Anleitung für ELSTER</a>
+      </div>
+      <div style="font-size:0.85rem; color:#9999bb; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid #333355;">
+        ✓ Kostenlos &nbsp;·&nbsp; ✓ Direkt &nbsp;·&nbsp; Erfordert etwas Einarbeitung
+      </div>
+    </div>
+
+    <div style="flex:1; min-width:260px; background:#16213e; border:1px solid #333355; border-radius:8px; padding:1.3rem 1.5rem;">
+      <div style="color:#e07b2a; font-weight:bold; font-size:1rem; margin-bottom:0.8rem;">Weg 2 — Mit einer Steuersoftware</div>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;">Viele Steuerprogramme (z.&nbsp;B. WISO-Steuer, Taxfix, Smartsteuer) führen im Interview-Stil durch alle Fragen — kein Formular kennen, kein Feld suchen. Das Programm fragt, Klara antwortet, die Software ordnet automatisch zu.</p>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;">Gute Einkommensteuer-Software berücksichtigt dabei alle relevanten Anlagen für Selbständige — EÜR, AVEÜR, Anlage S und Anlage G — und übermittelt am Ende alles in einem Schritt über ELSTER ans Finanzamt.</p>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;"><strong style="color:#e8e8f0;">EÜR-App Pro macht die Vorarbeit:</strong> Alle Werte, die ins Steuerprogramm eingetragen werden müssen — Gewinn, Betriebsausgaben, AfA-Beträge — hat EÜR-App Pro bereits fertig berechnet und übersichtlich aufbereitet. Einfach ablesen und übertragen, fertig.</p>
+      <p style="font-size:0.9rem; color:#c8c8e0; margin-bottom:0.7rem;"><strong style="color:#e8e8f0;">Für Einsteiger komfortabler:</strong> Wer zum ersten Mal selbst einreicht, wird von einer Steuersoftware gut durch den Prozess geführt.</p>
+      <div style="font-size:0.85rem; color:#9999bb; margin-top:0.8rem; padding-top:0.8rem; border-top:1px solid #333355;">
+        ✓ Geführt &nbsp;·&nbsp; ✓ Anfängerfreundlich &nbsp;·&nbsp; ca. 35–50&nbsp;€/Jahr
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:0.9rem; color:#9999bb;">Und wer doch lieber zum Steuerberater geht: Auch hier zahlt sich EÜR-App Pro aus — alle Zahlen liegen fertig aufbereitet vor, der Steuerberater braucht weniger Zeit, und das spart bares Geld.</p>
+
+  <p><strong>Weiterlesen:</strong>
+    <a href="blog-eur-kleinunternehmer.html">EÜR für Kleinunternehmer 2026</a> &nbsp;·&nbsp;
+    <a href="blog-kleinunternehmerregelung.html">Kleinunternehmerregelung §&nbsp;19 UStG</a> &nbsp;·&nbsp;
+    <a href="blog-rechnung-schreiben.html">Rechnung richtig schreiben</a> &nbsp;·&nbsp;
+    <a href="blog-gobd-buchfuehrung.html">GoBD-konforme Buchführung</a>
+  </p>
+
+  <p class="legal">
+    Dieser Ratgeber dient der allgemeinen Information und stellt keine individuelle Steuerberatung dar.
+    Alle Angaben ohne Gewähr. Steuerliche Regelungen können sich jährlich ändern — prüfe im Zweifelsfall aktuelle
+    Informationen beim Bundeszentralamt für Steuern oder beim zuständigen Finanzamt. Bei steuerlichen Fragen
+    im Einzelfall empfehlen wir die Konsultation eines zugelassenen Steuerberaters.
+  </p>
+
+  <div class="center">
+    <a href="index.html" class="back-button">← Zurück zur Startseite</a>
+  </div>
+
+  <footer style="margin-top:4rem; padding-top:1.5rem; border-top:1px solid #333355; text-align:center; font-size:0.8rem; color:#666688;">
+    <a href="index.html" style="color:#666688;">EÜR-App Pro</a> &nbsp;·&nbsp;
+    <a href="impressum.html" style="color:#666688;">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html" style="color:#666688;">Datenschutzerklärung</a> &nbsp;·&nbsp;
+    <a href="agb.html" style="color:#666688;">AGB</a> &nbsp;·&nbsp;
+    <a href="widerruf.html" style="color:#666688;">Widerruf</a>
+  </footer>
+
+    </main>
+  </div><!-- end page-wrapper -->
+
+</body>
+</html>

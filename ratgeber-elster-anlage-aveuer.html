@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anlage AVEÜR ausfüllen – AfA für den Grafik-PC</title>
+  <meta name="description" content="So trägt Klara Strich den Grafik-PC in die Anlage AVEÜR ein — Anschaffungskosten, Nutzungsdauer, lineare AfA und automatische Übernahme in die EÜR.">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e8e8f0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 1120px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    h1 { color: #e07b2a; font-size: 1.7rem; margin-bottom: 0.3rem; text-align: center; }
+    h2 { color: #e07b2a; font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.6rem; border-bottom: 1px solid #333355; padding-bottom: 0.3rem; }
+    p { color: #c8c8e0; margin-bottom: 0.9rem; font-size: 0.98rem; }
+    ul { color: #c8c8e0; margin: 0.5rem 0 0.9rem 1.5rem; font-size: 0.98rem; }
+    ul li { margin-bottom: 0.4rem; }
+    a { color: #e07b2a; }
+    a:hover { color: #f0a050; }
+    .meta { color: #9999bb; font-size: 0.85rem; text-align: center; margin-bottom: 2rem; }
+    .breadcrumb { color: #9999bb; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #9999bb; }
+    .breadcrumb a:hover { color: #e07b2a; }
+
+    .hint-box {
+      background: #16213e; border: 1px solid #333355;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .hint-box p:last-child { margin-bottom: 0; }
+    .success-box {
+      background: #0d1f0d; border: 1px solid #2d7a2d;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .success-box p { color: #90d090; margin-bottom: 0.5rem; }
+    .success-box p:last-child { margin-bottom: 0; }
+
+    .step-header { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 0.6rem; }
+    .step-badge {
+      background: #e07b2a; color: white; border-radius: 50%;
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 1rem;
+    }
+    .step-title { color: #e8e8f0; font-weight: bold; font-size: 1.05rem; }
+    .callout {
+      background: #e07b2a; color: white; border-radius: 6px;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: bold;
+      display: inline-block; margin: 6px 0;
+    }
+    .callout::before { content: "▶ "; }
+
+    /* Browser Mockup */
+    .browser-mockup {
+      background: #f0f0f0; border-radius: 10px; overflow: hidden;
+      margin: 1rem 0 1.2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .browser-bar {
+      background: #e0e0e0; padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .browser-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .browser-dot.red   { background: #ff5f57; }
+    .browser-dot.yellow{ background: #febc2e; }
+    .browser-dot.green { background: #28c840; }
+    .browser-url {
+      flex: 1; background: white; border-radius: 4px;
+      padding: 3px 10px; font-size: 0.82rem; color: #444;
+      font-family: monospace; margin-left: 8px;
+    }
+    .browser-content { background: white; }
+
+    /* ELSTER echtes Design */
+    .elster-header {
+      background: white; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #8dc63f;
+    }
+    .elster-logo {
+      color: #8dc63f; font-weight: 900; font-size: 1.4rem;
+      letter-spacing: 2px; font-family: Arial Black, Arial, sans-serif;
+    }
+    .elster-tagline { color: #666; font-size: 0.78rem; margin-left: 8px; }
+    .elster-user { color: #1a7ab5; font-size: 0.8rem; }
+    .elster-phases {
+      display: flex; background: #555; border-bottom: 3px solid #8dc63f;
+    }
+    .elster-phase {
+      padding: 7px 14px; font-size: 0.74rem; color: #ccc;
+      display: flex; align-items: center; gap: 5px;
+      border-right: 1px solid #666; line-height: 1.3;
+    }
+    .elster-phase.active { background: #444; color: white; font-weight: bold; }
+
+    .elster-layout { display: flex; min-height: 180px; }
+    .elster-sidebar {
+      width: 175px; background: #f5f5f5;
+      border-right: 1px solid #ddd; padding: 8px 0; flex-shrink: 0;
+    }
+    .elster-sidebar-section {
+      padding: 6px 14px 3px; font-size: 0.72rem;
+      color: #999; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .elster-sidebar-item {
+      padding: 7px 14px; font-size: 0.78rem; color: #1a7ab5; cursor: default;
+    }
+    .elster-sidebar-item.active {
+      background: white; border-left: 3px solid #e07b2a;
+      font-weight: bold; color: #333;
+    }
+    .elster-sidebar-item.done { color: #2d7a2d; }
+    .elster-sidebar-item.inactive { color: #aaa; }
+    .elster-body { padding: 16px 20px; background: white; flex: 1; }
+    .elster-body-plain { padding: 16px 20px; background: white; }
+    .elster-form-title {
+      color: #333; font-weight: bold; font-size: 0.95rem;
+      margin-bottom: 14px; padding-bottom: 6px;
+      border-bottom: 2px solid #8dc63f;
+    }
+
+    /* Formularfelder */
+    .form-row {
+      display: flex; align-items: flex-start;
+      gap: 10px; margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .form-label {
+      color: #444; font-size: 0.78rem;
+      min-width: 200px; flex-shrink: 0; padding-top: 4px;
+    }
+    .form-label .zeile { color: #888; font-size: 0.7rem; display: block; }
+    .form-input {
+      border: 1px solid #bbb; border-radius: 3px;
+      padding: 4px 8px; font-size: 0.82rem; color: #333;
+      background: white; min-width: 140px;
+    }
+    .form-input.filled {
+      background: #fffbe6; border-color: #e07b2a;
+      font-weight: bold; color: #003366;
+    }
+    .form-input.auto {
+      background: #e8f4e8; border-color: #5cb85c;
+      font-weight: bold; color: #1a5c1a;
+    }
+    .form-input.skip {
+      background: #f0f0f0; border-color: #ddd;
+      color: #aaa; font-style: italic;
+    }
+    .form-note { font-size: 0.72rem; color: #888; padding-top: 4px; }
+
+    /* Legende */
+    .legende {
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+      margin: 0.8rem 0 1.2rem; font-size: 0.82rem; color: #9999bb;
+    }
+    .legende-item { display: flex; align-items: center; gap: 6px; }
+    .legende-box {
+      width: 20px; height: 14px; border-radius: 2px;
+      border: 1px solid #888; flex-shrink: 0;
+    }
+    .legende-box.filled { background: #fffbe6; border-color: #e07b2a; }
+    .legende-box.auto   { background: #e8f4e8; border-color: #5cb85c; }
+    .legende-box.skip   { background: #f0f0f0; border-color: #ddd; }
+
+    /* AfA-Rechner-Box */
+    .afa-box {
+      background: #0f1a2e; border: 2px solid #e07b2a;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .afa-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .afa-table th { color: #9999bb; text-align: left; padding: 5px 8px; font-weight: normal; font-size: 0.78rem; border-bottom: 1px solid #333355; }
+    .afa-table td { padding: 6px 8px; color: #c8c8e0; }
+    .afa-table td.betrag { text-align: right; font-family: monospace; color: #e07b2a; font-weight: bold; }
+    .afa-table tr.highlight td { color: #90d090; }
+    .afa-table tr.total td { border-top: 1px solid #333355; font-weight: bold; }
+
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid #333355; flex-wrap: wrap; gap: 0.8rem;
+    }
+    .nav-btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: bold; text-decoration: none; font-size: 0.9rem;
+    }
+    .nav-btn.back { background: #333355; color: #e8e8f0; }
+    .nav-btn.next { background: #e07b2a; color: white; }
+    .nav-btn:hover { opacity: 0.85; }
+    /* SIDEBAR LAYOUT */
+    .page-wrapper { display: flex; gap: 2rem; align-items: flex-start; }
+    .ratgeber-sidebar { width: 210px; flex-shrink: 0; position: sticky; top: 24px; background: #16213e; border: 1px solid #333355; border-radius: 10px; padding: 1rem 0; }
+    .ratgeber-main { flex: 1; min-width: 0; }
+    .sb-section { padding: 6px 16px 3px; font-size: 0.7rem; color: #666688; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 8px; }
+    .sb-section:first-child { margin-top: 0; }
+    .sb-link { display: block; padding: 6px 16px; font-size: 0.82rem; color: #9999bb; text-decoration: none; border-left: 3px solid transparent; line-height: 1.35; }
+    .sb-link:hover { color: #e07b2a; background: #1e2a48; }
+    .sb-link.active { color: #e07b2a; border-left-color: #e07b2a; background: #1e2a48; font-weight: bold; }
+    .sb-divider { border: none; border-top: 1px solid #333355; margin: 8px 0; }
+    @media (max-width: 780px) { .page-wrapper { flex-direction: column; } .ratgeber-sidebar { width: 100%; position: static; } }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <aside class="ratgeber-sidebar">
+      <div class="sb-section">Ratgeber</div>
+      <a class="sb-link" href="ratgeber.html">← Übersicht</a>
+      <hr class="sb-divider">
+      <div class="sb-section">ELSTER – Schritt für Schritt</div>
+      <a class="sb-link" href="ratgeber-elster-start.html">① Navigation &amp; Login</a>
+      <a class="sb-link" href="ratgeber-elster-mantelbogen.html">② Hauptvordruck</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-eur.html">③ Anlage EÜR</a>
+      <a class="sb-link active" href="ratgeber-elster-anlage-aveuer.html">④ Anlage AVEÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-s.html">⑤ Anlage S</a>
+      <a class="sb-link" href="ratgeber-elster-abschicken.html">⑥ Prüfen &amp; Versenden</a>
+    </aside>
+    <main class="ratgeber-main">
+
+  <p class="breadcrumb">
+    <a href="ratgeber.html">← Ratgeber</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-start.html">ELSTER Navigation</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-mantelbogen.html">Hauptvordruck</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-anlage-eur.html">Anlage EÜR</a> &nbsp;›&nbsp;
+    Anlage AVEÜR
+  </p>
+
+  <h1>Die Anlage AVEÜR ausfüllen</h1>
+  <p class="meta">Praxisbeispiel mit Klara Strich · Steuerjahr 2025</p>
+
+  <p>Die Anlage AVEÜR ist das <strong>Anlagenverzeichnis</strong> — hier werden alle Wirtschaftsgüter eingetragen, die über mehrere Jahre abgeschrieben werden. Für Klara gibt es genau ein solches Wirtschaftsgut: ihren <strong>Grafik-PC</strong>, den sie im April 2025 für 4.800 € angeschafft hat.</p>
+  <p>Hat Klara die AVEÜR fertig ausgefüllt, übernimmt ELSTER den AfA-Betrag (1.200 €) <strong>automatisch</strong> in Zeile 33 der Anlage EÜR — sie muss ihn nicht nochmal eintippen.</p>
+
+  <div class="legende">
+    <div class="legende-item"><div class="legende-box filled"></div> Klara trägt diesen Wert ein</div>
+    <div class="legende-item"><div class="legende-box auto"></div> ELSTER berechnet / übernimmt automatisch</div>
+    <div class="legende-item"><div class="legende-box skip"></div> Leer lassen / nicht relevant</div>
+  </div>
+
+  <!-- Schritt 1: Was ist AfA? -->
+  <div class="step-header">
+    <div class="step-badge">1</div>
+    <div class="step-title">Kurz erklärt: Was ist AfA?</div>
+  </div>
+  <p>Ein teures Arbeitsmittel — zum Beispiel ein Computer für 4.800 € — darf man steuerlich nicht im Kaufjahr komplett als Ausgabe abziehen. Stattdessen wird der Kaufpreis auf die <strong>Nutzungsdauer</strong> aufgeteilt. Das nennt sich <strong>Absetzung für Abnutzung (AfA)</strong>.</p>
+
+  <div class="afa-box">
+    <table class="afa-table">
+      <tr><th>Wirtschaftsgut</th><th>Kaufpreis</th><th>Nutzungsdauer</th><th>AfA pro Jahr</th><th>2025 (9 Monate)</th></tr>
+      <tr class="highlight">
+        <td>Grafik-PC</td>
+        <td>4.800,00 €</td>
+        <td>3 Jahre</td>
+        <td>1.600,00 €</td>
+        <td class="betrag">1.200,00 €</td>
+      </tr>
+    </table>
+    <p style="color:#9999bb; font-size:0.8rem; margin-top:0.8rem; margin-bottom:0;">
+      Formel: 4.800 € ÷ 3 Jahre = 1.600 € pro Jahr. Da der PC erst im April 2025 gekauft wurde, zählen nur 9 Monate (April–Dezember): 1.600 € × 9/12 = <strong style="color:#e07b2a;">1.200 €</strong>
+    </p>
+  </div>
+
+  <div class="hint-box">
+    <p><strong>Nutzungsdauer: Woher weiß ich, wie lange?</strong> Das Bundesfinanzministerium veröffentlicht amtliche AfA-Tabellen mit den anerkannten Nutzungsdauern. Für Computer gilt laut AfA-Tabelle: <strong>3 Jahre</strong>. Smartphones ebenfalls 3 Jahre. Möbel 13 Jahre, Pkw 6 Jahre — und so weiter. Die EÜR-App Pro kennt die gängigen Werte bereits.</p>
+  </div>
+
+  <!-- Schritt 2: Wirtschaftsgut eintragen -->
+  <div class="step-header">
+    <div class="step-badge">2</div>
+    <div class="step-title">Den Grafik-PC in die AVEÜR eintragen</div>
+  </div>
+  <p>In der Anlage AVEÜR gibt es verschiedene Abschnitte je nach Art des Wirtschaftsguts. Klara wählt den Abschnitt <strong>„Bewegliche Wirtschaftsgüter"</strong> — dort gehören Computer, Geräte und Maschinen hin.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage AVEÜR 2025 · Bewegliche Wirtschaftsgüter</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Anlage AVEÜR</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.72rem;">1 – Grundstücke</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.72rem;">2 – Häusl. Arbeitszimmer</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.72rem;">3 – Immaterielle WG</div>
+          <div class="elster-sidebar-item active" style="font-size:0.72rem;">4 – Bewegliche WG</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.72rem;">5 – Sammelposten</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.72rem;">6 – Finanzanlagen</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.72rem;">7 – Umlaufvermögen</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Bewegliche Wirtschaftsgüter (ohne Kfz)</div>
+
+          <div style="font-size:0.75rem; color:#555; margin-bottom:10px;">Klara klickt auf <strong style="color:#1a7ab5;">„+ Weiteres Wirtschaftsgut hinzufügen"</strong> und füllt dann folgende Felder aus:</div>
+
+          <div class="form-row">
+            <div class="form-label">Bezeichnung des Wirtschaftsguts</div>
+            <input class="form-input filled" readonly value="Grafik-PC (Apple Mac Studio)" style="min-width:200px;">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Anschaffungs- / Herstellungskosten</div>
+            <input class="form-input filled" readonly value="4.800,00 €">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Anschaffungsdatum</div>
+            <input class="form-input filled" readonly value="01.04.2025">
+            <div class="form-note">Kaufdatum laut Rechnung</div>
+          </div>
+          <div class="form-row">
+            <div class="form-label">Nutzungsdauer (Jahre)</div>
+            <input class="form-input filled" readonly value="3">
+            <div class="form-note">Laut amtl. AfA-Tabelle für Computer</div>
+          </div>
+          <div class="form-row">
+            <div class="form-label">AfA-Methode</div>
+            <input class="form-input filled" readonly value="Linear (gleichmäßig)">
+            <div class="form-note">Standardfall für die meisten Wirtschaftsgüter</div>
+          </div>
+          <div style="border-top:1px solid #eee; margin-top:10px; padding-top:10px;">
+            <div class="form-row">
+              <div class="form-label" style="font-weight:bold;">AfA-Betrag 2025<span class="zeile">ELSTER berechnet — Zeile 44 (Einzelwert)</span></div>
+              <input class="form-input auto" readonly value="1.200,00 €">
+            </div>
+            <div class="form-row">
+              <div class="form-label">Restbuchwert 31.12.2025</div>
+              <input class="form-input auto" readonly value="3.600,00 €">
+              <div class="form-note">4.800 € − 1.200 € = 3.600 €</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Bezeichnung, Kaufpreis, Kaufdatum und Nutzungsdauer eintragen — ELSTER rechnet den Rest</div>
+
+  <!-- Schritt 3: Übertrag in die EÜR -->
+  <div class="step-header">
+    <div class="step-badge">3</div>
+    <div class="step-title">Automatischer Übertrag in die Anlage EÜR</div>
+  </div>
+  <p>Sobald die AVEÜR gespeichert ist, erscheint der AfA-Betrag <strong>automatisch</strong> in der Anlage EÜR unter den Betriebsausgaben. Klara muss nichts weiter tun — ELSTER verknüpft beide Formulare.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage EÜR 2025 · 4 – 2. Betriebsausgaben</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-body-plain" style="padding: 14px 20px;">
+        <div class="elster-form-title">Betriebsausgaben — Auszug AfA</div>
+        <div style="font-size:0.76rem; color:#555; font-weight:bold; background:#e8f0e8; padding:4px 8px; margin-bottom:10px; border-radius:3px;">Absetzungen für Abnutzung</div>
+        <div class="form-row">
+          <div class="form-label" style="color:#666;">AfA auf Grundstücke und Gebäude<span class="zeile">Zeile 31 — aus AVEÜR Zeile 22</span></div>
+          <input class="form-input skip" readonly value="0,00 €">
+        </div>
+        <div class="form-row">
+          <div class="form-label" style="color:#666;">AfA auf immaterielle Wirtschaftsgüter<span class="zeile">Zeile 32 — aus AVEÜR Zeile 37</span></div>
+          <input class="form-input skip" readonly value="0,00 €">
+        </div>
+        <div class="form-row">
+          <div class="form-label" style="font-weight:bold; color:#333;">AfA auf bewegliche Wirtschaftsgüter<span class="zeile">Zeile 33 — aus AVEÜR Zeile 63 ← automatisch!</span></div>
+          <input class="form-input auto" readonly value="1.200,00 €">
+        </div>
+        <div style="font-size:0.75rem; color:#2d7a2d; margin-top:4px; padding: 6px 10px; background:#f0fff0; border-radius:4px; border:1px solid #b0ddb0;">
+          ✓ Dieser Wert wurde automatisch aus der Anlage AVEÜR übernommen.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="success-box">
+    <p><strong>Anlage AVEÜR fertig!</strong> Der Grafik-PC ist korrekt erfasst. ELSTER trägt den AfA-Betrag von 1.200 € selbstständig in die EÜR ein — Klara muss nichts doppelt eintippen.</p>
+    <p>Damit ist auch die <strong>Anlage EÜR vollständig</strong>: Einnahmen, alle Betriebsausgaben und die AfA sind erfasst. ELSTER kann jetzt den Gewinn von 12.716 € berechnen und in die Anlage S der Einkommensteuererklärung übertragen.</p>
+  </div>
+
+  <div class="hint-box">
+    <p><strong>Was passiert in den Folgejahren?</strong> Der Grafik-PC wird auch in 2026 und 2027 abgeschrieben — jeweils 1.600 € pro Jahr (volle 12 Monate). Das Anlagenverzeichnis muss dann einfach <em>fortgeführt</em> werden: ELSTER zeigt den Restbuchwert aus dem Vorjahr, und Klara bestätigt, dass das Wirtschaftsgut noch vorhanden ist. Das dauert nur wenige Sekunden.</p>
+  </div>
+
+  <div class="page-nav">
+    <a href="ratgeber-elster-anlage-eur.html" class="nav-btn back">← Anlage EÜR</a>
+    <a href="ratgeber-elster-anlage-s.html" class="nav-btn next">Weiter: Anlage S →</a>
+  </div>
+
+  <footer style="margin-top:4rem; padding-top:1.5rem; border-top:1px solid #333355; text-align:center; font-size:0.8rem; color:#666688;">
+    <a href="index.html" style="color:#666688;">EÜR-App Pro</a> &nbsp;·&nbsp;
+    <a href="impressum.html" style="color:#666688;">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html" style="color:#666688;">Datenschutzerklärung</a> &nbsp;·&nbsp;
+    <a href="agb.html" style="color:#666688;">AGB</a> &nbsp;·&nbsp;
+    <a href="widerruf.html" style="color:#666688;">Widerruf</a>
+  </footer>
+
+    </main>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steuererklärung prüfen und abschicken – ELSTER</title>
+  <meta name="description" content="Der letzte Schritt: So prüft Klara ihre Steuererklärung in ELSTER und schickt sie sicher ans Finanzamt.">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e8e8f0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 1120px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    h1 { color: #e07b2a; font-size: 1.7rem; margin-bottom: 0.3rem; text-align: center; }
+    p { color: #c8c8e0; margin-bottom: 0.9rem; font-size: 0.98rem; }
+    ul { color: #c8c8e0; margin: 0.5rem 0 0.9rem 1.5rem; font-size: 0.98rem; }
+    ul li { margin-bottom: 0.4rem; }
+    a { color: #e07b2a; }
+    a:hover { color: #f0a050; }
+    .meta { color: #9999bb; font-size: 0.85rem; text-align: center; margin-bottom: 2rem; }
+    .breadcrumb { color: #9999bb; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #9999bb; }
+    .breadcrumb a:hover { color: #e07b2a; }
+
+    .hint-box {
+      background: #16213e; border: 1px solid #333355;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .hint-box p:last-child { margin-bottom: 0; }
+    .success-box {
+      background: #0d1f0d; border: 1px solid #2d7a2d;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .success-box p { color: #90d090; margin-bottom: 0.5rem; }
+    .success-box p:last-child { margin-bottom: 0; }
+
+    .step-header { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 0.6rem; }
+    .step-badge {
+      background: #e07b2a; color: white; border-radius: 50%;
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 1rem;
+    }
+    .step-title { color: #e8e8f0; font-weight: bold; font-size: 1.05rem; }
+    .callout {
+      background: #e07b2a; color: white; border-radius: 6px;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: bold;
+      display: inline-block; margin: 6px 0;
+    }
+    .callout::before { content: "▶ "; }
+    .callout.green {
+      background: #2d7a2d;
+    }
+
+    /* Browser Mockup */
+    .browser-mockup {
+      background: #f0f0f0; border-radius: 10px; overflow: hidden;
+      margin: 1rem 0 1.2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .browser-bar {
+      background: #e0e0e0; padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .browser-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .browser-dot.red   { background: #ff5f57; }
+    .browser-dot.yellow{ background: #febc2e; }
+    .browser-dot.green { background: #28c840; }
+    .browser-url {
+      flex: 1; background: white; border-radius: 4px;
+      padding: 3px 10px; font-size: 0.82rem; color: #444;
+      font-family: monospace; margin-left: 8px;
+    }
+    .browser-content { background: white; }
+
+    /* ELSTER Design */
+    .elster-header {
+      background: white; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #8dc63f;
+    }
+    .elster-logo {
+      color: #8dc63f; font-weight: 900; font-size: 1.4rem;
+      letter-spacing: 2px; font-family: Arial Black, Arial, sans-serif;
+    }
+    .elster-tagline { color: #666; font-size: 0.78rem; margin-left: 8px; }
+    .elster-user { color: #1a7ab5; font-size: 0.8rem; }
+    .elster-phases {
+      display: flex; background: #555; border-bottom: 3px solid #8dc63f;
+    }
+    .elster-phase {
+      padding: 7px 14px; font-size: 0.74rem; color: #ccc;
+      display: flex; align-items: center; gap: 5px;
+      border-right: 1px solid #666; line-height: 1.3;
+    }
+    .elster-phase.active { background: #444; color: white; font-weight: bold; }
+    .elster-phase.done { color: #8dc63f; }
+
+    .elster-body-plain { padding: 16px 20px; background: white; }
+    .elster-form-title {
+      color: #333; font-weight: bold; font-size: 0.95rem;
+      margin-bottom: 14px; padding-bottom: 6px;
+      border-bottom: 2px solid #8dc63f;
+    }
+
+    /* Checkliste */
+    .checklist { list-style: none; margin: 0.5rem 0 1rem; padding: 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid #222244;
+      font-size: 0.92rem; color: #c8c8e0;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li .check { color: #8dc63f; font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* Fehler-Beispiel */
+    .fehler-box {
+      background: #1f0d0d; border: 1px solid #7a2d2d;
+      border-radius: 6px; padding: 10px 14px; margin: 8px 0;
+      font-size: 0.84rem;
+    }
+    .fehler-box .fehler-titel { color: #f09090; font-weight: bold; margin-bottom: 4px; }
+    .fehler-box .fehler-text { color: #c89090; }
+    .fehler-box .fehler-loesung { color: #90d090; margin-top: 6px; font-size: 0.8rem; }
+
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid #333355; flex-wrap: wrap; gap: 0.8rem;
+    }
+    .nav-btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: bold; text-decoration: none; font-size: 0.9rem;
+    }
+    .nav-btn.back { background: #333355; color: #e8e8f0; }
+    .nav-btn.ratgeber { background: #2d7a2d; color: white; }
+    .nav-btn:hover { opacity: 0.85; }
+    /* SIDEBAR LAYOUT */
+    .page-wrapper { display: flex; gap: 2rem; align-items: flex-start; }
+    .ratgeber-sidebar { width: 210px; flex-shrink: 0; position: sticky; top: 24px; background: #16213e; border: 1px solid #333355; border-radius: 10px; padding: 1rem 0; }
+    .ratgeber-main { flex: 1; min-width: 0; }
+    .sb-section { padding: 6px 16px 3px; font-size: 0.7rem; color: #666688; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 8px; }
+    .sb-section:first-child { margin-top: 0; }
+    .sb-link { display: block; padding: 6px 16px; font-size: 0.82rem; color: #9999bb; text-decoration: none; border-left: 3px solid transparent; line-height: 1.35; }
+    .sb-link:hover { color: #e07b2a; background: #1e2a48; }
+    .sb-link.active { color: #e07b2a; border-left-color: #e07b2a; background: #1e2a48; font-weight: bold; }
+    .sb-divider { border: none; border-top: 1px solid #333355; margin: 8px 0; }
+    @media (max-width: 780px) { .page-wrapper { flex-direction: column; } .ratgeber-sidebar { width: 100%; position: static; } }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <aside class="ratgeber-sidebar">
+      <div class="sb-section">Ratgeber</div>
+      <a class="sb-link" href="ratgeber.html">← Übersicht</a>
+      <hr class="sb-divider">
+      <div class="sb-section">ELSTER – Schritt für Schritt</div>
+      <a class="sb-link" href="ratgeber-elster-start.html">① Navigation &amp; Login</a>
+      <a class="sb-link" href="ratgeber-elster-mantelbogen.html">② Hauptvordruck</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-eur.html">③ Anlage EÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-aveuer.html">④ Anlage AVEÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-s.html">⑤ Anlage S</a>
+      <a class="sb-link active" href="ratgeber-elster-abschicken.html">⑥ Prüfen &amp; Versenden</a>
+    </aside>
+    <main class="ratgeber-main">
+
+  <p class="breadcrumb">
+    <a href="ratgeber.html">← Ratgeber</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-start.html">ELSTER Navigation</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-mantelbogen.html">Hauptvordruck</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-anlage-eur.html">Anlage EÜR</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-anlage-aveuer.html">Anlage AVEÜR</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-anlage-s.html">Anlage S</a> &nbsp;›&nbsp;
+    Prüfen &amp; Versenden
+  </p>
+
+  <h1>Prüfen &amp; Versenden</h1>
+  <p class="meta">Praxisbeispiel mit Klara Strich · Steuerjahr 2025</p>
+
+  <p>Alle Formulare sind ausgefüllt — jetzt kommt der letzte Schritt. ELSTER führt Klara durch eine <strong>automatische Prüfung</strong>, zeigt ihr die berechnete Steuer und lässt sie die Erklärung dann verbindlich ans Finanzamt übermitteln.</p>
+
+  <!-- Schritt 1: Checkliste -->
+  <div class="step-header">
+    <div class="step-badge">1</div>
+    <div class="step-title">Alles vollständig? Kurze Checkliste vor dem Abschicken</div>
+  </div>
+
+  <ul class="checklist">
+    <li><span class="check">✓</span> <span><strong>Hauptvordruck</strong> — persönliche Daten, Steuernummer, Bankverbindung eingetragen</span></li>
+    <li><span class="check">✓</span> <span><strong>Anlage Vorsorgeaufwand</strong> — Krankenversicherungsbescheinigung eingetragen</span></li>
+    <li><span class="check">✓</span> <span><strong>Anlage EÜR</strong> — Zeile 12 (16.800 €) und alle Betriebsausgaben eingetragen</span></li>
+    <li><span class="check">✓</span> <span><strong>Anlage AVEÜR</strong> — Grafik-PC eingetragen, AfA 1.200 € berechnet</span></li>
+    <li><span class="check">✓</span> <span><strong>Anlage S</strong> — Gewinn 12.716 € in Zeile 5 eingetragen</span></li>
+  </ul>
+
+  <!-- Schritt 2: Prüfen -->
+  <div class="step-header">
+    <div class="step-badge">2</div>
+    <div class="step-title">Phase „Prüfen" — ELSTER kontrolliert alle Eingaben</div>
+  </div>
+  <p>Klara klickt auf den Tab <strong>„Prüfen"</strong> in der oberen Navigationsleiste. ELSTER prüft nun automatisch alle Formulare auf Vollständigkeit und Plausibilität und zeigt eine Zusammenfassung.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · ESt 2025 · Prüfen</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase done">✓ Eingeben<br><span style="font-size:0.68rem;">abgeschlossen</span></div>
+        <div class="elster-phase active">📋 Prüfen<br><span style="font-size:0.68rem;font-weight:normal;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-body-plain">
+        <div class="elster-form-title">Prüfungsergebnis</div>
+        <div style="background:#f0fff0; border:1px solid #b0ddb0; border-radius:6px; padding:10px 14px; margin-bottom:14px; font-size:0.85rem; color:#1a5c1a;">
+          <strong>✓ Keine Fehler gefunden.</strong> Alle Pflichtfelder sind ausgefüllt, alle Werte sind plausibel.
+        </div>
+        <div style="font-size:0.82rem; color:#444; font-weight:bold; margin-bottom:8px;">Übersicht der eingetragenen Einkünfte:</div>
+        <table style="width:100%; font-size:0.8rem; border-collapse:collapse; margin-bottom:12px;">
+          <tr style="background:#f5f5f5;">
+            <td style="padding:6px 10px; color:#555;">Einkünfte aus selbständiger Arbeit (Anlage S)</td>
+            <td style="padding:6px 10px; text-align:right; color:#333; font-weight:bold;">12.716,00 €</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 10px; color:#555;">Vorsorgeaufwendungen</td>
+            <td style="padding:6px 10px; text-align:right; color:#333;">– 4.200,00 €</td>
+          </tr>
+          <tr style="background:#f5f5f5;">
+            <td style="padding:6px 10px; color:#555;">Gesamtbetrag der Einkünfte</td>
+            <td style="padding:6px 10px; text-align:right; color:#333; font-weight:bold;">8.516,00 €</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 10px; color:#555;">Grundfreibetrag 2025</td>
+            <td style="padding:6px 10px; text-align:right; color:#333;">– 12.096,00 €</td>
+          </tr>
+          <tr style="border-top:2px solid #ddd;">
+            <td style="padding:8px 10px; color:#333; font-weight:bold;">Festzusetzende Einkommensteuer</td>
+            <td style="padding:8px 10px; text-align:right; color:#2d7a2d; font-weight:bold; font-size:1rem;">0,00 €</td>
+          </tr>
+        </table>
+        <div style="text-align:right;">
+          <span style="background:#1a7ab5; color:white; padding:8px 20px; border-radius:4px; font-size:0.85rem; cursor:default;">Weiter zum Versenden →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Prüfungsergebnis kontrollieren — stimmen Einkünfte und Abzüge?</div>
+
+  <div class="hint-box">
+    <p><strong>Was tun bei einer Fehlermeldung?</strong> ELSTER unterscheidet zwischen <em>Fehlern</em> (müssen behoben werden) und <em>Hinweisen</em> (können ignoriert werden). Typische Fehler für Kleinunternehmer:</p>
+  </div>
+
+  <div class="fehler-box">
+    <div class="fehler-titel">⚠ Anlage EÜR fehlt oder nicht übermittelt</div>
+    <div class="fehler-text">ELSTER erwartet eine Anlage EÜR, wenn in Anlage S ein Gewinn eingetragen ist.</div>
+    <div class="fehler-loesung">→ Anlage EÜR über „Formulare und Leistungen → Gewinnermittlung" separat öffnen und abschicken.</div>
+  </div>
+  <div class="fehler-box">
+    <div class="fehler-titel">⚠ Bankverbindung fehlt</div>
+    <div class="fehler-text">Ohne IBAN kann das Finanzamt keine Erstattung überweisen.</div>
+    <div class="fehler-loesung">→ Im Hauptvordruck unter „Bankverbindung" IBAN nachtragen.</div>
+  </div>
+  <div class="fehler-box">
+    <div class="fehler-titel">⚠ Steuernummer ungültig</div>
+    <div class="fehler-text">Format oder Länge der Steuernummer stimmt nicht mit dem Bundesland überein.</div>
+    <div class="fehler-loesung">→ Steuernummer aus dem letzten Steuerbescheid übernehmen (nicht die IdNr verwechseln!).</div>
+  </div>
+
+  <!-- Schritt 3: Versenden -->
+  <div class="step-header">
+    <div class="step-badge">3</div>
+    <div class="step-title">Phase „Versenden" — die Erklärung ans Finanzamt übermitteln</div>
+  </div>
+  <p>Alles in Ordnung? Dann klickt Klara auf <strong>„Versenden"</strong>. ELSTER zeigt nochmals eine Zusammenfassung zur Bestätigung — danach wird die Erklärung verschlüsselt ans Finanzamt übertragen.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · ESt 2025 · Versenden</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase done">✓ Eingeben<br><span style="font-size:0.68rem;">abgeschlossen</span></div>
+        <div class="elster-phase done">✓ Prüfen<br><span style="font-size:0.68rem;">abgeschlossen</span></div>
+        <div class="elster-phase active">📤 Versenden<br><span style="font-size:0.68rem;font-weight:normal;">des Formulars</span></div>
+      </div>
+      <div class="elster-body-plain">
+        <div class="elster-form-title">Übermittlung bestätigen</div>
+        <div style="font-size:0.84rem; color:#444; margin-bottom:14px;">
+          Folgende Formulare werden jetzt verbindlich ans Finanzamt übermittelt:
+        </div>
+        <div style="border:1px solid #ddd; border-radius:4px; overflow:hidden; font-size:0.82rem; margin-bottom:16px;">
+          <div style="padding:8px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; background:#f9f9f9;">
+            <span>Einkommensteuererklärung 2025 (ESt 1A)</span>
+            <span style="color:#2d7a2d;">✓ bereit</span>
+          </div>
+          <div style="padding:8px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; background:#f9f9f9;">
+            <span>Anlage S</span>
+            <span style="color:#2d7a2d;">✓ bereit</span>
+          </div>
+          <div style="padding:8px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; background:#f9f9f9;">
+            <span>Anlage EÜR 2025</span>
+            <span style="color:#2d7a2d;">✓ bereit</span>
+          </div>
+          <div style="padding:8px 12px; display:flex; justify-content:space-between; background:#f9f9f9;">
+            <span>Anlage AVEÜR 2025</span>
+            <span style="color:#2d7a2d;">✓ bereit</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <span style="background:#2d7a2d; color:white; padding:10px 24px; border-radius:4px; font-size:0.9rem; font-weight:bold; cursor:default;">✓ Jetzt verbindlich übermitteln</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout green">Auf „Jetzt verbindlich übermitteln" klicken — fertig!</div>
+
+  <!-- Schritt 4: Nach dem Versenden -->
+  <div class="step-header">
+    <div class="step-badge">4</div>
+    <div class="step-title">Nach dem Versenden — was passiert jetzt?</div>
+  </div>
+  <p>Direkt nach der Übermittlung zeigt ELSTER eine <strong>Übertragungsbestätigung</strong> mit Datum und Uhrzeit. Diese sollte Klara als PDF speichern oder ausdrucken — sie ist der Nachweis, dass die Erklärung rechtzeitig eingereicht wurde.</p>
+
+  <div class="hint-box">
+    <p><strong>Wann kommt der Steuerbescheid?</strong> Das Finanzamt bearbeitet die Erklärung in der Regel innerhalb von <strong>4–12 Wochen</strong>. Danach kommt der Steuerbescheid per Post. Bei Erstattung wird der Betrag direkt auf die angegebene IBAN überwiesen.</p>
+    <p><strong>Was, wenn der Bescheid falsch ist?</strong> Gegen jeden Steuerbescheid kann man innerhalb von <strong>einem Monat</strong> Einspruch einlegen — formlos per Brief oder über ELSTER. Bei kleinen Unklarheiten reicht oft ein Anruf beim Finanzamt.</p>
+    <p style="margin-bottom:0;"><strong>Abgabefrist:</strong> Die Steuererklärung für 2025 muss ohne Steuerberater bis zum <strong>31. Juli 2026</strong> beim Finanzamt sein. Mit Steuerberater verlängert sich die Frist auf Ende Februar 2027.</p>
+  </div>
+
+  <div class="success-box">
+    <p><strong>Klara ist fertig — Glückwunsch!</strong></p>
+    <p>Sie hat ihre erste Steuererklärung als Kleinunternehmerin komplett selbst gemacht:</p>
+    <p>
+      ✓ Einnahmen sauber erfasst (16.800 €)<br>
+      ✓ Alle Betriebsausgaben korrekt abgesetzt (4.084 €)<br>
+      ✓ Grafik-PC abgeschrieben (AfA 1.200 €)<br>
+      ✓ Gewinn ermittelt (12.716 €)<br>
+      ✓ Steuererklärung elektronisch übermittelt
+    </p>
+    <p style="margin-bottom:0;">Die EÜR-App Pro hat dabei alle Zahlen fertig aufbereitet — das eigentliche Ausfüllen in ELSTER hat weniger als eine Stunde gedauert.</p>
+  </div>
+
+  <div class="page-nav">
+    <a href="ratgeber-elster-anlage-s.html" class="nav-btn back">← Anlage S</a>
+    <a href="ratgeber.html" class="nav-btn ratgeber">↩ Zurück zum Ratgeber</a>
+  </div>
+
+  <footer style="margin-top:4rem; padding-top:1.5rem; border-top:1px solid #333355; text-align:center; font-size:0.8rem; color:#666688;">
+    <a href="index.html" style="color:#666688;">EÜR-App Pro</a> &nbsp;·&nbsp;
+    <a href="impressum.html" style="color:#666688;">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html" style="color:#666688;">Datenschutzerklärung</a> &nbsp;·&nbsp;
+    <a href="agb.html" style="color:#666688;">AGB</a> &nbsp;·&nbsp;
+    <a href="widerruf.html" style="color:#666688;">Widerruf</a>
+  </footer>
+
+    </main>
+  </div>
+
+</body>
+</html>

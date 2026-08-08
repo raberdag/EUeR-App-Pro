@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anlage EÜR ausfüllen – Schritt für Schritt mit ELSTER</title>
+  <meta name="description" content="So füllt Klara Strich die Anlage EÜR in ELSTER aus — Einnahmen, Betriebsausgaben, AfA und Gewinnermittlung mit echten Zahlen und Zeilennummern.">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e8e8f0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      max-width: 1120px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    h1 { color: #e07b2a; font-size: 1.7rem; margin-bottom: 0.3rem; text-align: center; }
+    h2 { color: #e07b2a; font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.6rem; border-bottom: 1px solid #333355; padding-bottom: 0.3rem; }
+    p { color: #c8c8e0; margin-bottom: 0.9rem; font-size: 0.98rem; }
+    ul { color: #c8c8e0; margin: 0.5rem 0 0.9rem 1.5rem; font-size: 0.98rem; }
+    ul li { margin-bottom: 0.4rem; }
+    a { color: #e07b2a; }
+    a:hover { color: #f0a050; }
+    .meta { color: #9999bb; font-size: 0.85rem; text-align: center; margin-bottom: 2rem; }
+    .breadcrumb { color: #9999bb; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #9999bb; }
+    .breadcrumb a:hover { color: #e07b2a; }
+
+    .hint-box {
+      background: #16213e; border: 1px solid #333355;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .hint-box p:last-child { margin-bottom: 0; }
+    .success-box {
+      background: #0d1f0d; border: 1px solid #2d7a2d;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+    }
+    .success-box p { color: #90d090; margin-bottom: 0.5rem; }
+    .success-box p:last-child { margin-bottom: 0; }
+
+    .step-header { display: flex; align-items: center; gap: 1rem; margin: 2rem 0 0.6rem; }
+    .step-badge {
+      background: #e07b2a; color: white; border-radius: 50%;
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 1rem;
+    }
+    .step-title { color: #e8e8f0; font-weight: bold; font-size: 1.05rem; }
+    .callout {
+      background: #e07b2a; color: white; border-radius: 6px;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: bold;
+      display: inline-block; margin: 6px 0;
+    }
+    .callout::before { content: "▶ "; }
+
+    /* Browser Mockup */
+    .browser-mockup {
+      background: #f0f0f0; border-radius: 10px; overflow: hidden;
+      margin: 1rem 0 1.2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .browser-bar {
+      background: #e0e0e0; padding: 8px 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .browser-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .browser-dot.red   { background: #ff5f57; }
+    .browser-dot.yellow{ background: #febc2e; }
+    .browser-dot.green { background: #28c840; }
+    .browser-url {
+      flex: 1; background: white; border-radius: 4px;
+      padding: 3px 10px; font-size: 0.82rem; color: #444;
+      font-family: monospace; margin-left: 8px;
+    }
+    .browser-content { background: white; }
+
+    /* ELSTER echtes Design */
+    .elster-header {
+      background: white; padding: 10px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #8dc63f;
+    }
+    .elster-logo {
+      color: #8dc63f; font-weight: 900; font-size: 1.4rem;
+      letter-spacing: 2px; font-family: Arial Black, Arial, sans-serif;
+    }
+    .elster-tagline { color: #666; font-size: 0.78rem; margin-left: 8px; }
+    .elster-user { color: #1a7ab5; font-size: 0.8rem; }
+    .elster-phases {
+      display: flex; background: #555; border-bottom: 3px solid #8dc63f;
+    }
+    .elster-phase {
+      padding: 7px 14px; font-size: 0.74rem; color: #ccc;
+      display: flex; align-items: center; gap: 5px;
+      border-right: 1px solid #666; line-height: 1.3;
+    }
+    .elster-phase.active { background: #444; color: white; font-weight: bold; }
+
+    .elster-layout { display: flex; min-height: 180px; }
+    .elster-sidebar {
+      width: 175px; background: #f5f5f5;
+      border-right: 1px solid #ddd; padding: 8px 0; flex-shrink: 0;
+    }
+    .elster-sidebar-section {
+      padding: 6px 14px 3px; font-size: 0.72rem;
+      color: #999; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .elster-sidebar-item {
+      padding: 7px 14px; font-size: 0.78rem; color: #1a7ab5; cursor: default;
+    }
+    .elster-sidebar-item.active {
+      background: white; border-left: 3px solid #e07b2a;
+      font-weight: bold; color: #333;
+    }
+    .elster-sidebar-item.done { color: #2d7a2d; }
+    .elster-sidebar-item.inactive { color: #aaa; }
+    .elster-body { padding: 16px 20px; background: white; flex: 1; }
+    .elster-body-plain { padding: 16px 20px; background: white; }
+    .elster-form-title {
+      color: #333; font-weight: bold; font-size: 0.95rem;
+      margin-bottom: 14px; padding-bottom: 6px;
+      border-bottom: 2px solid #8dc63f;
+    }
+
+    /* Formularfelder */
+    .form-row {
+      display: flex; align-items: flex-start;
+      gap: 10px; margin-bottom: 8px; flex-wrap: wrap;
+    }
+    .form-label {
+      color: #444; font-size: 0.78rem;
+      min-width: 220px; flex-shrink: 0; padding-top: 4px;
+    }
+    .form-label .zeile { color: #888; font-size: 0.7rem; display: block; }
+    .form-input {
+      border: 1px solid #bbb; border-radius: 3px;
+      padding: 4px 8px; font-size: 0.82rem; color: #333;
+      background: white; min-width: 140px;
+    }
+    .form-input.filled {
+      background: #fffbe6; border-color: #e07b2a;
+      font-weight: bold; color: #003366;
+    }
+    .form-input.auto {
+      background: #e8f4e8; border-color: #5cb85c;
+      font-weight: bold; color: #1a5c1a;
+    }
+    .form-input.skip {
+      background: #f0f0f0; border-color: #ddd;
+      color: #aaa; font-style: italic;
+    }
+    .form-note { font-size: 0.72rem; color: #888; padding-top: 4px; }
+
+    /* Legende */
+    .legende {
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
+      margin: 0.8rem 0 1.2rem; font-size: 0.82rem; color: #9999bb;
+    }
+    .legende-item { display: flex; align-items: center; gap: 6px; }
+    .legende-box {
+      width: 20px; height: 14px; border-radius: 2px;
+      border: 1px solid #888; flex-shrink: 0;
+    }
+    .legende-box.filled { background: #fffbe6; border-color: #e07b2a; }
+    .legende-box.auto   { background: #e8f4e8; border-color: #5cb85c; }
+    .legende-box.skip   { background: #f0f0f0; border-color: #ddd; }
+
+    /* Ergebnis-Box */
+    .ergebnis-box {
+      background: #16213e; border: 2px solid #e07b2a;
+      border-radius: 8px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+      overflow-x: auto;
+    }
+    .ergebnis-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .ergebnis-table td { padding: 6px 10px; color: #c8c8e0; }
+    .ergebnis-table tr.einnahmen td { color: #90d090; }
+    .ergebnis-table tr.ausgaben td { color: #f0a050; }
+    .ergebnis-table tr.separator td { border-top: 1px solid #333355; }
+    .ergebnis-table tr.gewinn td { color: #e07b2a; font-weight: bold; font-size: 1rem; }
+    .ergebnis-table td.betrag { text-align: right; font-family: monospace; }
+
+    .page-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 3rem; padding-top: 1.5rem;
+      border-top: 1px solid #333355; flex-wrap: wrap; gap: 0.8rem;
+    }
+    .nav-btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: bold; text-decoration: none; font-size: 0.9rem;
+    }
+    .nav-btn.back { background: #333355; color: #e8e8f0; }
+    .nav-btn.next { background: #e07b2a; color: white; }
+    .nav-btn:hover { opacity: 0.85; }
+
+    /* Pfad-Anzeige */
+    .pfad-box {
+      background: #0f1a2e; border: 1px solid #2a3a5a;
+      border-radius: 6px; padding: 0.8rem 1.2rem;
+      font-family: monospace; font-size: 0.85rem;
+      color: #8dc63f; margin: 0.8rem 0 1.4rem;
+    }
+    .pfad-box span { color: #9999bb; }
+    /* SIDEBAR LAYOUT */
+    .page-wrapper { display: flex; gap: 2rem; align-items: flex-start; }
+    .ratgeber-sidebar { width: 210px; flex-shrink: 0; position: sticky; top: 24px; background: #16213e; border: 1px solid #333355; border-radius: 10px; padding: 1rem 0; }
+    .ratgeber-main { flex: 1; min-width: 0; }
+    .sb-section { padding: 6px 16px 3px; font-size: 0.7rem; color: #666688; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 8px; }
+    .sb-section:first-child { margin-top: 0; }
+    .sb-link { display: block; padding: 6px 16px; font-size: 0.82rem; color: #9999bb; text-decoration: none; border-left: 3px solid transparent; line-height: 1.35; }
+    .sb-link:hover { color: #e07b2a; background: #1e2a48; }
+    .sb-link.active { color: #e07b2a; border-left-color: #e07b2a; background: #1e2a48; font-weight: bold; }
+    .sb-divider { border: none; border-top: 1px solid #333355; margin: 8px 0; }
+    @media (max-width: 780px) { .page-wrapper { flex-direction: column; } .ratgeber-sidebar { width: 100%; position: static; } }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <aside class="ratgeber-sidebar">
+      <div class="sb-section">Ratgeber</div>
+      <a class="sb-link" href="ratgeber.html">← Übersicht</a>
+      <hr class="sb-divider">
+      <div class="sb-section">ELSTER – Schritt für Schritt</div>
+      <a class="sb-link" href="ratgeber-elster-start.html">① Navigation &amp; Login</a>
+      <a class="sb-link" href="ratgeber-elster-mantelbogen.html">② Hauptvordruck</a>
+      <a class="sb-link active" href="ratgeber-elster-anlage-eur.html">③ Anlage EÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-aveuer.html">④ Anlage AVEÜR</a>
+      <a class="sb-link" href="ratgeber-elster-anlage-s.html">⑤ Anlage S</a>
+      <a class="sb-link" href="ratgeber-elster-abschicken.html">⑥ Prüfen &amp; Versenden</a>
+    </aside>
+    <main class="ratgeber-main">
+
+  <p class="breadcrumb">
+    <a href="ratgeber.html">← Ratgeber</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-start.html">ELSTER Navigation</a> &nbsp;›&nbsp;
+    <a href="ratgeber-elster-mantelbogen.html">Hauptvordruck</a> &nbsp;›&nbsp;
+    Anlage EÜR
+  </p>
+
+  <h1>Die Anlage EÜR ausfüllen</h1>
+  <p class="meta">Praxisbeispiel mit Klara Strich · Steuerjahr 2025</p>
+
+  <p>Die Anlage EÜR ist das Herzstück — hier wird Klaras Gewinn offiziell ermittelt. Sie wird in ELSTER als <strong>eigenständiges Formular</strong> geöffnet, getrennt von der Einkommensteuererklärung. Die EÜR-App Pro hat alle Zahlen bereits fertig berechnet — Klara muss sie nur noch eintragen.</p>
+
+  <div class="legende">
+    <div class="legende-item"><div class="legende-box filled"></div> Klara trägt diesen Wert ein</div>
+    <div class="legende-item"><div class="legende-box auto"></div> ELSTER berechnet automatisch</div>
+    <div class="legende-item"><div class="legende-box skip"></div> Leer lassen / nicht relevant</div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="step-header">
+    <div class="step-badge">1</div>
+    <div class="step-title">Anlage EÜR öffnen — über „Formulare und Leistungen"</div>
+  </div>
+  <p>Die Anlage EÜR ist <strong>nicht Teil der Einkommensteuererklärung</strong> — sie ist ein separates Formular unter „Gewinnermittlung". Klara öffnet es so:</p>
+
+  <div class="pfad-box">
+    <span>Mein ELSTER &nbsp;›&nbsp;</span> Formulare und Leistungen <span>&nbsp;›&nbsp;</span> Alle Formulare <span>&nbsp;›&nbsp;</span> Gewinnermittlung <span>&nbsp;›&nbsp;</span> <strong>Einnahmenüberschussrechnung (Anlage EÜR)</strong>
+  </div>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de/eportal/formulare/alle</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-item">👤 Mein ELSTER</div>
+          <div class="elster-sidebar-item">⚙ Mein Benutzerkonto</div>
+          <div class="elster-sidebar-item active">📋 Formulare und Leistungen</div>
+          <div class="elster-sidebar-item" style="padding-left:24px; font-size:0.75rem; color:#e07b2a; font-weight:bold;">Alle Formulare</div>
+          <div class="elster-sidebar-item inactive" style="padding-left:24px; font-size:0.74rem;">Bereitstellungstermine</div>
+          <div class="elster-sidebar-item inactive" style="padding-left:24px; font-size:0.74rem;">Bescheinigungen</div>
+        </div>
+        <div class="elster-body-plain" style="padding: 14px 18px;">
+          <div style="font-size:0.78rem; color:#1a7ab5; margin-bottom:10px;">ELSTER › Formulare und Leistungen</div>
+          <div style="font-size:1.1rem; font-weight:bold; color:#333; margin-bottom:14px;">Alle Formulare</div>
+          <div style="border:1px solid #ddd; border-radius:4px; overflow:hidden; font-size:0.82rem;">
+            <div style="padding:8px 12px; border-bottom:1px solid #eee; color:#1a7ab5;">› Einkommensteuer</div>
+            <div style="padding:8px 12px; border-bottom:1px solid #eee; color:#555; font-weight:bold; background:#f5f5f5;">∨ Gewinnermittlung</div>
+            <div style="padding:8px 14px; border-bottom:1px solid #eee; color:#1a7ab5; font-weight:bold; background:#fff8ee; border-left:3px solid #e07b2a;">
+              ▶ Einnahmenüberschussrechnung (Anlage EÜR)
+            </div>
+            <div style="padding:8px 14px; border-bottom:1px solid #eee; color:#1a7ab5; font-size:0.8rem;">Anlage 13a (Land- und Forstwirtschaft)</div>
+            <div style="padding:8px 12px; color:#1a7ab5;">› Grundsteuer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Klicke auf „Einnahmenüberschussrechnung (Anlage EÜR)"</div>
+
+  <!-- EÜR Anlagenauswahl -->
+  <div class="step-header">
+    <div class="step-badge">2</div>
+    <div class="step-title">EÜR-Anlagenauswahl: Anlage AVEÜR aktivieren</div>
+  </div>
+  <p>Das EÜR-Formular hat eine <strong>eigene Anlagenauswahl</strong>. Für Klara muss hier die <strong>Anlage AVEÜR</strong> aktiviert werden — das Anlagenverzeichnis für den Grafik-PC. Anlage EÜR selbst ist bereits vorausgewählt.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage EÜR 2025 · Anlagenauswahl</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-body-plain" style="padding: 14px 18px;">
+        <div style="font-size:1rem; font-weight:bold; color:#333; margin-bottom:12px;">Anlagenauswahl — Anlage EÜR 2025</div>
+        <div style="border:1px solid #ddd; border-radius:4px; overflow:hidden; font-size:0.82rem; margin-bottom:14px;">
+          <div style="padding:8px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; background:#f9f9f9;">
+            <span style="color:#333; font-weight:bold;">Anlage EÜR</span>
+            <span style="color:#1a7ab5; font-size:1rem;">☑</span>
+          </div>
+          <div style="padding:8px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; background:#fff8ee;">
+            <span style="color:#e07b2a; font-weight:bold;">Anlage AVEÜR ← Klara aktiviert diese</span>
+            <span style="color:#e07b2a; font-size:1rem;">☑</span>
+          </div>
+          <div style="padding:8px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between;">
+            <span style="color:#aaa;">Anlage SZ</span>
+            <span style="color:#aaa;">☐</span>
+          </div>
+          <div style="padding:8px 12px; display:flex; justify-content:space-between;">
+            <span style="color:#aaa;">Anlage SE</span>
+            <span style="color:#aaa;">☐</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <span style="background:#1a7ab5; color:white; padding:8px 20px; border-radius:4px; font-size:0.85rem; cursor:default;">Weiter →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Anlage AVEÜR anhaken → Weiter</div>
+
+  <div class="hint-box">
+    <p><strong>Was braucht ein normaler Kleinunternehmer?</strong> Für die große Mehrheit der Kleinunternehmer reichen genau diese beiden Formulare: <strong>Anlage EÜR</strong> und — sofern Wirtschaftsgüter abgeschrieben werden — <strong>Anlage AVEÜR</strong>. Die weiteren Anlagen (SZ, SE, LuF …) kommen nur bei besonderen Sachverhalten dazu und machen die Sache deutlich komplizierter.</p>
+    <p style="margin-bottom:0;"><strong>Empfehlung für komplexere Fälle:</strong> Wer sich nicht sicher ist, ob noch andere Anlagen nötig sind, oder wer das erste Mal mit einer ungewöhnlichen Situation konfrontiert ist, sollte zumindest einmal einen Steuerberater hinzuziehen — danach kennt man den Weg und kann vieles in den Folgejahren selbst erledigen.</p>
+  </div>
+
+  <!-- Schritt 3: Allgemeine Angaben -->
+  <div class="step-header">
+    <div class="step-badge">3</div>
+    <div class="step-title">Allgemeine Angaben — Einkunftsart und Betriebsinhaber</div>
+  </div>
+  <p>Ganz am Anfang der EÜR stehen zwei kurze Angaben, die ELSTER für die Zuordnung braucht.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage EÜR · Allgemeine Angaben</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Anlage EÜR</div>
+          <div class="elster-sidebar-item active">Allgemeine Angaben</div>
+          <div class="elster-sidebar-item inactive">Betriebseinnahmen</div>
+          <div class="elster-sidebar-item inactive">Betriebsausgaben</div>
+          <div class="elster-sidebar-item inactive">Gewinnermittlung</div>
+          <div class="elster-sidebar-section" style="margin-top:8px;">Anlage AVEÜR</div>
+          <div class="elster-sidebar-item inactive">Anlagevermögen</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Allgemeine Angaben</div>
+          <div class="form-row">
+            <div class="form-label">Einkunftsart<span class="zeile">Zeile 7</span></div>
+            <input class="form-input filled" readonly value="§ 18 EStG — Freiberuflich">
+            <div class="form-note">Grafik-Design = freiberufliche Tätigkeit</div>
+          </div>
+          <div class="form-row">
+            <div class="form-label">Betriebsinhaber<span class="zeile">Zeile 8</span></div>
+            <input class="form-input filled" readonly value="Klara Strich">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Wirtschaftsjahr<span class="zeile">Zeile 4</span></div>
+            <input class="form-input filled" readonly value="01.01.2025 – 31.12.2025">
+            <div class="form-note">Entspricht dem Kalenderjahr — Standardfall</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Einkunftsart § 18 (freiberuflich) wählen, Name und Zeitraum bestätigen</div>
+
+  <!-- Schritt 4: Betriebseinnahmen -->
+  <div class="step-header">
+    <div class="step-badge">4</div>
+    <div class="step-title">Betriebseinnahmen — eine einzige Zeile für Klara</div>
+  </div>
+  <p>Die Betriebseinnahmen-Seite sieht auf den ersten Blick erschreckend aus — viele Abschnitte, viele Zeilen. Aber für Klara als Kleinunternehmerin ist das alles kein Thema: Sie füllt genau <strong>eine einzige Zeile</strong> aus und lässt den Rest leer.</p>
+  <p>Ganz oben auf der Seite erscheint der Abschnitt <strong>„Umsatzsteuerlicher Kleinunternehmer"</strong> mit <strong>Zeile 12</strong>:</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage EÜR 2025 · 3 – 1. Betriebseinnahmen</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Anlage EÜR</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem;">Allgemeine Angaben</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem; color:#555;">Gewinnermittlung</div>
+          <div class="elster-sidebar-item active" style="font-size:0.74rem; padding-left:20px;">3 - 1. Betriebseinnahmen</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem; padding-left:20px;">4 - 2. Betriebsausgaben</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem; padding-left:20px;">5 - 3. Ermittlung des Gewinns</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem;">Ergänzende Angaben</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem;">Zusätzl. Angaben Einzeluntern.</div>
+          <div class="elster-sidebar-item inactive" style="font-size:0.74rem; color:#555; margin-top:6px;">Anlage AVEÜR</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">3 – 1. Betriebseinnahmen <span style="font-weight:normal; font-size:0.82rem; color:#666;">(einschließlich steuerfreier Betriebseinnahmen)</span></div>
+
+          <div style="font-size:0.84rem; font-weight:bold; color:#333; border-bottom:2px solid #8dc63f; padding-bottom:4px; margin-bottom:10px;">Umsatzsteuerlicher Kleinunternehmer</div>
+
+          <div style="font-size:0.78rem; color:#444; margin-bottom:8px; font-weight:bold;">Betriebseinnahmen als umsatzsteuerlicher Kleinunternehmer (nach § 19 Abs. 1 UStG) ohne Beträge laut Zeilen 18 bis 22</div>
+          <div class="form-row" style="align-items:center; gap:6px; flex-wrap:nowrap;">
+            <span style="color:#888; font-size:0.75rem; min-width:20px;">12</span>
+            <input class="form-input filled" readonly value="Grafik-Design Honorare 2025" style="min-width:160px; flex:1;">
+            <input class="form-input filled" readonly value="16.800,00" style="min-width:100px; text-align:right;">
+            <span style="color:#888; font-size:0.75rem;">€</span>
+          </div>
+
+          <div style="margin-top:16px; padding-top:10px; border-top:1px solid #eee;">
+            <div style="font-size:0.76rem; color:#aaa; font-style:italic; margin-bottom:6px;">Alle weiteren Abschnitte dieser Seite — Klara lässt sie leer:</div>
+            <div class="form-row">
+              <div class="form-label" style="color:#bbb;">Private Kfz-Nutzung <span class="zeile">Zeile 20</span></div>
+              <input class="form-input skip" readonly value="— entfällt">
+            </div>
+            <div class="form-row">
+              <div class="form-label" style="color:#bbb;">Sonstige Entnahmen <span class="zeile">Zeile 21</span></div>
+              <input class="form-input skip" readonly value="— entfällt">
+            </div>
+            <div class="form-row">
+              <div class="form-label" style="color:#bbb;">Auflösung Rücklagen <span class="zeile">Zeile 22</span></div>
+              <input class="form-input skip" readonly value="— entfällt">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Zeile 12: Bezeichnung eingeben + 16.800,00 € eintragen — den Rest leer lassen</div>
+
+  <div class="hint-box">
+    <p><strong>Warum Zeile 12?</strong> ELSTER kennt für Kleinunternehmer nach § 19 UStG einen eigenen Abschnitt ganz oben auf der Betriebseinnahmen-Seite. Dort trägt Klara einfach ihre Gesamteinnahmen ein — Bezeichnung (z. B. „Grafik-Design Honorare 2025") und Betrag. Alle anderen Felder weiter unten auf der Seite (Kfz-Nutzung, Entnahmen, Rücklagen usw.) sind für völlig andere Sachverhalte — für eine einfache Freiberuflerin bleiben sie leer.</p>
+  </div>
+
+  <!-- Schritt 5: Betriebsausgaben -->
+  <div class="step-header">
+    <div class="step-badge">5</div>
+    <div class="step-title">Betriebsausgaben — Klaras Kosten im Detail</div>
+  </div>
+  <p>Jetzt kommen alle Ausgaben. ELSTER unterteilt sie in verschiedene Kategorien mit eigenen Zeilennummern. Die EÜR-App Pro liefert für jede Kategorie den fertig summierten Betrag — Klara trägt ihn nur noch in die richtige Zeile ein.</p>
+  <div class="hint-box">
+    <p><strong>Wichtig: Anlage AVEÜR zuerst ausfüllen!</strong> Den AfA-Betrag für den Grafik-PC (Zeile 33) trägt Klara <em>nicht</em> manuell ein — ELSTER übernimmt ihn automatisch aus der Anlage AVEÜR. Deshalb muss die AVEÜR fertig ausgefüllt sein, bevor man zu den Betriebsausgaben kommt. Im nächsten Kapitel zeigen wir, wie das geht.</p>
+  </div>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage EÜR · Betriebsausgaben</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Anlage EÜR</div>
+          <div class="elster-sidebar-item done">✓ Allgemeine Angaben</div>
+          <div class="elster-sidebar-item done">✓ Betriebseinnahmen</div>
+          <div class="elster-sidebar-item active">Betriebsausgaben</div>
+          <div class="elster-sidebar-item inactive">Gewinnermittlung</div>
+          <div class="elster-sidebar-section" style="margin-top:8px;">Anlage AVEÜR</div>
+          <div class="elster-sidebar-item inactive">Anlagevermögen</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">4 – 2. Betriebsausgaben</div>
+
+          <div style="font-size:0.76rem; color:#555; font-weight:bold; background:#e8f0e8; padding:4px 8px; margin-bottom:8px; border-radius:3px;">Absetzungen für Abnutzung (AfA)</div>
+          <div class="form-row">
+            <div class="form-label">AfA auf bewegliche Wirtschaftsgüter<span class="zeile">Grafik-PC — aus AVEÜR Zeile 63, Zeile 33</span></div>
+            <input class="form-input auto" readonly value="1.200,00 €">
+            <div class="form-note">Wird automatisch aus Anlage AVEÜR übernommen</div>
+          </div>
+
+          <div style="font-size:0.76rem; color:#555; font-weight:bold; background:#e8f0e8; padding:4px 8px; margin-bottom:8px; margin-top:10px; border-radius:3px;">Sonstige Aufwendungen für betrieblich genutzte Grundstücke</div>
+          <div class="form-row">
+            <div class="form-label">Aufwendungen für Telekommunikation<span class="zeile">Telefon, Internet — anteilig beruflich, Zeile 42</span></div>
+            <input class="form-input filled" readonly value="480,00 €">
+          </div>
+
+          <div style="font-size:0.76rem; color:#555; font-weight:bold; background:#e8f0e8; padding:4px 8px; margin-bottom:8px; margin-top:10px; border-radius:3px;">Weitere abzugsfähige Betriebsausgaben</div>
+          <div class="form-row">
+            <div class="form-label">Fortbildungskosten (ohne Reisekosten)<span class="zeile">Kurse, Online-Tutorials, Zeile 44</span></div>
+            <input class="form-input filled" readonly value="240,00 €">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Laufende EDV-Kosten<span class="zeile">Adobe CC, Figma u. a. Abo-Software, Zeile 48</span></div>
+            <input class="form-input filled" readonly value="660,00 €">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Arbeitsmittel<span class="zeile">Bürobedarf, Porto, Fachliteratur, Zeile 49</span></div>
+            <input class="form-input filled" readonly value="180,00 €">
+          </div>
+
+          <div style="font-size:0.76rem; color:#555; font-weight:bold; background:#e8f0e8; padding:4px 8px; margin-bottom:8px; margin-top:10px; border-radius:3px;">Homeoffice-Tagespauschale (Zeile 66)</div>
+          <div class="form-row">
+            <div class="form-label">Tagespauschale für die Tätigkeit in der häuslichen Wohnung<span class="zeile">167 Tage × 6 € — Zeile 66</span></div>
+            <input class="form-input filled" readonly value="1.002,00 €">
+            <div class="form-note">Max. 210 Tage × 6 € = 1.260 € pro Jahr</div>
+          </div>
+
+          <div style="font-size:0.76rem; color:#555; font-weight:bold; background:#e8f0e8; padding:4px 8px; margin-bottom:8px; margin-top:10px; border-radius:3px;">Kfz-Kosten und andere Fahrtkosten</div>
+          <div class="form-row">
+            <div class="form-label">Sonstige tatsächliche Fahrtkosten<span class="zeile">öffentl. Verkehrsmittel, Kundenbesuche — Zeile 70</span></div>
+            <input class="form-input filled" readonly value="322,00 €">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout">Alle Ausgaben kategoriegerecht in die richtigen Zeilen eintragen</div>
+
+  <!-- Schritt 6: Gewinnermittlung -->
+  <div class="step-header">
+    <div class="step-badge">6</div>
+    <div class="step-title">Gewinnermittlung — ELSTER rechnet automatisch</div>
+  </div>
+  <p>Der letzte Abschnitt der EÜR (Zeilen 73–97) ist der schönste: ELSTER addiert alle Einnahmen und Ausgaben selbst und zeigt den Gewinn. Klara muss hier nichts mehr eintragen — sie prüft nur, ob die Zahl stimmt.</p>
+
+  <div class="browser-mockup">
+    <div class="browser-bar">
+      <div class="browser-dot red"></div><div class="browser-dot yellow"></div><div class="browser-dot green"></div>
+      <div class="browser-url">mein.elster.de · Anlage EÜR · Gewinnermittlung</div>
+    </div>
+    <div class="browser-content">
+      <div class="elster-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="elster-logo">ELSTER</div>
+          <div class="elster-tagline">Ihr Online-Finanzamt</div>
+        </div>
+        <div class="elster-user">Hilfe &nbsp;·&nbsp; klara-s</div>
+      </div>
+      <div class="elster-phases">
+        <div class="elster-phase active">✏️ Eingeben<br><span style="font-size:0.68rem;font-weight:normal;">und Daten übernehmen</span></div>
+        <div class="elster-phase">📋 Prüfen<br><span style="font-size:0.68rem;">und Steuer berechnen</span></div>
+        <div class="elster-phase">📤 Versenden<br><span style="font-size:0.68rem;">des Formulars</span></div>
+      </div>
+      <div class="elster-layout">
+        <div class="elster-sidebar">
+          <div class="elster-sidebar-section">Anlage EÜR</div>
+          <div class="elster-sidebar-item done">✓ Allgemeine Angaben</div>
+          <div class="elster-sidebar-item done">✓ Betriebseinnahmen</div>
+          <div class="elster-sidebar-item done">✓ Betriebsausgaben</div>
+          <div class="elster-sidebar-item active">Gewinnermittlung</div>
+          <div class="elster-sidebar-section" style="margin-top:8px;">Anlage AVEÜR</div>
+          <div class="elster-sidebar-item done">✓ Anlagevermögen</div>
+        </div>
+        <div class="elster-body">
+          <div class="elster-form-title">Gewinnermittlung (Zeilen 73–97)</div>
+          <div class="form-row">
+            <div class="form-label">Summe Betriebseinnahmen<span class="zeile">Zeile 73</span></div>
+            <input class="form-input auto" readonly value="16.800,00 €">
+          </div>
+          <div class="form-row">
+            <div class="form-label">Summe Betriebsausgaben<span class="zeile">Zeile 74</span></div>
+            <input class="form-input auto" readonly value="4.084,00 €">
+          </div>
+          <div class="form-row">
+            <div class="form-label" style="font-weight:bold; color:#003366;">Gewinn / Verlust<span class="zeile">Zeile 97 — Ergebnis</span></div>
+            <input class="form-input auto" readonly style="background:#d4edda; border-color:#28a745; color:#155724; font-size:1rem; font-weight:900;" value="12.716,00 €">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ergebnis-box">
+    <table class="ergebnis-table">
+      <tr class="einnahmen">
+        <td>Betriebseinnahmen 2025</td>
+        <td class="betrag">16.800,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">Telekommunikation</td>
+        <td class="betrag">– 480,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">Software und Arbeitsmittel</td>
+        <td class="betrag">– 660,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">Büromaterial</td>
+        <td class="betrag">– 180,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">Fortbildung und Fachliteratur</td>
+        <td class="betrag">– 240,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">Homeoffice-Pauschale (167 Tage)</td>
+        <td class="betrag">– 1.002,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">Reisekosten</td>
+        <td class="betrag">– 322,00 €</td>
+      </tr>
+      <tr class="ausgaben">
+        <td style="padding-left:1.5rem;">AfA Grafik-PC (4.800 € / 3 J. = 1.600 €/J. × 9/12)</td>
+        <td class="betrag">– 1.200,00 €</td>
+      </tr>
+      <tr class="separator ausgaben">
+        <td><strong>Summe Betriebsausgaben</strong></td>
+        <td class="betrag"><strong>– 4.084,00 €</strong></td>
+      </tr>
+      <tr class="separator gewinn">
+        <td><strong>Gewinn 2025</strong></td>
+        <td class="betrag"><strong>12.716,00 €</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="success-box">
+    <p><strong>Anlage EÜR fertig!</strong> Klara hat ihren Gewinn von 12.716 € offiziell ermittelt und in ELSTER eingetragen. Dieser Betrag wandert automatisch in die Anlage S der Einkommensteuererklärung — das verknüpft ELSTER selbst.</p>
+    <p>Als nächstes: Die <strong>Anlage AVEÜR</strong> mit dem Grafik-PC vervollständigen — das geht schnell und ist der letzte Schritt in der Gewinnermittlung.</p>
+  </div>
+
+  <div class="page-nav">
+    <a href="ratgeber-elster-mantelbogen.html" class="nav-btn back">← Hauptvordruck</a>
+    <a href="ratgeber-elster-anlage-aveuer.html" class="nav-btn next">Weiter: Anlage AVEÜR →</a>
+  </div>
+
+  <footer style="margin-top:4rem; padding-top:1.5rem; border-top:1px solid #333355; text-align:center; font-size:0.8rem; color:#666688;">
+    <a href="index.html" style="color:#666688;">EÜR-App Pro</a> &nbsp;·&nbsp;
+    <a href="impressum.html" style="color:#666688;">Impressum</a> &nbsp;·&nbsp;
+    <a href="datenschutz.html" style="color:#666688;">Datenschutzerklärung</a> &nbsp;·&nbsp;
+    <a href="agb.html" style="color:#666688;">AGB</a> &nbsp;·&nbsp;
+    <a href="widerruf.html" style="color:#666688;">Widerruf</a>
+  </footer>
+
+    </main>
+  </div>
+
+</body>
+</html>
